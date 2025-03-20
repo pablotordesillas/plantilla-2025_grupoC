@@ -8,8 +8,6 @@
 - <Pablo Straus Peñafiel, 1º GII, Programación, Diseño gráfico, Pruebas>
 - <Casia María Gabriela Enoiu, 1ºGII, Programación, Diseño Gráfico y Diseño de niveles>
 
-Modificar lo que sigue a voluntad para que queden unas instrucciones mínimas de cómo ejecutar el juego y de cómo es el *gameplay*.
-
 # Welcome to The Python Arcade Community RPG
 
 ![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-success)
