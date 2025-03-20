@@ -1,7 +1,7 @@
 # Nombre del juego
 
 ## Equipo
-- <Pablo Tordesillas 4ºGII, Jefatura de proyecto,Programación,Diseño gráfico,Diseño de niveles,Pruebas>
+- <Pablo Tordesillas 4ºGII, Jefatura de proyecto,Programación,Diseño gráfico,Diseño de niveles, Pruebas>
 - <Emanuel Baciu, 1º GII, Programación, sonido, diseño de niveles>
 - <Isaac Quintian, 1ºGISI, Sonido, Diseño de niveles, Pruebas>
 - <Alejandro de la Mata Vázquez, 1º GII, Pruebas, Diseño de niveles, Diseño gráfico, Sonido>
