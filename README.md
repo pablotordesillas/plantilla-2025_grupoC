@@ -1,12 +1,12 @@
 # Nombre del juego
 
 ## Equipo
-- <Pablo Tordesillas 4ºGII, Jefatura de proyecto,Programación,Diseño gráfico,Diseño de niveles,Pruebas >
-- <Emanuel Baciu, 1º GII, Programación, sonido, diseño de niveles. >
-- <Isaac Quintian, 1ºGISI, Sonido, Diseño de niveles, Pruebas >
-- <Alejandro de la Mata Vázquez, 1º GII, Pruebas, Diseño de niveles, Diseño gráfico, Sonido. >
-- <Pablo Straus Peñafiel, 1º GII, Programación, Diseño gráfico, Pruebas >
-- <Casia María Gabriela Enoiu, 1ºGII, Programación, Diseño Gráfico y Diseño de niveles. >
+- <Pablo Tordesillas 4ºGII, Jefatura de proyecto,Programación,Diseño gráfico,Diseño de niveles,Pruebas>
+- <Emanuel Baciu, 1º GII, Programación, sonido, diseño de niveles>
+- <Isaac Quintian, 1ºGISI, Sonido, Diseño de niveles, Pruebas>
+- <Alejandro de la Mata Vázquez, 1º GII, Pruebas, Diseño de niveles, Diseño gráfico, Sonido>
+- <Pablo Straus Peñafiel, 1º GII, Programación, Diseño gráfico, Pruebas>
+- <Casia María Gabriela Enoiu, 1ºGII, Programación, Diseño Gráfico y Diseño de niveles>
 
 Modificar lo que sigue a voluntad para que queden unas instrucciones mínimas de cómo ejecutar el juego y de cómo es el *gameplay*.
 
