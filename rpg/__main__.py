@@ -1,6 +1,6 @@
 """
 Python Arcade Community RPG
-PRUEBASUBIDA
+
 An open-source RPG
 """
 
