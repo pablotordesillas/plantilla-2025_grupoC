@@ -1,7 +1,7 @@
 # Nombre del juego
 
 ## Equipo
-- <Nombre 1 y roles>
+- <Nombre 1>
 - <Nombre 2 y roles>
 - <Nombre 3 y roles>
 - <Nombre 4 y roles>
