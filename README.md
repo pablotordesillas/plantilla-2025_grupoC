@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 (For those of you who may be baffled with the careers, Computer Sciences == Ingenieria Informatica ; Information Systems Engineering == Ingenieria de Sistemas de la Informacion)
 
-# Welcome to The Python Arcade Community RPG
+## Welcome to The Python Arcade Community RPG
 
 ![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-success)
 ![First Timer Friendly](https://img.shields.io/badge/First%20Timer-friendly-informational)
@@ -35,10 +35,10 @@ Graphics Assets From:
 * [Pipoya Free RPG Character Sprites 32x32](https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32)
 * [Kenney Input Prompts Pixel 16x16](https://kenney.nl/assets/input-prompts-pixel-16)
 
-###  Gameplay
+##  Gameplay
 This is where we are supposed to explain how the game works and tell about its mechanics.
 
-### Controls
+## Controls
 - **Movement:** WASD / Arrow Keys
 - **Toggle Flashlight:** L *(Must be inside of the cave)*
 - **Pick Up Items:** E
