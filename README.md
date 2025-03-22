@@ -49,7 +49,7 @@ This is where we are supposed to explain how the game works and tell about its m
 ## Development and execution
 
 This project requires at least **Python version 3.7** (game was made in  Python ver. 3.9) and must use **Arcade ver. 2.6.17**
-__Arcade version might not be installed when the assets are downloaded so you may install it manually after forking and cloning with the following steps:__
+Arcade version might not be installed when the assets are downloaded so you may install it manually after forking and cloning with the following steps:
 - Go to File, Settings (or just do CTRL + Comma) and click the option where your project name is displayed.
 - Select 'Python Interpreter'.
 - Click the '+' button and search for Arcade library.
