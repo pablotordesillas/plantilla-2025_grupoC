@@ -1,12 +1,12 @@
 # Game Title Placeholder
 
 ## Team Name Placeholder
-- Pablo Tordesillas [4th Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/) -> | Dev Leader, Senior Programmer, Graphic Design, Level Design & Playtesting |
-- Emanuel Baciu [1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/) -> | Junior Programmer & Level Design |
-- Isaac Quintian [1st Grade Information Systems Engineering](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Engineering-in-Information-Systems/) -> | Junior Programmer, SFX, Level Design & Playtesting |
-- Alejandro de la Mata Vázquez [1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/) -> | Junior Programmer, SFX, Graphic Design, Level Design & Playtesting |
-- Pablo Straus Peñafiel [1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/) -> | Junior Programmer, Graphic Design & Playtesting |
-- Casia María Gabriela Enoiu [1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/) -> | Junior Programmer, Graphic Design & Level Design |
+- Pablo Tordesillas [[4th Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Dev Leader, Senior Programmer, Graphic Design, Level Design & Playtesting |
+- Emanuel Baciu [[1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Junior Programmer & Level Design |
+- Isaac Quintian [[1st Grade Information Systems Engineering](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Engineering-in-Information-Systems/)] -> | Junior Programmer, SFX, Level Design & Playtesting |
+- Alejandro de la Mata Vázquez [[1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Junior Programmer, SFX, Graphic Design, Level Design & Playtesting |
+- Pablo Straus Peñafiel [[1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Junior Programmer, Graphic Design & Playtesting |
+- Casia María Gabriela Enoiu [[1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Junior Programmer, Graphic Design & Level Design |
 _______________________________________________________________________________________
 
 (For those of you who may be baffled with the careers, Computer Sciences == Ingenieria Informatica ; Information Systems Engineering == Ingenieria de Sistemas de la Informacion)
