@@ -7,6 +7,7 @@ TODO
 
 La historia
 Un explorador se mete en un tempo, y cuando se da cuenta tiene que completar varias habitaciones para poder resolver un porblema, o en su defecto escapar de ahi
+Pero ahi el timepo y el espacio pasa de una manera distinta, y cada sala tendra un distinto arte de pixel art, por ejemplo
 
 -Objetivos. 
 Completar las salas del tempo, y conseguir salir de el
