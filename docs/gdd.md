@@ -35,8 +35,6 @@ Pero ahi el tiempo y el espacio pasan de una manera distinta, y cada sala tendra
 > Desert-like<br>
 > Lab-like<br>
 > La idea es que vamos a tener varias escenas con un estilo único.<br>
-<br>
-<br>
 ## Ideas adicionales: (editar esto)
 > Distinta movilidad dependiendo el terreno<br>
 > Dash que sirva para romper muros/estructuras<br>
