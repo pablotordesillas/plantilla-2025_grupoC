@@ -28,20 +28,18 @@ Pero ahi el timepo y el espacio pasa de una manera distinta, y cada sala tendra 
 >Colision con obstaculos.<br>
 >Rotura de objetos "fragiles" para liberar el camino.<br>
 
-## -Arte conceptual:
+## Arte conceptual:
 > no hay xddd<br>
 ## Estética del videojuego:
 > Cave-like<br>
 > Desert-like<br>
 > Lab-like<br>
 > La idea es que vamos a tener varias escenas con un estilo unico.<br>
-<br>
-<br>
 ## Ideas adicionales: (editar esto)
-> Disntita movilidad dependiendo el terreno<br>
+> Distinta movilidad dependiendo del terreno.<br>
 > Dash que sirva para romper muros/estructuras<br>
-> Disparo para patar enemigos<br>
-> Secciones a contrareloj (Mirar como hacer un contador) Si se acaba el timepo que game over y se reinicia el nivel/pantalla<br>
-> Como un simon dice o similar (crono trigger contraseña  año 1999, como ejemplo)<br>
-> Distintos personajes distintas caracteristicas, o distinto colgantes/complemetnos<br>
-> Crar hod principal<br>
+> Disparo para matar enemigos<br>
+> Secciones a contrarreloj (Mirar como hacer un contador) Si se acaba el tiempo que game over y se reinicia el nivel/pantalla<br>
+> Como un 'simon dice' o similar (crono trigger contraseña  año 1999, como ejemplo)<br>
+> Distintos personajes distintas caracteristicas, o distinto colgantes/complementos<br>
+> Crear HUD / Pantalla / Menu principal<br>
