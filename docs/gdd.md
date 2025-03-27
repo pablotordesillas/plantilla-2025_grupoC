@@ -6,9 +6,8 @@
 **TODO**      
 
 ## La historia:
-Un explorador se mete en un templo, y cuando se da cuenta tiene que completar varias habitaciones para poder resolver un problema, o en su defecto escapar de ahi.<br>
-Pero ahi el tiempo y el espacio pasan de una manera distinta, y cada sala tendra un distinto arte de pixel art, por ejemplo.<br>
-<br>
+> Un explorador se mete en un templo, y cuando se da cuenta tiene que completar varias habitaciones para poder resolver un problema, o en su defecto escapar de ahi.<br>
+> Pero ahi el tiempo y el espacio pasan de una manera distinta, y cada sala tendra un distinto arte de pixel art, por ejemplo.<br>
 ## Objetivos:
 >Completar una sala antes de que se acabe el tiempo evitando una serie de obstáculos.<br>
 ## Mecánicas:
@@ -19,16 +18,15 @@ Pero ahi el tiempo y el espacio pasan de una manera distinta, y cada sala tendra
 > Trampas: pueden haber unas trampas en algunas de las salas que modifiquen la velocidad o impida el movimiento del jugador.<br>
 > Items: cabe la posibilidad de algun item que de ventaja al jugador.
 ## Secuencia de niveles:
-- Posible idea 1: Un hud principal, que enlaza con el resto de sala, con algunas salas bloqueadas en un principio, y con una sala desbloqueada, donde se empezara a usar una mecánica, y en el resto se combinara esta mecanica con otras.<br>
-- Posible idea 2:<br>
+> Posible idea 1: Un hud principal, que enlaza con el resto de sala, con algunas salas bloqueadas en un principio, y con una sala desbloqueada, donde se empezara a usar una mecánica, y en el resto se combinara esta mecanica con otras.<br>
+> Posible idea 2:<br>
 ## Personajes:
 > Protagonista (nombre): aquel que usa el jugador.<br>
 > Posibles NPCs enemigos: tienen una ruta especifica que siguen a lo largo de una sala el cual el jugador tiene que evitar o derrotar con un disparo.<br>
 ## Físicas:
 >Colision con obstaculos.<br>
 >Rotura de objetos "fragiles" para liberar el camino.<br>
-
-## -Arte conceptual:
+## Arte conceptual:
 > no hay xddd<br>
 ## Estética del videojuego:
 > Cave-like<br>
