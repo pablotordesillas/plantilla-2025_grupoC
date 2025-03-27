@@ -6,10 +6,14 @@
 **TODO**      
 
 ## La historia:
-> Un explorador se mete en un templo, y cuando se da cuenta tiene que completar varias habitaciones para poder resolver un problema, o en su defecto escapar de ahi.<br>
-> Pero ahi el tiempo y el espacio pasan de una manera distinta, y cada sala tendra un distinto arte de pixel art, por ejemplo.<br>
+> Eres un explorador que ha captado un rayo de luz que proviene de una raja de una pared. Decides acercarte y hechar un vistazo, pero no consigues ver algo y decides utilizar tus dotes de espeleologo y entras sin problema.<br>
+> Sin embargo, esta todo oscuro y, al darte la vuelta, te das cuenta de que el hueco del cual entraste ya no esta.<br>
+> De repente unas luces se encienden, aturdiendote en el acto, y una voz te da la bienvenida a su minijuego mortal.<br>
+> Tu mision es escapar de cada nivel antes de que acabe el tiempo, si no lo consigues, moriras.<br>
+> Por suerte, puedes ver el transcurso del tiempo y tienes la habilidad de volver atras en el tiempo en caso de que no lo consigas o sufras un acontecimiento inesperado.<br>
+> Una vez lo logar, la voz misteriosa te prometio dejarte libre, pero no te lo dejara facil.<br>
 ## Objetivos:
->Completar una sala antes de que se acabe el tiempo evitando una serie de obstáculos.<br>
+> Completar una sala antes de que se acabe el tiempo evitando una serie de obstáculos y algun enemigo ocasional al que puedes evitar o atacar.<br>
 ## Mecánicas:
 > Posible disparo para defenderse de unos posibles NPC enemigos.<br>
 > Dash / Embestida que cumple la misma funcion que la mecanica anterior.<br>
