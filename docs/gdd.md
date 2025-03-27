@@ -3,14 +3,14 @@
 ## Nombre del videojuego
 
 
-**TODO**
+**TODO**      
 
 ## La historia:
-Un explorador se mete en un tempo, y cuando se da cuenta tiene que completar varias habitaciones para poder resolver un porblema, o en su defecto escapar de ahi.<br>
-Pero ahi el timepo y el espacio pasa de una manera distinta, y cada sala tendra un distinto arte de pixel art, por ejemplo.<br>
+Un explorador se mete en un templo, y cuando se da cuenta tiene que completar varias habitaciones para poder resolver un problema, o en su defecto escapar de ahi.<br>
+Pero ahi el tiempo y el espacio pasan de una manera distinta, y cada sala tendra un distinto arte de pixel art, por ejemplo.<br>
 <br>
 ## Objetivos:
->Completar una sala antes de que se acabe el tiempo evitando una serie de obstaculos.<br>
+>Completar una sala antes de que se acabe el tiempo evitando una serie de obstáculos.<br>
 ## Mecánicas:
 > Posible disparo para defenderse de unos posibles NPC enemigos.<br>
 > Dash / Embestida que cumple la misma funcion que la mecanica anterior.<br>
@@ -19,7 +19,7 @@ Pero ahi el timepo y el espacio pasa de una manera distinta, y cada sala tendra 
 > Trampas: pueden haber unas trampas en algunas de las salas que modifiquen la velocidad o impida el movimiento del jugador.<br>
 > Items: cabe la posibilidad de algun item que de ventaja al jugador.
 ## Secuencia de niveles:
-- Posible idea 1: Un hud principal, que enlaza con el resto de sala, con algunas salas bloqueadas en un principio, y con una sala desbloqueada, donde se empezara a usar una emcanica, y en el resto se combinara esta mecanica con otras.<br>
+- Posible idea 1: Un hud principal, que enlaza con el resto de sala, con algunas salas bloqueadas en un principio, y con una sala desbloqueada, donde se empezara a usar una mecánica, y en el resto se combinara esta mecanica con otras.<br>
 - Posible idea 2:<br>
 ## Personajes:
 > Protagonista (nombre): aquel que usa el jugador.<br>
@@ -34,14 +34,14 @@ Pero ahi el timepo y el espacio pasa de una manera distinta, y cada sala tendra 
 > Cave-like<br>
 > Desert-like<br>
 > Lab-like<br>
-> La idea es que vamos a tener varias escenas con un estilo unico.<br>
+> La idea es que vamos a tener varias escenas con un estilo único.<br>
 <br>
 <br>
 ## Ideas adicionales: (editar esto)
-> Disntita movilidad dependiendo el terreno<br>
+> Distinta movilidad dependiendo el terreno<br>
 > Dash que sirva para romper muros/estructuras<br>
-> Disparo para patar enemigos<br>
+> Disparo para matar enemigos<br>
 > Secciones a contrareloj (Mirar como hacer un contador) Si se acaba el timepo que game over y se reinicia el nivel/pantalla<br>
 > Como un simon dice o similar (crono trigger contraseña  año 1999, como ejemplo)<br>
-> Distintos personajes distintas caracteristicas, o distinto colgantes/complemetnos<br>
-> Crar hod principal<br>
+> Distintos personajes distintas caracteristicas, o distinto colgantes/complementos<br>
+> Crear hud principal<br>
