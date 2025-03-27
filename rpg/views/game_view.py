@@ -216,7 +216,7 @@ class GameView(arcade.View):
 
     def setup_physics(self):
         if self.noclip_status:
-            # make an empty spritelist so the character does not collide with anyting
+            # make an empty sprite list so the character does not collide with anyting
             self.physics_engine = arcade.PhysicsEngineSimple(
                 self.player_sprite, arcade.SpriteList()
             )
@@ -558,7 +558,7 @@ class GameView(arcade.View):
             self.window.show_view(self.window.views["inventory"])
         elif key == arcade.key.ESCAPE:
             self.window.show_view(self.window.views["main_menu"])
-        elif key in constants.SEARCH:
+        elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
         elif key == arcade.key.KEY_1:
             self.selected_item = 1
