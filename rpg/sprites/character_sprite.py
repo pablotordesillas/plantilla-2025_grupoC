@@ -11,10 +11,10 @@ from rpg.constants import SPRITE_SIZE
 Direction = Enum("Direction", "DOWN LEFT RIGHT UP")
 
 SPRITE_INFO = {
-    Direction.DOWN: [0, 1, 2],
-    Direction.LEFT: [3, 4, 5],
-    Direction.RIGHT: [6, 7, 8],
-    Direction.UP: [9, 10, 11],
+    Direction.DOWN: [0, 1, 2, 3],
+    Direction.LEFT: [4, 5, 6, 7],
+    Direction.RIGHT: [8, 9, 10, 11],
+    Direction.UP: [12, 13, 14, 15],
 }
 
 
@@ -25,8 +25,8 @@ class CharacterSprite(arcade.Sprite):
             sheet_name,
             sprite_width=SPRITE_SIZE,
             sprite_height=SPRITE_SIZE,
-            columns=3,
-            count=12,
+            columns=4,
+            count=16,
         )
         self.should_update = 0
         self.cur_texture_index = 0
