@@ -440,7 +440,35 @@
                  "width":0,
                  "x":1179.46345975948,
                  "y":1001.38760407031
-                }],
+                },
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                  {
+                         "name":"movement",
+                         "type":"string",
+                         "value":"random"
+                        },
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"escarabajo"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1179.46345975948,
+                 "y":1001.38760407031
+
+
+
+           }
+
+         ],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,

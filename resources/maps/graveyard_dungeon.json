@@ -135,6 +135,11 @@
                  "point":true,
                  "properties":[
                         {
+                         "name":"movement",
+                         "type":"string",
+                         "value":"random"
+                        },
+                        {
                          "name":"type",
                          "type":"string",
                          "value":"bat"

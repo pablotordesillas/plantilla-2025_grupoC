@@ -16,6 +16,14 @@
   },
   "grey_dog": {
     "images": "Animal/Dog 01-2.png"
+  },
+  "escarabajo": {
+    "images": "Enemy/Escarabajo.png"
+  },
+  "gusano": {
+    "images": "Enemy/Gusano.png"
+  },
+  "mantis": {
+    "images": "Enemy/Mantis.png"
   }
-
 }
