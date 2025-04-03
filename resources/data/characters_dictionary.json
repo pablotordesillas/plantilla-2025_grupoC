@@ -1,6 +1,6 @@
 {
-  "skeleton": {
-    "images": "Enemy/Enemy 06-1.png"
+  "bat": {
+    "images": "Animal/Bat 01-1.png"
   },
   "white_cat": {
     "images": "Animal/Cat 01-1.png"
@@ -8,7 +8,7 @@
   "grey_cat": {
     "images": "Animal/Cat 01-2.png"
   },
-  "orange_cat": {
+  "red_cat": {
     "images": "Animal/Cat 01-19.png"
   },
   "orange_dog": {
