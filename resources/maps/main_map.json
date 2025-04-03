@@ -105,6 +105,34 @@
                  "width":32,
                  "x":224,
                  "y":770
+                }, 
+                {
+                 "gid":71,
+                 "height":64,
+                 "id":14,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"map_name",
+                         "type":"string",
+                         "value":"ruin_map"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":14
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":27
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1919,
+                 "y":288
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -420,10 +448,10 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":12,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "renderorder":"left-up",
- "tiledversion":"1.8.4",
+ "tiledversion":"1.11.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -440,6 +468,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.8",
+ "version":"1.10",
  "width":64
 }
