@@ -6,12 +6,12 @@
 **TODO**      
 
 ## La historia:
-> Eres un explorador que ha captado un rayo de luz que proviene de una grieta misteriosa que no recurdas que estuviese y decides acercarte. Tras ojerar no consigues ver algo y decides utilizar tus dotes de espeleólogo entrando en profundidad dentro de la grieta.<br>
-> Sin embargo, esta todo oscuro y, al darte la vuelta, te das cuenta de que dicha grieta de la cual entraste se ha desvanecido.<br>
-> De repente, unas luces se encienden, aturdiendote en el acto.<br>
-> Una voz enigmática te da la bienvenida a su minijuego. Tu misión es arriesgar tu vida mientras escapas de cada nivel antes de que acabe el tiempo, si no lo consigues, no querrás saber lo que pasa. Cada nivel se imparte en un escenario distinto, es decir, eres teletransportado a otra linea de tiempo o dimensión cada vez que terminas un nivel.<br>
-> Por suerte, puedes ver tu cronómetro y tienes la habilidad de retroceder en el tiempo en caso de que no lo consigas o sufras un acontecimiento inesperado.<br>
-> La voz misteriosa te prometió dejarte libre si consigues superar su juego, aunque conseguirlo no será trabajo fácil.<br>
+> Eres un explorador que ha captado un rayo de luz que proviene de una raja de una pared. Decides acercarte y hechar un vistazo, pero no consigues ver algo y decides utilizar tus dotes de espeleologo y entras sin problema.<br>
+> Sin embargo, esta todo oscuro y, al darte la vuelta, te das cuenta de que el hueco del cual entraste ya no esta.<br>
+> De repente unas luces se encienden, aturdiendote en el acto, y una voz te da la bienvenida a su minijuego mortal.<br>
+> Tu mision es escapar de cada nivel antes de que acabe el tiempo, si no lo consigues, moriras. Cada nivel se imparte en un escenario distinto, es decir, eres teletransportado a otro sitio que probablemente no tenga que ver con el anterior.<br>
+> Por suerte, puedes ver el transcurso del tiempo y tienes la habilidad de volver atras en el tiempo en caso de que no lo consigas o sufras un acontecimiento inesperado.<br>
+> Una vez lo logar, la voz misteriosa te prometio dejarte libre, pero no te lo dejara facil.<br>
 ## Objetivos:
 > Completar una sala antes de que se acabe el tiempo evitando una serie de obstáculos y algun enemigo ocasional al que puedes evitar o atacar.<br>
 ## Mecánicas:
@@ -29,10 +29,10 @@
 > Posibles NPCs enemigos: tienen una ruta especifica que siguen a lo largo de una sala el cual el jugador tiene que evitar o derrotar con un disparo.<br>
 > Voz misterioas: No se sabe su nombre ni quien es, solo sabemos que tiene el poder de teletransportarte entre diferente dimensiones, sitios e incluso epocas.
 ## Físicas:
->Colisión con obstáculos [paredes] .<br>
+>Colision con obstaculos.<br>
 >Rotura de objetos "fragiles" para liberar el camino.<br>
 ## Arte conceptual:
-> No disponible al momento<br>
+> no hay xddd<br>
 ## Estética del videojuego:
 > Cave-like<br>
 > Desert-like<br>
