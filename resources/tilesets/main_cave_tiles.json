@@ -1,0 +1,14 @@
+{ "columns":51,
+ "image":"MainLev2.0.png",
+ "imageheight":1536,
+ "imagewidth":1632,
+ "margin":0,
+ "name":"main_cave_tiles",
+ "spacing":0,
+ "tilecount":2448,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

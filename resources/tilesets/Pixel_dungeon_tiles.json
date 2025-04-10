@@ -1,0 +1,14 @@
+{ "columns":13,
+ "image":"Pixel dungeon..jpg",
+ "imageheight":1088,
+ "imagewidth":416,
+ "margin":0,
+ "name":"Pixel_dungeon_tiles",
+ "spacing":0,
+ "tilecount":442,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}
