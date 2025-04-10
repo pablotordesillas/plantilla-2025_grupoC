@@ -3,6 +3,7 @@ Main game view
 """
 
 import json
+import time
 from functools import partial
 from typing import Callable
 
@@ -13,7 +14,7 @@ from arcade.experimental.lights import Light
 from pyglet.math import Vec2
 from rpg.message_box import MessageBox
 from rpg.sprites.player_sprite import PlayerSprite
-
+import threading
 
 class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
     def __init__(
@@ -147,6 +148,10 @@ class GameView(arcade.View):
         self.right_pressed = False
         self.up_pressed = False
         self.down_pressed = False
+        # PRUEBA
+        #Teclas space y shift (dash y correr)
+        self.space_pressed = False
+        self.shift_pressed = False
 
         # Physics engine
         self.physics_engine = None
@@ -180,6 +185,10 @@ class GameView(arcade.View):
         mode = "soft"
         color = arcade.csscolor.WHITE
         self.player_light = Light(x, y, radius, color, mode)
+
+    #PRUEBA
+        #Cooldown para el dash
+        self.cooldown = False
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -231,7 +240,6 @@ class GameView(arcade.View):
 
         # Create the player character
         self.player_sprite = PlayerSprite(":characters:Male/Player-1.png")
-
         # Spawn the player
         start_x = constants.STARTING_X
         start_y = constants.STARTING_Y
@@ -395,6 +403,7 @@ class GameView(arcade.View):
         )
         self.camera_sprites.move_to(vector, speed)
 
+
     def on_show_view(self):
         # Set background color
         my_map = self.map_list[self.cur_map_name]
@@ -409,7 +418,7 @@ class GameView(arcade.View):
         # Calculate speed based on the keys pressed
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
-
+        cooldown = False
         MOVING_UP = (
             self.up_pressed
             and not self.down_pressed
@@ -465,6 +474,102 @@ class GameView(arcade.View):
             and not self.up_pressed
             and not self.left_pressed
         )
+        #PRUEBA DASH
+        #Conjunto de teclas para el dash en cada direccion
+        MOVING_RIGHT_SPACE = (
+                self.right_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.down_pressed
+        )
+        MOVING_LEFT_SPACE = (
+                self.left_pressed
+                and self.space_pressed
+                and not self.right_pressed
+                and not self.up_pressed
+                and not self.down_pressed
+        )
+        MOVING_UP_SPACE = (
+                self.up_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.right_pressed
+                and not self.down_pressed
+        )
+        MOVING_DOWN_SPACE = (
+                self.down_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+        )
+        #PRUEBA CORRER
+
+        #Conjuntos de teclas necesarios para que el personaje corra en cada direccion
+        MOVING_UP_RUN = (
+                self.up_pressed
+                and not self.down_pressed
+                and not self.right_pressed
+                and not self.left_pressed
+                and self.shift_pressed
+        )
+
+        MOVING_DOWN_RUN = (
+                self.down_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and not self.left_pressed
+                and self.shift_pressed
+        )
+
+        MOVING_RIGHT_RUN = (
+                self.right_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.down_pressed
+                and self.shift_pressed
+        )
+
+        MOVING_LEFT_RUN = (
+                self.left_pressed
+                and not self.right_pressed
+                and not self.up_pressed
+                and not self.down_pressed
+                and self.shift_pressed
+        )
+        MOVING_UP_LEFT_RUN = (
+                self.up_pressed
+                and self.left_pressed
+                and not self.down_pressed
+                and not self.right_pressed
+                and self.shift_pressed
+        )
+
+        MOVING_DOWN_LEFT_RUN = (
+                self.down_pressed
+                and self.left_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and self.shift_pressed
+        )
+
+        MOVING_UP_RIGHT_RUN = (
+                self.up_pressed
+                and self.right_pressed
+                and not self.down_pressed
+                and not self.left_pressed
+                and self.shift_pressed
+        )
+
+        MOVING_DOWN_RIGHT_RUN = (
+                self.down_pressed
+                and self.right_pressed
+                and not self.up_pressed
+                and not self.left_pressed
+                and self.shift_pressed
+
+        )
 
         if MOVING_UP:
             self.player_sprite.change_y = constants.MOVEMENT_SPEED
@@ -494,6 +599,51 @@ class GameView(arcade.View):
             self.player_sprite.change_y = -constants.MOVEMENT_SPEED / 1.5
             self.player_sprite.change_x = constants.MOVEMENT_SPEED / 1.5
 
+        #PRUEBA DASH
+        #Condiciones para que el personaje use el dash: que el conjunto de teclas correcto este pulsado y que no este en cooldown
+        if MOVING_RIGHT_SPACE and self.cooldown == False:
+            #Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
+            self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
+            #Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
+            threading.Timer(0.15, self.activar_cooldown).start()
+        if MOVING_LEFT_SPACE and self.cooldown == False:
+            # Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
+            self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
+            # Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
+            threading.Timer(0.15, self.activar_cooldown).start()
+        if MOVING_UP_SPACE and self.cooldown == False:
+            # Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
+            self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
+            # Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
+            threading.Timer(0.15, self.activar_cooldown).start()
+        if MOVING_DOWN_SPACE and self.cooldown == False:
+            # Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
+            self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
+            # Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
+            threading.Timer(0.15, self.activar_cooldown).start()
+
+    #PRUEBA CORRER
+        # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
+        if MOVING_UP_RUN:
+            self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED
+        if MOVING_DOWN_RUN:
+            self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED
+        if MOVING_LEFT_RUN:
+            self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED
+        if MOVING_RIGHT_RUN:
+            self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED
+        if MOVING_UP_LEFT_RUN:
+            self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
+        if MOVING_UP_RIGHT_RUN:
+            self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
+        if MOVING_DOWN_LEFT_RUN:
+            self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
+        if MOVING_DOWN_RIGHT_RUN:
+            self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
         # Call update to move the sprite
         self.physics_engine.update()
 
@@ -554,6 +704,12 @@ class GameView(arcade.View):
             self.left_pressed = True
         elif key in constants.KEY_RIGHT:
             self.right_pressed = True
+        #MIRA SI EL ESPACIO ESTA PRESIONADO
+        elif key in constants.KEY_SPACE:
+            self.space_pressed = True
+        #MIRA SI EL SHIFT EStA PRESIONADO
+        elif key in constants.KEY_SHIFT:
+            self.shift_pressed = True
         elif key in constants.INVENTORY:
             self.window.show_view(self.window.views["inventory"])
         elif key == arcade.key.ESCAPE:
@@ -633,6 +789,12 @@ class GameView(arcade.View):
             self.left_pressed = False
         elif key in constants.KEY_RIGHT:
             self.right_pressed = False
+        #MIRA SI EL ESPACIO YA NO ESTA PRESIONADO
+        elif key in constants.KEY_SPACE:
+            self.space_pressed = False
+        # MIRA SI EL SHIFT YA NO ESTA PRESIONADO
+        elif key in constants.KEY_SHIFT:
+            self.shift_pressed = False
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
         """Called whenever the mouse moves."""
@@ -657,3 +819,14 @@ class GameView(arcade.View):
         cur_map = self.map_list[self.cur_map_name]
         if cur_map.light_layer:
             cur_map.light_layer.resize(width, height)
+
+    def activar_cooldown(self):
+        """Activa el cooldown y lo desactiva después de 2 segundos."""
+        self.cooldown = True
+
+        # Usamos threading.Timer para desactivar después de 2 segundos
+        threading.Timer(1, self.desactivar_cooldown).start()
+
+    def desactivar_cooldown(self):
+        """Desactiva el cooldown."""
+        self.cooldown = False
