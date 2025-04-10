@@ -1,0 +1,14 @@
+{ "columns":13,
+ "image":"..\/..\/..\/..\/..\/..\/UAH\/Cuatrimestre 2\/Tecnologia de Videojuegos\/Tiled maps\/Projects\/mapas-proyectoTDV\/Cave\/TilesCave\/Cave\/RPGW-Cave\/RPGW_Caves_v2.1\/decorative.png",
+ "imageheight":960,
+ "imagewidth":416,
+ "margin":0,
+ "name":"decorative-Cave",
+ "spacing":0,
+ "tilecount":390,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}
