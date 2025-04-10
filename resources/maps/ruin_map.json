@@ -77,6 +77,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":30,
          "id":3,
+         "locked":true,
          "name":"Capa de patrones 2",
          "opacity":1,
          "type":"tilelayer",
@@ -132,12 +133,12 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":0
+                         "value":1
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":48
+                         "value":47
                         }],
                  "rotation":0,
                  "type":"",
