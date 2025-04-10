@@ -2,6 +2,7 @@
 Constant values for the game
 """
 import arcade
+from pyglet.input.evdev_constants import KEY_SPACE
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -11,7 +12,7 @@ SPRITE_SIZE = 32
 
 # How fast does the player move
 MOVEMENT_SPEED = 4
-
+RUN_MOVEMENT_SPEED = 7
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
 LEFT_VIEWPORT_MARGIN = 300
@@ -29,6 +30,8 @@ KEY_UP = [arcade.key.UP, arcade.key.W]
 KEY_DOWN = [arcade.key.DOWN, arcade.key.S]
 KEY_LEFT = [arcade.key.LEFT, arcade.key.A]
 KEY_RIGHT = [arcade.key.RIGHT, arcade.key.D]
+KEY_SPACE = [arcade.key.SPACE]
+KEY_SHIFT = [arcade.key.LSHIFT]
 INVENTORY = [arcade.key.I]
 SEARCH = [arcade.key.E]
 
