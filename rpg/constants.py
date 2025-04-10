@@ -10,7 +10,7 @@ TILE_SCALING = 1.0
 SPRITE_SIZE = 32
 
 # How fast does the player move
-MOVEMENT_SPEED = 3
+MOVEMENT_SPEED = 4
 
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
