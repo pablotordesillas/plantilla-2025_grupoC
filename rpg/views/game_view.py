@@ -142,13 +142,14 @@ class GameView(arcade.View):
         # Player sprite
         self.player_sprite = None
         self.player_sprite_list = None
+        #PRUEBA
+        self.smoke_list = arcade.SpriteList() #Lista para la estela del dash
 
         # Track the current state of what key is pressed
         self.left_pressed = False
         self.right_pressed = False
         self.up_pressed = False
         self.down_pressed = False
-        # PRUEBA
         #Teclas space y shift (dash y correr)
         self.space_pressed = False
         self.shift_pressed = False
@@ -189,6 +190,7 @@ class GameView(arcade.View):
     #PRUEBA
         #Cooldown para el dash
         self.cooldown = False
+
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -245,7 +247,6 @@ class GameView(arcade.View):
         start_y = constants.STARTING_Y
         self.switch_map(constants.STARTING_MAP, start_x, start_y)
         self.cur_map_name = constants.STARTING_MAP
-
         # Set up the hotbar
         self.load_hotbar_sprites()
 
@@ -369,6 +370,7 @@ class GameView(arcade.View):
 
             # Draw the player
             self.player_sprite_list.draw()
+            self.smoke_list.draw() #Dibuja la estela del dash, Importante que este aqui o estaria debajo del mapa
 
         if cur_map.light_layer:
             # Draw the light layer to the screen.
@@ -386,7 +388,7 @@ class GameView(arcade.View):
 
         # Draw the inventory
         self.draw_inventory()
-
+        #PRUEBA
         # Draw any message boxes
         if self.message_box:
             self.message_box.on_draw()
@@ -419,6 +421,8 @@ class GameView(arcade.View):
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
         cooldown = False
+        self.smoke_list = arcade.SpriteList() #Hace que la lista usada para la estela del dash se actualice
+        self.smoke_list.update()
         MOVING_UP = (
             self.up_pressed
             and not self.down_pressed
@@ -514,7 +518,6 @@ class GameView(arcade.View):
                 and not self.left_pressed
                 and self.shift_pressed
         )
-
         MOVING_DOWN_RUN = (
                 self.down_pressed
                 and not self.up_pressed
@@ -522,7 +525,6 @@ class GameView(arcade.View):
                 and not self.left_pressed
                 and self.shift_pressed
         )
-
         MOVING_RIGHT_RUN = (
                 self.right_pressed
                 and not self.left_pressed
@@ -530,7 +532,6 @@ class GameView(arcade.View):
                 and not self.down_pressed
                 and self.shift_pressed
         )
-
         MOVING_LEFT_RUN = (
                 self.left_pressed
                 and not self.right_pressed
@@ -545,7 +546,6 @@ class GameView(arcade.View):
                 and not self.right_pressed
                 and self.shift_pressed
         )
-
         MOVING_DOWN_LEFT_RUN = (
                 self.down_pressed
                 and self.left_pressed
@@ -553,7 +553,6 @@ class GameView(arcade.View):
                 and not self.right_pressed
                 and self.shift_pressed
         )
-
         MOVING_UP_RIGHT_RUN = (
                 self.up_pressed
                 and self.right_pressed
@@ -561,7 +560,6 @@ class GameView(arcade.View):
                 and not self.left_pressed
                 and self.shift_pressed
         )
-
         MOVING_DOWN_RIGHT_RUN = (
                 self.down_pressed
                 and self.right_pressed
@@ -601,27 +599,61 @@ class GameView(arcade.View):
 
         #PRUEBA DASH
         #Condiciones para que el personaje use el dash: que el conjunto de teclas correcto este pulsado y que no este en cooldown
+        """
+        COMO FUNCIONA EL DASH:
+        - self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
+        Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
+        - threading.Timer(0.15, self.activar_cooldown).start()
+        Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
+        - smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
+        - x = self.player_sprite.center_x
+        - y = self.player_sprite.center_y
+        - smoke.center_x = x - 5
+        - smoke.center_y = y
+        Define la Sprite de la estela y sus posiciones x e y
+        - self.smoke_list.append(smoke)
+        - threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
+        Añade el humo a la lista (para luego ser dibujado) y tras un tiempo este es borrado
+        """
         if MOVING_RIGHT_SPACE and self.cooldown == False:
-            #Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
             self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
-            #Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
             threading.Timer(0.15, self.activar_cooldown).start()
-        if MOVING_LEFT_SPACE and self.cooldown == False:
-            # Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
-            self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
-            # Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
-            threading.Timer(0.15, self.activar_cooldown).start()
-        if MOVING_UP_SPACE and self.cooldown == False:
-            # Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
-            self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
-            # Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
-            threading.Timer(0.15, self.activar_cooldown).start()
-        if MOVING_DOWN_SPACE and self.cooldown == False:
-            # Sumo 5 a la velocidad de movimiento en esa dirección, si se lo sumase a la distancia directamente se haria tp
-            self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
-            # Espera 0.15 segundos (para que de tiempo a hacer el dash) y se mete en la funcion cooldown para que el cooldown sea True
-            threading.Timer(0.15, self.activar_cooldown).start()
+            smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
+            x = self.player_sprite.center_x
+            y = self.player_sprite.center_y
+            smoke.center_x = x - 5
+            smoke.center_y = y
+            self.smoke_list.append(smoke)
+            threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
+        if MOVING_LEFT_SPACE and self.cooldown == False:
+            self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
+            threading.Timer(0.15, self.activar_cooldown).start()
+            smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
+            x = self.player_sprite.center_x
+            y = self.player_sprite.center_y
+            smoke.center_x = x + 40
+            smoke.center_y = y
+            self.smoke_list.append(smoke)
+            threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
+        if MOVING_UP_SPACE and self.cooldown == False:
+            self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
+            threading.Timer(0.15, self.activar_cooldown).start()
+            smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
+            x = self.player_sprite.center_x
+            y = self.player_sprite.center_y
+            smoke.center_x = x
+            smoke.center_y = y - 45
+            self.smoke_list.append(smoke)
+        if MOVING_DOWN_SPACE and self.cooldown == False:
+            self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
+            threading.Timer(0.15, self.activar_cooldown).start()
+            smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
+            x = self.player_sprite.center_x
+            y = self.player_sprite.center_y
+            smoke.center_x = x
+            smoke.center_y = y + 10
+            self.smoke_list.append(smoke)
     #PRUEBA CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
         if MOVING_UP_RUN:
