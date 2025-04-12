@@ -32,6 +32,7 @@ KEY_LEFT = [arcade.key.LEFT, arcade.key.A]
 KEY_RIGHT = [arcade.key.RIGHT, arcade.key.D]
 KEY_SPACE = [arcade.key.SPACE]
 KEY_SHIFT = [arcade.key.LSHIFT]
+KEY_TAB = [arcade.key.TAB]
 INVENTORY = [arcade.key.I]
 SEARCH = [arcade.key.E]
 

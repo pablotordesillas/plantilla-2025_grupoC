@@ -1,9 +1,10 @@
 import arcade
 
+from rpg.sprites.chacter_sprite1 import CharacterSprite_one
 from rpg.sprites.character_sprite import CharacterSprite
 
 
-class PlayerSprite(CharacterSprite):
+class PlayerSprite(CharacterSprite_one):
     def __init__(self, sheet_name):
         super().__init__(sheet_name)
         self.sound_update = 0

@@ -13,6 +13,8 @@ import rpg.constants as constants
 from arcade.experimental.lights import Light
 from pyglet.math import Vec2
 from rpg.message_box import MessageBox
+from rpg.sprites.chacter_sprite1 import CharacterSprite_one
+from rpg.sprites.character_sprite import CharacterSprite
 from rpg.sprites.player_sprite import PlayerSprite
 import threading
 
@@ -153,7 +155,9 @@ class GameView(arcade.View):
         #Teclas space y shift (dash y correr)
         self.space_pressed = False
         self.shift_pressed = False
-
+        #PRUEBA
+        self.tab_pressed = False
+        self.dash = False
         # Physics engine
         self.physics_engine = None
 
@@ -241,7 +245,7 @@ class GameView(arcade.View):
         """Set up the game variables. Call to re-start the game."""
 
         # Create the player character
-        self.player_sprite = PlayerSprite(":characters:Male/Player-1.png")
+        self.player_sprite = CharacterSprite_one(":characters:Male/Player-1.png",":characters:Male/Player-2.png")
         # Spawn the player
         start_x = constants.STARTING_X
         start_y = constants.STARTING_Y
@@ -420,6 +424,8 @@ class GameView(arcade.View):
         # Calculate speed based on the keys pressed
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
+        #PRUEBA
+        self.player_sprite.on_update(delta_time)
         cooldown = False
         self.smoke_list = arcade.SpriteList() #Hace que la lista usada para la estela del dash se actualice
         self.smoke_list.update()
@@ -615,45 +621,46 @@ class GameView(arcade.View):
         - threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
         Añade el humo a la lista (para luego ser dibujado) y tras un tiempo este es borrado
         """
-        if MOVING_RIGHT_SPACE and self.cooldown == False:
-            self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
-            threading.Timer(0.15, self.activar_cooldown).start()
-            smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
-            x = self.player_sprite.center_x
-            y = self.player_sprite.center_y
-            smoke.center_x = x - 5
-            smoke.center_y = y
-            self.smoke_list.append(smoke)
-            threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
+        if self.dash == True:
+            if MOVING_RIGHT_SPACE and self.cooldown == False:
+                self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
+                threading.Timer(0.15, self.activar_cooldown).start()
+                smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
+                smoke.center_x = x - 5
+                smoke.center_y = y
+                self.smoke_list.append(smoke)
+                threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
-        if MOVING_LEFT_SPACE and self.cooldown == False:
-            self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
-            threading.Timer(0.15, self.activar_cooldown).start()
-            smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
-            x = self.player_sprite.center_x
-            y = self.player_sprite.center_y
-            smoke.center_x = x + 40
-            smoke.center_y = y
-            self.smoke_list.append(smoke)
-            threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
-        if MOVING_UP_SPACE and self.cooldown == False:
-            self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
-            threading.Timer(0.15, self.activar_cooldown).start()
-            smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
-            x = self.player_sprite.center_x
-            y = self.player_sprite.center_y
-            smoke.center_x = x
-            smoke.center_y = y - 45
-            self.smoke_list.append(smoke)
-        if MOVING_DOWN_SPACE and self.cooldown == False:
-            self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
-            threading.Timer(0.15, self.activar_cooldown).start()
-            smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
-            x = self.player_sprite.center_x
-            y = self.player_sprite.center_y
-            smoke.center_x = x
-            smoke.center_y = y + 10
-            self.smoke_list.append(smoke)
+            if MOVING_LEFT_SPACE and self.cooldown == False:
+                self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
+                threading.Timer(0.15, self.activar_cooldown).start()
+                smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
+                smoke.center_x = x + 40
+                smoke.center_y = y
+                self.smoke_list.append(smoke)
+                threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
+            if MOVING_UP_SPACE and self.cooldown == False:
+                self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
+                threading.Timer(0.15, self.activar_cooldown).start()
+                smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
+                smoke.center_x = x
+                smoke.center_y = y - 45
+                self.smoke_list.append(smoke)
+            if MOVING_DOWN_SPACE and self.cooldown == False:
+                self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
+                threading.Timer(0.15, self.activar_cooldown).start()
+                smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
+                smoke.center_x = x
+                smoke.center_y = y + 10
+                self.smoke_list.append(smoke)
     #PRUEBA CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
         if MOVING_UP_RUN:
@@ -739,7 +746,7 @@ class GameView(arcade.View):
         #MIRA SI EL ESPACIO ESTA PRESIONADO
         elif key in constants.KEY_SPACE:
             self.space_pressed = True
-        #MIRA SI EL SHIFT EStA PRESIONADO
+        #MIRA SI EL SHIFT ESTA PRESIONADO
         elif key in constants.KEY_SHIFT:
             self.shift_pressed = True
         elif key in constants.INVENTORY:
@@ -748,6 +755,12 @@ class GameView(arcade.View):
             self.window.show_view(self.window.views["main_menu"])
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
+        elif key == arcade.key.TAB:
+            self.player_sprite.switch_spritesheet()
+            if self.dash == True:
+                self.dash = False
+            else:
+                self.dash = True
         elif key == arcade.key.KEY_1:
             self.selected_item = 1
         elif key == arcade.key.KEY_2:
