@@ -158,6 +158,9 @@ class GameView(arcade.View):
         #PRUEBA
         self.tab_pressed = False
         self.dash = False
+        self.correr = False
+        self.casco_verde = False
+        self.casco_azul = False
         # Physics engine
         self.physics_engine = None
 
@@ -244,8 +247,8 @@ class GameView(arcade.View):
     def setup(self):
         """Set up the game variables. Call to re-start the game."""
 
-        # Create the player character
-        self.player_sprite = CharacterSprite_one(":characters:Male/Player-1.png",":characters:Male/Player-2.png")
+        # Crea la sprite del jugador, junto a sus spritesheets adicionales que usará
+        self.player_sprite = CharacterSprite_one(":characters:Male/Player-1.png",":characters:Male/Player-2.png", ":characters:Male/Player-3.png")
         # Spawn the player
         start_x = constants.STARTING_X
         start_y = constants.STARTING_Y
@@ -424,7 +427,7 @@ class GameView(arcade.View):
         # Calculate speed based on the keys pressed
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
-        #PRUEBA
+        #Para poder cambiar la sprite del jugador
         self.player_sprite.on_update(delta_time)
         cooldown = False
         self.smoke_list = arcade.SpriteList() #Hace que la lista usada para la estela del dash se actualice
@@ -621,7 +624,7 @@ class GameView(arcade.View):
         - threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
         Añade el humo a la lista (para luego ser dibujado) y tras un tiempo este es borrado
         """
-        if self.dash == True:
+        if self.dash == True: #Solo si tiene el casco azul puesto
             if MOVING_RIGHT_SPACE and self.cooldown == False:
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
@@ -663,26 +666,27 @@ class GameView(arcade.View):
                 self.smoke_list.append(smoke)
     #PRUEBA CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
-        if MOVING_UP_RUN:
-            self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED
-        if MOVING_DOWN_RUN:
-            self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED
-        if MOVING_LEFT_RUN:
-            self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED
-        if MOVING_RIGHT_RUN:
-            self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED
-        if MOVING_UP_LEFT_RUN:
-            self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
-        if MOVING_UP_RIGHT_RUN:
-            self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
-        if MOVING_DOWN_LEFT_RUN:
-            self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
-        if MOVING_DOWN_RIGHT_RUN:
-            self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
+        if self.correr == True: #Solo si tiene el casco verde puesto
+            if MOVING_UP_RUN:
+                self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED
+            if MOVING_DOWN_RUN:
+                self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED
+            if MOVING_LEFT_RUN:
+                self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED
+            if MOVING_RIGHT_RUN:
+                self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED
+            if MOVING_UP_LEFT_RUN:
+                self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
+            if MOVING_UP_RIGHT_RUN:
+                self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
+            if MOVING_DOWN_LEFT_RUN:
+                self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
+            if MOVING_DOWN_RIGHT_RUN:
+                self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
         # Call update to move the sprite
         self.physics_engine.update()
 
@@ -756,11 +760,21 @@ class GameView(arcade.View):
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
         elif key == arcade.key.TAB:
-            self.player_sprite.switch_spritesheet()
-            if self.dash == True:
-                self.dash = False
-            else:
-                self.dash = True
+            if self.casco_verde == False: #Solo si no tiene el casco verde puesto
+                self.player_sprite.switch_spritesheet() #Cambia la spritesheet al casco azul/naranja
+                self.casco_azul = not self.casco_azul #Cambia casco azul de True a False o viceversa
+                if self.dash == True: #Si el dash esta activo (casco azul) lo quita
+                    self.dash = False
+                else:   #Activa el dash
+                    self.dash = True
+        elif key == arcade.key.ENTER:
+            if self.casco_azul == False: #Solo si no tiene el casco azul puesto
+                self.player_sprite.switch_spritesheet2() #Cambia la spritesheet al casco verde/naranja
+                self.casco_verde = not self.casco_verde #Cambia casco verde de True a False o viceversa
+                if self.correr == True: #Si el correr esta activo (casco verde) lo quita
+                    self.correr = False
+                else: #Activa el correr
+                    self.correr = True
         elif key == arcade.key.KEY_1:
             self.selected_item = 1
         elif key == arcade.key.KEY_2:
