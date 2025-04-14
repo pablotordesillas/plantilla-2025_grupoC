@@ -156,7 +156,7 @@
         {
          "draworder":"topdown",
          "id":4,
-         "name":"staircase_up",
+         "name":"doors",
          "objects":[
                 {
                  "gid":1717,
