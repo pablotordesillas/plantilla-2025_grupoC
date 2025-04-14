@@ -283,6 +283,10 @@
         {
          "firstgid":141,
          "source":"..\/sample_map\/Desierto.tsx"
+        }, 
+        {
+         "firstgid":221,
+         "source":"..\/tilesets\/Caves.json"
         }],
  "tilewidth":32,
  "type":"map",
