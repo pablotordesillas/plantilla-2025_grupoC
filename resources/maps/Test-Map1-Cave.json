@@ -1,4 +1,4 @@
-{ "backgroundcolor":"#000000",
+{ "backgroundcolor":"#00aa00",
  "compressionlevel":-1,
  "height":64,
  "infinite":false,
@@ -167,17 +167,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"ruin_map"
+                         "value":"pyramid_main"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":14
+                         "value":30
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":27
+                         "value":39
                         }],
                  "rotation":0,
                  "type":"",
