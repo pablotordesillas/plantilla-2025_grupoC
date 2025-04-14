@@ -134,6 +134,10 @@ class GameView(arcade.View):
     def __init__(self, map_list):
         super().__init__()
 
+        self.clock_sprite = None
+        self.y_guardado = None # Posicion guardada en la que se incio el temporizador
+        self.x_guardado = None # Posicion guardada en la que se incio el temporizador
+        self.mapa_guardado = None # Mapa guardado en el que se inicio el temporizador
         arcade.set_background_color(arcade.color.AMAZON)
 
         self.setup_debug_menu()
@@ -161,6 +165,12 @@ class GameView(arcade.View):
         self.correr = False
         self.casco_verde = False
         self.casco_azul = False
+
+        self.total_time = 20.0 # Tiempo (segundos) del temporizador
+        self.output = "00:00:00"
+        self.show_timer = False
+
+
         # Physics engine
         self.physics_engine = None
 
@@ -256,6 +266,10 @@ class GameView(arcade.View):
         self.cur_map_name = constants.STARTING_MAP
         # Set up the hotbar
         self.load_hotbar_sprites()
+
+        self.clock_sprite= arcade.load_texture("../resources/misc/1.png")
+        self.total_time = 20.0
+
 
     def load_hotbar_sprites(self):
         """Load the sprites for the hotbar at the bottom of the screen.
@@ -379,6 +393,15 @@ class GameView(arcade.View):
             self.player_sprite_list.draw()
             self.smoke_list.draw() #Dibuja la estela del dash, Importante que este aqui o estaria debajo del mapa
 
+            if(self.show_timer==True): # Parte visual del temporizador
+                arcade.draw_text(self.output,
+                                 self.player_sprite.center_x , self.player_sprite.center_y + 200  ,
+                                 arcade.color.WHITE, 20,
+                                 anchor_x="center")
+
+                arcade.draw_texture_rectangle(self.player_sprite.center_x, self.player_sprite.center_y + 250, 50, 50, self.clock_sprite)
+
+
         if cur_map.light_layer:
             # Draw the light layer to the screen.
             # This fills the entire screen with the lit version
@@ -423,6 +446,23 @@ class GameView(arcade.View):
         """
         All the logic to move, and the game logic goes here.
         """
+
+        if(self.total_time <= 0.0): # Si el temporizador llega a 0:
+
+            if(self.show_timer==True):
+                #self.my_map = self.mapa_guardado
+                self.switch_map(self.mapa_guardado,self.x_guardado,self.y_guardado)
+                self.player_sprite.center_x = self.x_guardado
+                self.player_sprite.center_y = self.y_guardado
+            self.show_timer = False
+
+        if(self.show_timer==True): # Si el temporizador esta activo:
+            self.total_time -= delta_time
+            minutes = int(self.total_time) // 60
+            seconds = int(self.total_time) % 60
+            seconds_100s = int((self.total_time - seconds) * 100)
+            self.output = f"{minutes:02d}:{seconds:02d}"
+
 
         # Calculate speed based on the keys pressed
         self.player_sprite.change_x = 0
@@ -808,6 +848,17 @@ class GameView(arcade.View):
                 self.enable_debug_menu()
             else:
                 self.disable_debug_menu()
+
+        elif key == arcade.key.J and self.show_timer== False: # Activar el temporizador por la tecla J
+            self.total_time = 20.0
+            self.show_timer = True
+            self.x_guardado = self.player_sprite.center_x
+            self.y_guardado = self.player_sprite.center_y
+            self.mapa_guardado = self.cur_map_name
+
+        elif key == arcade.key.K and self.show_timer == True: # Desactivar el temporizador con la tecla K
+            self.show_timer = False
+
 
     def close_message_box(self):
         self.message_box = None
