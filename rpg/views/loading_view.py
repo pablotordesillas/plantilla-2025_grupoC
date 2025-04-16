@@ -54,12 +54,12 @@ class LoadingView(arcade.View):
             if done:
                 self.window.views["game"] = GameView(self.map_list)
                 self.window.views["game"].setup()
-                self.window.views["inventory"] = InventoryView()
-                self.window.views["inventory"].setup()
+                #self.window.views["inventory"] = InventoryView()
+                #self.window.views["inventory"].setup()
                 self.window.views["main_menu"] = MainMenuView()
                 self.window.views["settings"] = SettingsView()
                 self.window.views["settings"].setup()
-                self.window.views["battle"] = BattleView()
-                self.window.views["battle"].setup()
+                #self.window.views["battle"] = BattleView()
+                #self.window.views["battle"].setup()
 
                 self.window.show_view(self.window.views["game"])

@@ -10,7 +10,7 @@ class MainMenuView(arcade.View):
     This class acts as the game view for the main menu screen and its buttons. Accessed by hitting ESC. That logic can be referenced in game_view.py
     """
 
-    def __init__(self):
+    def __init__(self, background_texture = None):
         super().__init__()
 
         # --- Required for all code that uses UI element, a UIManager to handle the UI.
@@ -18,6 +18,9 @@ class MainMenuView(arcade.View):
 
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
+
+        #Fondo
+        self.background_texture = background_texture
 
         resume_button = arcade.gui.UIFlatButton(text="Resume Game", width=200)
         self.v_box.add(resume_button.with_space_around(bottom=20))
@@ -27,9 +30,10 @@ class MainMenuView(arcade.View):
         self.v_box.add(settings_button.with_space_around(bottom=20))
         settings_button.on_click = self.on_click_settings
 
-        battle_button = arcade.gui.UIFlatButton(text="Battle Screen", width=200)
-        self.v_box.add(battle_button.with_space_around(bottom=20))
-        battle_button.on_click = self.on_click_battle
+        #OPCIÓN DESACTIVADA TEMPORALMENTE
+        #battle_button = arcade.gui.UIFlatButton(text="Battle Screen", width=200)
+        #self.v_box.add(battle_button.with_space_around(bottom=20))
+        #battle_button.on_click = self.on_click_battle
 
         new_game_button = arcade.gui.UIFlatButton(text="New Game", width=200)
         self.v_box.add(new_game_button.with_space_around(bottom=20))
@@ -47,7 +51,7 @@ class MainMenuView(arcade.View):
 
     def on_show_view(self):
         self.manager.enable()
-        arcade.set_background_color(arcade.color.ALMOND)
+        #arcade.set_background_color(arcade.color.ALMOND)
 
     def on_hide_view(self):
         self.manager.disable()
@@ -59,6 +63,19 @@ class MainMenuView(arcade.View):
         output: None
         """
         self.clear()
+
+        if self.background_texture:
+            arcade.draw_scaled_texture_rectangle(  #Se dibuja la captura de pantalla del juego como textura
+                self.window.width // 2,
+                self.window.height // 2,
+                self.background_texture,
+                scale=1.0
+            )
+
+        arcade.draw_lrtb_rectangle_filled(  #Se dibuja un overlay negro transparente
+            0, self.window.width, self.window.height, 0, (0, 0, 0, 160)
+        )
+
         self.manager.draw()
 
     # call back methods for buttons:
@@ -70,10 +87,11 @@ class MainMenuView(arcade.View):
         print("show settings view")
         self.window.show_view(self.window.views["settings"])
 
-    def on_click_battle(self, event):
-        print("battle screen")
-        self.window.views["battle"].setup()
-        self.window.show_view(self.window.views["battle"])
+    # BATTLE SCREEN DESACTIVADO TEMPORALMENTE
+    #def on_click_battle(self, event):
+        #print("battle screen")
+        #self.window.views["battle"].setup()
+        #self.window.show_view(self.window.views["battle"])
 
     def on_click_new_game(self, event):
         print("restart game")

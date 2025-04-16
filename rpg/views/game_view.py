@@ -18,6 +18,9 @@ from rpg.sprites.character_sprite import CharacterSprite
 from rpg.sprites.player_sprite import PlayerSprite
 import threading
 
+from rpg.views.main_menu_view import MainMenuView
+
+
 class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
     def __init__(
         self,
@@ -183,8 +186,8 @@ class GameView(arcade.View):
         self.message_box = None
 
         # Selected Items Hotbar
-        self.hotbar_sprite_list = None
-        self.selected_item = 1
+        #self.hotbar_sprite_list = None
+        #self.selected_item = 1
 
         f = open("../resources/data/item_dictionary.json")
         self.item_dictionary = json.load(f)
@@ -264,14 +267,16 @@ class GameView(arcade.View):
         start_y = constants.STARTING_Y
         self.switch_map(constants.STARTING_MAP, start_x, start_y)
         self.cur_map_name = constants.STARTING_MAP
+        self.dash = False
+        self.correr = False
         # Set up the hotbar
-        self.load_hotbar_sprites()
+        #self.load_hotbar_sprites() desactivado temporalmente
 
         self.clock_sprite= arcade.load_texture("../resources/misc/1.png")
         self.total_time = 20.0
 
-
-    def load_hotbar_sprites(self):
+    #FUNCIÓN DESACTIVADA TEMPORALMENTE (inventario)
+    #def load_hotbar_sprites(self):
         """Load the sprites for the hotbar at the bottom of the screen.
 
         Loads the controls sprite tileset and selects only the number pad button sprites.
@@ -279,17 +284,17 @@ class GameView(arcade.View):
         to clarify that the hotkey bar can be accessed through these keypresses.
         """
 
-        first_number_pad_sprite_index = 51
-        last_number_pad_sprite_index = 61
+        #first_number_pad_sprite_index = 51
+        #last_number_pad_sprite_index = 61
 
-        self.hotbar_sprite_list = arcade.load_spritesheet(
-            file_name="../resources/tilesets/input_prompts_kenney.png",
-            sprite_width=16,
-            sprite_height=16,
-            columns=34,
-            count=816,
-            margin=1,
-        )[first_number_pad_sprite_index:last_number_pad_sprite_index]
+        #self.hotbar_sprite_list = arcade.load_spritesheet(
+            #file_name="../resources/tilesets/input_prompts_kenney.png",
+            #sprite_width=16,
+            #sprite_height=16,
+            #columns=34,
+            #count=816,
+            #margin=1,
+        #)[first_number_pad_sprite_index:last_number_pad_sprite_index]
 
     def setup_debug_menu(self):
         self.debug = False
@@ -322,38 +327,39 @@ class GameView(arcade.View):
             else self.original_movement_speed
         )
 
-    def draw_inventory(self):
-        capacity = 10
-        vertical_hotbar_location = 40
-        hotbar_height = 80
-        sprite_height = 16
+    #FUNCIÓN DESACTIVADA TEMPORALMENTE (inventario)
+    #def draw_inventory(self):
+        #capacity = 10
+        #vertical_hotbar_location = 40
+        #hotbar_height = 80
+        #sprite_height = 16
 
-        field_width = self.window.width / (capacity + 1)
+        #field_width = self.window.width / (capacity + 1)
 
-        x = self.window.width / 2
-        y = vertical_hotbar_location
+        #x = self.window.width / 2
+        #y = vertical_hotbar_location
 
-        arcade.draw_rectangle_filled(
-            x, y, self.window.width, hotbar_height, arcade.color.ALMOND
-        )
-        for i in range(capacity):
-            y = vertical_hotbar_location
-            x = i * field_width + 5
-            if i == self.selected_item - 1:
-                arcade.draw_lrtb_rectangle_outline(
-                    x - 6, x + field_width - 15, y + 25, y - 10, arcade.color.BLACK, 2
-                )
+        #arcade.draw_rectangle_filled(
+        #    x, y, self.window.width, hotbar_height, arcade.color.ALMOND
+        #)
+        #for i in range(capacity):
+            #y = vertical_hotbar_location
+            #x = i * field_width + 5
+            #if i == self.selected_item - 1:
+                #arcade.draw_lrtb_rectangle_outline(
+                    #x - 6, x + field_width - 15, y + 25, y - 10, arcade.color.BLACK, 2
+                #)
 
-            if len(self.player_sprite.inventory) > i:
-                item_name = self.player_sprite.inventory[i]["short_name"]
-            else:
-                item_name = ""
+            #if len(self.player_sprite.inventory) > i:
+                #item_name = self.player_sprite.inventory[i]["short_name"]
+            #else:
+                #item_name = ""
 
-            hotkey_sprite = self.hotbar_sprite_list[i]
-            hotkey_sprite.draw_scaled(x + sprite_height / 2, y + sprite_height / 2, 2.0)
+            #hotkey_sprite = self.hotbar_sprite_list[i]
+            #hotkey_sprite.draw_scaled(x + sprite_height / 2, y + sprite_height / 2, 2.0)
             # Add whitespace so the item text doesn't hide behind the number pad sprite
-            text = f"     {item_name}"
-            arcade.draw_text(text, x, y, arcade.color.ALLOY_ORANGE, 16)
+            #text = f"     {item_name}"
+            #arcade.draw_text(text, x, y, arcade.color.ALLOY_ORANGE, 16)
 
     def on_draw(self):
         """
@@ -417,7 +423,7 @@ class GameView(arcade.View):
         self.camera_gui.use()
 
         # Draw the inventory
-        self.draw_inventory()
+        #self.draw_inventory()
         #PRUEBA
         # Draw any message boxes
         if self.message_box:
@@ -793,10 +799,16 @@ class GameView(arcade.View):
         #MIRA SI EL SHIFT ESTA PRESIONADO
         elif key in constants.KEY_SHIFT:
             self.shift_pressed = True
-        elif key in constants.INVENTORY:
-            self.window.show_view(self.window.views["inventory"])
+        #elif key in constants.INVENTORY:
+            #self.window.show_view(self.window.views["inventory"])
         elif key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["main_menu"])
+            print("game paused")
+            pil_image = arcade.get_image()  #Saca una captura de pantalla del juego
+            nombre_unico = f"pause_bg_{time.time()}" #Se asigna un nombre unico a cada captura, de manera que se actualiza correctamente el fondo
+            bg_texture = arcade.Texture(name=nombre_unico, image=pil_image)
+            pause_menu = MainMenuView(background_texture=bg_texture)
+            self.window.show_view(pause_menu)
+
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
         elif key == arcade.key.TAB:
@@ -815,26 +827,26 @@ class GameView(arcade.View):
                     self.correr = False
                 else: #Activa el correr
                     self.correr = True
-        elif key == arcade.key.KEY_1:
-            self.selected_item = 1
-        elif key == arcade.key.KEY_2:
-            self.selected_item = 2
-        elif key == arcade.key.KEY_3:
-            self.selected_item = 3
-        elif key == arcade.key.KEY_4:
-            self.selected_item = 4
-        elif key == arcade.key.KEY_5:
-            self.selected_item = 5
-        elif key == arcade.key.KEY_6:
-            self.selected_item = 6
-        elif key == arcade.key.KEY_7:
-            self.selected_item = 7
-        elif key == arcade.key.KEY_8:
-            self.selected_item = 8
-        elif key == arcade.key.KEY_9:
-            self.selected_item = 9
-        elif key == arcade.key.KEY_0:
-            self.selected_item = 10
+        #elif key == arcade.key.KEY_1:
+            #self.selected_item = 1
+        #elif key == arcade.key.KEY_2:
+            #self.selected_item = 2
+        #elif key == arcade.key.KEY_3:
+            #self.selected_item = 3
+        #elif key == arcade.key.KEY_4:
+            #self.selected_item = 4
+        #elif key == arcade.key.KEY_5:
+            #self.selected_item = 5
+        #elif key == arcade.key.KEY_6:
+            #self.selected_item = 6
+        #elif key == arcade.key.KEY_7:
+            #self.selected_item = 7
+        #elif key == arcade.key.KEY_8:
+            #self.selected_item = 8
+        #elif key == arcade.key.KEY_9:
+            #self.selected_item = 9
+        #elif key == arcade.key.KEY_0:
+            #self.selected_item = 10
         elif key == arcade.key.L:
             cur_map = self.map_list[self.cur_map_name]
             if self.player_light in cur_map.light_layer:
