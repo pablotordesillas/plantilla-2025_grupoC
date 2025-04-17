@@ -19,15 +19,34 @@ class MainMenuView(arcade.View):
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
 
+        #Recuadro
+        self.panel_texture = arcade.load_texture(":misc:recuadro.PNG")
+
         #Fondo
         self.background_texture = background_texture
 
-        resume_button = arcade.gui.UIFlatButton(text="Resume Game", width=200)
-        self.v_box.add(resume_button.with_space_around(bottom=20))
-        resume_button.on_click = self.on_click_resume
+        #Botón play
+        self.play_normal = arcade.load_texture(":misc:play_normal.png")
+        self.play_hover = arcade.load_texture(":misc:play_hover.png")
 
-        settings_button = arcade.gui.UIFlatButton(text="Settings", width=200)
-        self.v_box.add(settings_button.with_space_around(bottom=20))
+        #Botón settings
+        self.settings_normal = arcade.load_texture(":misc:settings_normal.png")
+        self.settings_hover = arcade.load_texture(":misc:settings_hover.png")
+
+        #Botón new game
+        self.new_game_normal = arcade.load_texture(":misc:new_game_normal.png")
+        self.new_game_hover = arcade.load_texture(":misc:new_game_hover.png")
+
+        #Botón exit
+        self.exit_normal = arcade.load_texture(":misc:exit_normal.png")
+        self.exit_hover = arcade.load_texture(":misc:exit_hover.png")
+
+        play_button = arcade.gui.UITextureButton(texture=self.play_normal, texture_hovered=self.play_hover)
+        self.v_box.add(play_button.with_space_around(bottom=10))
+        play_button.on_click = self.on_click_resume
+
+        settings_button = arcade.gui.UITextureButton(texture=self.settings_normal, texture_hovered=self.settings_hover)
+        self.v_box.add(settings_button.with_space_around(bottom=10))
         settings_button.on_click = self.on_click_settings
 
         #OPCIÓN DESACTIVADA TEMPORALMENTE
@@ -35,17 +54,17 @@ class MainMenuView(arcade.View):
         #self.v_box.add(battle_button.with_space_around(bottom=20))
         #battle_button.on_click = self.on_click_battle
 
-        new_game_button = arcade.gui.UIFlatButton(text="New Game", width=200)
-        self.v_box.add(new_game_button.with_space_around(bottom=20))
+        new_game_button = arcade.gui.UITextureButton(texture=self.new_game_normal, texture_hovered=self.new_game_hover)
+        self.v_box.add(new_game_button.with_space_around(bottom=10))
         new_game_button.on_click = self.on_click_new_game
 
-        quit_button = arcade.gui.UIFlatButton(text="Quit", width=200)
-        self.v_box.add(quit_button.with_space_around(bottom=20))
-        quit_button.on_click = self.on_click_quit
+        exit_button = arcade.gui.UITextureButton(texture=self.exit_normal, texture_hovered=self.exit_hover)
+        self.v_box.add(exit_button.with_space_around(bottom=20))
+        exit_button.on_click = self.on_click_quit
         # Create a widget to hold the v_box widget, that will center the buttons
         self.manager.add(
             arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", child=self.v_box
+                anchor_x="center_x", anchor_y="center_y", align_y=-20, child=self.v_box
             )
         )
 
@@ -76,6 +95,12 @@ class MainMenuView(arcade.View):
             0, self.window.width, self.window.height, 0, (0, 0, 0, 160)
         )
 
+        arcade.draw_scaled_texture_rectangle(   #Se dibuja el recuadro del menú
+            self.window.width // 2,
+            self.window.height // 2,
+            self.panel_texture,
+            scale=1.0
+        )
         self.manager.draw()
 
     # call back methods for buttons:
