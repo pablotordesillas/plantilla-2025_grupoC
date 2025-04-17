@@ -41,10 +41,15 @@ class MainMenuView(arcade.View):
         self.exit_normal = arcade.load_texture(":misc:exit_normal.png")
         self.exit_hover = arcade.load_texture(":misc:exit_hover.png")
 
+        #Los botones se han implementado con UITextureButton, recibe 2 sprites
+        #La función recibe un sprite del botón sin seleccionar (texture) y otro con el sprite del botón al interactuar con el ratón (texture_hovered)
+
+        #Play
         play_button = arcade.gui.UITextureButton(texture=self.play_normal, texture_hovered=self.play_hover)
         self.v_box.add(play_button.with_space_around(bottom=10))
         play_button.on_click = self.on_click_resume
 
+        #Settings
         settings_button = arcade.gui.UITextureButton(texture=self.settings_normal, texture_hovered=self.settings_hover)
         self.v_box.add(settings_button.with_space_around(bottom=10))
         settings_button.on_click = self.on_click_settings
@@ -54,17 +59,20 @@ class MainMenuView(arcade.View):
         #self.v_box.add(battle_button.with_space_around(bottom=20))
         #battle_button.on_click = self.on_click_battle
 
+        #New Game
         new_game_button = arcade.gui.UITextureButton(texture=self.new_game_normal, texture_hovered=self.new_game_hover)
         self.v_box.add(new_game_button.with_space_around(bottom=10))
         new_game_button.on_click = self.on_click_new_game
 
+        #Exit
         exit_button = arcade.gui.UITextureButton(texture=self.exit_normal, texture_hovered=self.exit_hover)
         self.v_box.add(exit_button.with_space_around(bottom=20))
         exit_button.on_click = self.on_click_quit
+
         # Create a widget to hold the v_box widget, that will center the buttons
         self.manager.add(
             arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", align_y=-20, child=self.v_box
+                anchor_x="center_x", anchor_y="center_y", align_y=-20, child=self.v_box #Align_y sirve para desplazar verticalmente TODOS los botones (positivo arriba, negativo abajo)
             )
         )
 
