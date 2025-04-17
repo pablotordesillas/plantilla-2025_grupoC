@@ -486,6 +486,27 @@ class GameView(arcade.View):
         except KeyError:
             pass  # No hay capa slow_list, así que no hacemos nada
 
+        try:
+            timer_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, self.my_map.scene["timer_list"]
+            )
+            if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
+                self.total_time = 20.0
+                self.show_timer = True
+                self.x_guardado = self.player_sprite.center_x
+                self.y_guardado = self.player_sprite.center_y
+                self.mapa_guardado = self.cur_map_name
+        except KeyError:
+            pass
+        try:
+            stop_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, self.my_map.scene["stop_list"]
+            )
+            if len(stop_hit) > 0 and self.show_timer == True: # Desactivar el temporizador
+                self.show_timer = False
+        except KeyError:
+            pass
+
         #Para poder cambiar la sprite del jugador
         self.player_sprite.on_update(delta_time)
         cooldown = False
