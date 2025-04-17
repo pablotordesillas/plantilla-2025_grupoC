@@ -153,7 +153,6 @@ def load_map(map_name):
     # Get all the tiled sprite lists
     # Get all the tiled sprite lists
     game_map.map_layers = my_map.sprite_lists
-
     # Define the size of the map, in tiles
     game_map.map_size = my_map.width, my_map.height
 
@@ -164,12 +163,18 @@ def load_map(map_name):
 
     # Any layer with '_blocking' in it, will be a wall
     game_map.scene.add_sprite_list("wall_list", use_spatial_hash=True)
+    game_map.scene.add_sprite_list("slow_list", use_spatial_hash=True)
     for layer, sprite_list in game_map.map_layers.items():
         if "_blocking" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
 
             game_map.scene["wall_list"].extend(sprite_list)
 
+        elif "_slow" in layer:
+            print("SLOW")
+            game_map.scene.remove_sprite_list_by_object(sprite_list)
+
+            game_map.scene["slow_list"].extend(sprite_list)
     return game_map
 
 

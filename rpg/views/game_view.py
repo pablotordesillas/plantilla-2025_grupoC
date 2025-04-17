@@ -12,6 +12,7 @@ import arcade.gui
 import rpg.constants as constants
 from arcade.experimental.lights import Light
 from pyglet.math import Vec2
+
 from rpg.message_box import MessageBox
 from rpg.sprites.chacter_sprite1 import CharacterSprite_one
 from rpg.sprites.character_sprite import CharacterSprite
@@ -473,6 +474,18 @@ class GameView(arcade.View):
         # Calculate speed based on the keys pressed
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
+
+        try:
+            slow_tiles_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, self.my_map.scene["slow_list"]
+            )
+            if slow_tiles_hit:
+                SPEED_AUX = constants.SLOW_SPEED
+            else:
+                SPEED_AUX = constants.SPEED_AUX
+        except KeyError:
+            pass  # No hay capa slow_list, así que no hacemos nada
+
         #Para poder cambiar la sprite del jugador
         self.player_sprite.on_update(delta_time)
         cooldown = False
@@ -624,33 +637,35 @@ class GameView(arcade.View):
 
         )
 
+
+
         if MOVING_UP:
-            self.player_sprite.change_y = constants.MOVEMENT_SPEED
+            self.player_sprite.change_y = SPEED_AUX
 
         if MOVING_DOWN:
-            self.player_sprite.change_y = -constants.MOVEMENT_SPEED
+            self.player_sprite.change_y = -SPEED_AUX
 
         if MOVING_LEFT:
-            self.player_sprite.change_x = -constants.MOVEMENT_SPEED
+            self.player_sprite.change_x = -SPEED_AUX
 
         if MOVING_RIGHT:
-            self.player_sprite.change_x = constants.MOVEMENT_SPEED
+            self.player_sprite.change_x = SPEED_AUX
 
         if MOVING_UP_LEFT:
-            self.player_sprite.change_y = constants.MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = -constants.MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_y = SPEED_AUX / 1.5
+            self.player_sprite.change_x = -SPEED_AUX / 1.5
 
         if MOVING_UP_RIGHT:
-            self.player_sprite.change_y = constants.MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = constants.MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_y = SPEED_AUX / 1.5
+            self.player_sprite.change_x = SPEED_AUX / 1.5
 
         if MOVING_DOWN_LEFT:
-            self.player_sprite.change_y = -constants.MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = -constants.MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_y = -SPEED_AUX / 1.5
+            self.player_sprite.change_x = -SPEED_AUX / 1.5
 
         if MOVING_DOWN_RIGHT:
-            self.player_sprite.change_y = -constants.MOVEMENT_SPEED / 1.5
-            self.player_sprite.change_x = constants.MOVEMENT_SPEED / 1.5
+            self.player_sprite.change_y = -SPEED_AUX / 1.5
+            self.player_sprite.change_x = SPEED_AUX / 1.5
 
         #PRUEBA DASH
         #Condiciones para que el personaje use el dash: que el conjunto de teclas correcto este pulsado y que no este en cooldown
@@ -714,25 +729,25 @@ class GameView(arcade.View):
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
         if self.correr == True: #Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
-                self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED
+                self.player_sprite.change_y = SPEED_AUX*2
             if MOVING_DOWN_RUN:
-                self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED
+                self.player_sprite.change_y = -SPEED_AUX*2
             if MOVING_LEFT_RUN:
-                self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED
+                self.player_sprite.change_x = -SPEED_AUX*2
             if MOVING_RIGHT_RUN:
-                self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED
+                self.player_sprite.change_x = SPEED_AUX*2
             if MOVING_UP_LEFT_RUN:
-                self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
-                self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_y = SPEED_AUX*2 / 1.5
+                self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
             if MOVING_UP_RIGHT_RUN:
-                self.player_sprite.change_y = constants.RUN_MOVEMENT_SPEED / 1.5
-                self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_y = SPEED_AUX*2 / 1.5
+                self.player_sprite.change_x = SPEED_AUX*2 / 1.5
             if MOVING_DOWN_LEFT_RUN:
-                self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
-                self.player_sprite.change_x = -constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
+                self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
             if MOVING_DOWN_RIGHT_RUN:
-                self.player_sprite.change_y = -constants.RUN_MOVEMENT_SPEED / 1.5
-                self.player_sprite.change_x = constants.RUN_MOVEMENT_SPEED / 1.5
+                self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
+                self.player_sprite.change_x = SPEED_AUX*2 / 1.5
         # Call update to move the sprite
         self.physics_engine.update()
 
