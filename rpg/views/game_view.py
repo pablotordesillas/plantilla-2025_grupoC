@@ -488,7 +488,7 @@ class GameView(arcade.View):
                 SPEED_AUX = -SPEED_AUX*2
             elif cuesta_tiles_hit:
                 if self.shift_pressed :
-                    if self.correr:#self.dash == True:
+                    if self.correr:
                         print("Sube la cuesta corriendo, maybe disminuir un poco la velocidad") #Deberia pasar el obstaculo
                     else:
                         print("Falta casqueto")

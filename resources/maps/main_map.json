@@ -459,6 +459,98 @@
                  "width":0,
                  "x":210,
                  "y":236
+                }, 
+                {
+                 "height":0,
+                 "id":8,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"movement",
+                         "type":"string",
+                         "value":"random"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"escarabajo"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":375,
+                 "y":306
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"movement",
+                         "type":"string",
+                         "value":"random"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"escarabajo"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":175,
+                 "y":367
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"movement",
+                         "type":"string",
+                         "value":"random"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"escarabajo"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":393,
+                 "y":152
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"movement",
+                         "type":"string",
+                         "value":"random"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"escarabajo"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":635,
+                 "y":422
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -467,7 +559,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":8,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
