@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJASvAJY6uZrjqJwbQUv9A+59e+nlwqMMljq6mEC1fgACu\/IMuhy3\/gACu\/IMuV81I2I2EAAAuNhzH",
+         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJASvAJY6uhlb6iQG01E8N\/zOhYRBA5hPSz4WGQQCZT2v300M\/Dw51uMTR1RSi5QsQoCT\/gAAp+YdSAABnvx4l",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYMANgpggmFwQxQTBo2AUjILBCQAtAwFh",
+         "data":"eJxjYMANgpggmFwQxQTBQxGwUOhuSvXTAiym0E1cg9BPgw0UMeKWC6Yw\/KJpEP4AWgADQw==",
          "encoding":"base64",
          "height":16,
          "id":3,
@@ -47,7 +47,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYBh48JKJgeEVE2F1f4BqHJkZGJyA2JkZIf4RKP6JCP0g4AnU5wXE3syE1cLAayLNHgXkgQkkxAU2MINC\/SMZAACE3wiO",
+         "data":"eJxjYBh48JKJgeEVE2F1f4BqHJkZGJyA2JkZIf4RKP6JCP0g4AnU5wXE3syE1cLAayLNHkxgMRMmxiY+ECAWGPZcSOE\/gYS4gAEhJD0zyNA\/CiAAAGO\/Dt0=",
          "encoding":"base64",
          "height":16,
          "id":4,
@@ -60,8 +60,19 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":11,
+         "name":"characters",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "compression":"zlib",
-         "data":"eJxjYBgF+MBnJlSaXuAHI4UG0Nm9owACOvDEGz65gQIAhmMD+A==",
+         "data":"eJxjYBgF2AAHE4T+jEYTCwRIVE8PwEGhm2B+esJMmTlvKNQ\/mEEH40C7gDQAAG8UBII=",
          "encoding":"base64",
          "height":16,
          "id":5,
@@ -92,46 +103,18 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":33
+                         "value":3
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":16
+                         "value":6
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
                  "x":128,
-                 "y":480
-                }, 
-                {
-                 "gid":400,
-                 "height":32,
-                 "id":3,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"map_name",
-                         "type":"string",
-                         "value":"main_map"
-                        }, 
-                        {
-                         "name":"start_x",
-                         "type":"int",
-                         "value":41
-                        }, 
-                        {
-                         "name":"start_y",
-                         "type":"int",
-                         "value":16
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":352,
                  "y":480
                 }],
          "opacity":1,
@@ -159,7 +142,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -242,18 +225,53 @@
                  "width":0,
                  "x":253.671865355335,
                  "y":35.8174560717666
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ffabc1ff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":150
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":368.666666666667,
+                 "y":452.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ffffab19"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":150
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":429,
+                 "y":294
                 }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":11,
-         "name":"characters",
-         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -261,7 +279,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":11,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "properties":[
         {
@@ -270,7 +288,7 @@
          "value":"#ff797979"
         }],
  "renderorder":"left-up",
- "tiledversion":"1.8.4",
+ "tiledversion":"1.11.2",
  "tileheight":32,
  "tilesets":[
         {
@@ -279,6 +297,6 @@
         }],
  "tilewidth":32,
  "type":"map",
- "version":"1.8",
+ "version":"1.10",
  "width":16
 }

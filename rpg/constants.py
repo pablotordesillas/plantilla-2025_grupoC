@@ -25,7 +25,7 @@ TOP_VIEWPORT_MARGIN = 300
 # What map, and what position we start at
 STARTING_MAP = "farmhouse"
 STARTING_X = 13
-STARTING_Y = 4
+STARTING_Y = 10
 
 # Key mappings
 KEY_UP = [arcade.key.UP, arcade.key.W]
