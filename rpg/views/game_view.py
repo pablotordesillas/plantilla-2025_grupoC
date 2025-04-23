@@ -13,6 +13,7 @@ import rpg.constants as constants
 from arcade.experimental.lights import Light
 from pyglet.math import Vec2
 
+from rpg.constants import SPEED_AUX
 from rpg.message_box import MessageBox
 from rpg.sprites.chacter_sprite1 import CharacterSprite_one
 from rpg.sprites.character_sprite import CharacterSprite
@@ -248,7 +249,7 @@ class GameView(arcade.View):
 
     def setup_physics(self):
         if self.noclip_status:
-            # make an empty sprite list so the character does not collide with anyting
+            # make an empty sprite list so the character does not collide with anything
             self.physics_engine = arcade.PhysicsEngineSimple(
                 self.player_sprite, arcade.SpriteList()
             )
@@ -475,16 +476,28 @@ class GameView(arcade.View):
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
 
+        SPEED_AUX = constants.MOVEMENT_SPEED
+
         try:
-            slow_tiles_hit = arcade.check_for_collision_with_list(
-                self.player_sprite, self.my_map.scene["slow_list"]
-            )
+            slow_tiles_hit = arcade.check_for_collision_with_list(self.player_sprite, self.my_map.scene["slow_list"])
+            push_tiles_hit = arcade.check_for_collision_with_list(self.player_sprite, self.my_map.scene["push_list"])
+            cuesta_tiles_hit =  arcade.check_for_collision_with_list(self.player_sprite, self.my_map.scene["cuesta_list"])
             if slow_tiles_hit:
-                SPEED_AUX = constants.SLOW_SPEED
-            else:
-                SPEED_AUX = constants.SPEED_AUX
+                SPEED_AUX = SPEED_AUX/4
+            elif push_tiles_hit:
+                SPEED_AUX = -SPEED_AUX*2
+            elif cuesta_tiles_hit:
+                if self.shift_pressed :
+                    if self.correr:#self.dash == True:
+                        print("Sube la cuesta corriendo, maybe disminuir un poco la velocidad") #Deberia pasar el obstaculo
+                    else:
+                        print("Falta casqueto")
+                else:
+                    self.player_sprite.change_y = -5
+                    SPEED_AUX=0
+
         except KeyError:
-            pass  # No hay capa slow_list, así que no hacemos nada
+            pass  # No hay capa slow_list, ni push, así que no hacemos nada
 
         try:
             timer_hit = arcade.check_for_collision_with_list(
@@ -813,6 +826,21 @@ class GameView(arcade.View):
         else:
             # No doors, scroll normally
             self.scroll_to_player()
+
+        # Is there a layer named 'puelta' (door)?
+        if "puelta" in map_layers:
+            for puerta in map_layers["puelta"]:
+                if puerta in self.my_map.scene["wall_list"]:
+                    self.my_map.scene["wall_list"].remove(puerta)
+
+                # Did we hit a door?
+            puelta_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["puelta"])
+
+            if len(puelta_hit) > 0:
+                puelta_sprite = puelta_hit[0]  # El sprite de la puerta con la que hemos colisionado
+
+                if not self.space_pressed or self.cooldown or self.casco_azul==False:
+                    self.my_map.scene["wall_list"].append(puelta_sprite)  # La puerta bloquea el paso
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""

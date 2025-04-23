@@ -294,7 +294,7 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":20,
          "id":5,
-         "name":"Suelo_dasheable",
+         "name":"Suelo_cuesta",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -361,85 +361,54 @@
                  "width":32,
                  "x":735,
                  "y":155
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":10,
-         "name":"slimes",
-         "objects":[
-                {
-                 "height":0,
-                 "id":16,
-                 "name":"",
-                 "polygon":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":-114,
-                         "y":-17
-                        }, 
-                        {
-                         "x":-151,
-                         "y":11
-                        }, 
-                        {
-                         "x":1,
-                         "y":58
-                        }, 
-                        {
-                         "x":60,
-                         "y":18
-                        }, 
-                        {
-                         "x":47,
-                         "y":-24
-                        }, 
-                        {
-                         "x":2,
-                         "y":-20
-                        }],
-                 "properties":[
-                        {
-                         "name":"Alto",
-                         "type":"float",
-                         "value":10
-                        }, 
-                        {
-                         "name":"Ancho",
-                         "type":"float",
-                         "value":10
-                        }, 
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"red_cat"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":854,
-                 "y":436
                 }, 
                 {
-                 "gid":1324,
-                 "height":88,
-                 "id":17,
+                 "gid":797,
+                 "height":32,
+                 "id":23,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":62,
-                 "x":876.5,
-                 "y":371
+                 "width":32,
+                 "x":768.666666666667,
+                 "y":352
+                }, 
+                {
+                 "gid":797,
+                 "height":32,
+                 "id":24,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":800.666666666667,
+                 "y":352.666666666667
+                }, 
+                {
+                 "gid":797,
+                 "height":32,
+                 "id":25,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":800.666666666667,
+                 "y":383.333333333333
+                }, 
+                {
+                 "gid":797,
+                 "height":32,
+                 "id":26,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":767.333333333333,
+                 "y":384
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -505,7 +474,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":23,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

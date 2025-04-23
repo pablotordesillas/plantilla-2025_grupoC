@@ -151,7 +151,6 @@ def load_map(map_name):
         print("Added default light")
 
     # Get all the tiled sprite lists
-    # Get all the tiled sprite lists
     game_map.map_layers = my_map.sprite_lists
     # Define the size of the map, in tiles
     game_map.map_size = my_map.width, my_map.height
@@ -166,6 +165,8 @@ def load_map(map_name):
     game_map.scene.add_sprite_list("slow_list", use_spatial_hash=True)
     game_map.scene.add_sprite_list("timer_list", use_spatial_hash=True)
     game_map.scene.add_sprite_list("stop_list", use_spatial_hash=True)
+    game_map.scene.add_sprite_list("push_list", use_spatial_hash=True)
+    game_map.scene.add_sprite_list("cuesta_list", use_spatial_hash=True)
     for layer, sprite_list in game_map.map_layers.items():
         if "_blocking" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
@@ -173,7 +174,6 @@ def load_map(map_name):
             game_map.scene["wall_list"].extend(sprite_list)
 
         elif "_slow" in layer:
-            print("SLOW")
             game_map.scene.remove_sprite_list_by_object(sprite_list)
 
             game_map.scene["slow_list"].extend(sprite_list)
@@ -187,6 +187,14 @@ def load_map(map_name):
             game_map.scene.remove_sprite_list_by_object(sprite_list)
 
             game_map.scene["stop_list"].extend(sprite_list)
+        elif "_push" in layer:
+            game_map.scene.remove_sprite_list_by_object(sprite_list)
+
+            game_map.scene["push_list"].extend(sprite_list)
+        elif "_cuesta" in layer:
+            game_map.scene.remove_sprite_list_by_object(sprite_list)
+            print("Hoooooooooooooooola")
+            game_map.scene["cuesta_list"].extend(sprite_list)
     return game_map
 
 
