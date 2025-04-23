@@ -329,7 +329,7 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":11
+                         "value":4
                         }, 
                         {
                          "name":"start_y",
