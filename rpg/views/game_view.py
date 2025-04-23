@@ -842,6 +842,25 @@ class GameView(arcade.View):
                 if not self.space_pressed or self.cooldown or self.casco_azul==False:
                     self.my_map.scene["wall_list"].append(puelta_sprite)  # La puerta bloquea el paso
 
+        # Is there a layer named 'puelta' (door)?
+        if "rompible" in map_layers:
+            for rompible in map_layers["rompible"]:
+                if rompible in self.my_map.scene["wall_list"]:
+                    self.my_map.scene["wall_list"].remove(rompible)
+
+                # Did we hit a door?
+            rompible_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["rompible"])
+
+            if len(rompible_hit) > 0:
+                rompible_sprite = rompible_hit[0]  # El sprite de la puerta con la que hemos colisionado
+
+                if self.space_pressed or self.cooldown and self.casco_azul==True:
+                    print("BOOOOOOOOOOM")
+                    rompible_sprite.remove_from_sprite_lists()
+                else:
+                    self.my_map.scene["wall_list"].append(rompible_sprite)
+
+
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
 
