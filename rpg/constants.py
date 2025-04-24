@@ -18,6 +18,7 @@ SPEED_AUX = 4
 
 #Contador de monedas de prueba para el mapa de prueba
 Contador = 5
+Puerta = True
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
 LEFT_VIEWPORT_MARGIN = 300
