@@ -271,6 +271,8 @@ class GameView(arcade.View):
         self.cur_map_name = constants.STARTING_MAP
         self.dash = False
         self.correr = False
+        self.casco_azul = False
+        self.casco_verde = False
         # Set up the hotbar
         #self.load_hotbar_sprites() desactivado temporalmente
 
@@ -402,6 +404,7 @@ class GameView(arcade.View):
             self.smoke_list.draw() #Dibuja la estela del dash, Importante que este aqui o estaria debajo del mapa
 
             if(self.show_timer==True): # Parte visual del temporizador
+
                 arcade.draw_text(self.output,
                                  self.player_sprite.center_x , self.player_sprite.center_y + 200  ,
                                  arcade.color.WHITE, 20,
