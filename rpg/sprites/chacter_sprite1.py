@@ -80,7 +80,7 @@ class CharacterSprite_one(arcade.Sprite):
         # self.center_x += self.change_x
         # self.center_y += self.change_y
 
-        if self.should_update <= 3:
+        if self.should_update <= 4:
             self.should_update += 1
         else:
             self.should_update = 0

@@ -263,7 +263,7 @@ class GameView(arcade.View):
         """Set up the game variables. Call to re-start the game."""
 
         # Crea la sprite del jugador, junto a sus spritesheets adicionales que usará
-        self.player_sprite = CharacterSprite_one(":characters:Male/Player-1.png",":characters:Male/Player-2.png", ":characters:Male/Player-3.png")
+        self.player_sprite = PlayerSprite(":characters:Male/Player-1.png",":characters:Male/Player-2.png", ":characters:Male/Player-3.png")
         # Spawn the player
         start_x = constants.STARTING_X
         start_y = constants.STARTING_Y
