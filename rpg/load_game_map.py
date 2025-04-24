@@ -211,7 +211,7 @@ def load_maps():
         # Dictionary to hold all our maps
         load_maps.map_list = {}
 
-        # Pull names of all json files in that path
+        # Pull names of all json files in that path.
         load_maps.map_file_names = [
             f[:-5]
             for f in os.listdir(mypath)
