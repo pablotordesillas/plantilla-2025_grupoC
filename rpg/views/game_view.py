@@ -860,6 +860,32 @@ class GameView(arcade.View):
                 else:
                     self.my_map.scene["wall_list"].append(rompible_sprite)
 
+        if "un_monedo" in map_layers:
+            monedo_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["un_monedo"])
+            if len(monedo_hit) > 0:
+                monedo_sprite = monedo_hit[0]  # El sprite de la puerta con la que hemos colisionado
+                monedo_sprite.remove_from_sprite_lists()
+                constants.Contador -=1
+
+
+
+        if "puertaM" in map_layers:
+            for puertaM in map_layers["puertaM"]:
+                if puertaM in self.my_map.scene["wall_list"]:
+                    self.my_map.scene["wall_list"].remove(puertaM)
+
+                # Did we hit a door?
+            puertaM_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["puertaM"])
+
+            if len(puertaM_hit) > 0:
+                puertaM_sprite = puertaM_hit[0]  # El sprite de la puerta con la que hemos colisionado
+                if constants.Contador == 0:
+                    print("CLICK")
+                    #puertaM_sprite.remove_from_sprite_lists()#Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
+                else:
+                    print("Dale zelda dale")
+                    self.my_map.scene["wall_list"].append(puertaM_sprite)
+
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
