@@ -743,10 +743,6 @@
         {
          "firstgid":5081,
          "source":"..\/sample_map\/Desierto.tsx"
-        }, 
-        {
-         "firstgid":5161,
-         "source":"..\/..\/..\/..\/plantilla-2025_grupoC.git\/resources\/sample_map\/Asets pmk\/Otros\/Outside.tsx"
         }],
  "tilewidth":32,
  "type":"map",
