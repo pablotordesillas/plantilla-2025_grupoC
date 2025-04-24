@@ -855,7 +855,8 @@ class GameView(arcade.View):
                 rompible_sprite = rompible_hit[0]  # El sprite de la puerta con la que hemos colisionado
 
                 if self.space_pressed or self.cooldown and self.casco_azul==True:
-                    print("BOOOOOOOOOOM")
+                    #print("BOOOOOOOOOOM")
+                    #UN RESPLANDOR Y HACE PUUUUUM
                     rompible_sprite.remove_from_sprite_lists()
                 else:
                     self.my_map.scene["wall_list"].append(rompible_sprite)
@@ -880,7 +881,13 @@ class GameView(arcade.View):
             if len(puertaM_hit) > 0:
                 puertaM_sprite = puertaM_hit[0]  # El sprite de la puerta con la que hemos colisionado
                 if constants.Contador == 0:
-                    print("CLICK")
+                    if constants.Puerta == True:
+                        #print("CLICK") #MONDONGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        arcade.play_sound(arcade.load_sound(":sounds:puerta.mp3"))
+                        constants.Puerta = False
+                        def reactivar_puerta():
+                            constants.Puerta = True
+                        threading.Timer(5, reactivar_puerta).start()
                     #puertaM_sprite.remove_from_sprite_lists()#Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
                 else:
                     print("Dale zelda dale")
