@@ -284,6 +284,173 @@
         }, 
         {
          "draworder":"topdown",
+         "id":13,
+         "name":"border_blocking",
+         "objects":[
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":35,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":160
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":36,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":192
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":37,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":224
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":38,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":256
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":39,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":288
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":40,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":960,
+                 "y":320
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":41,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":576,
+                 "y":0
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":42,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":608,
+                 "y":0
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":43,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":640,
+                 "y":0
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":44,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":672,
+                 "y":0
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":45,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":704,
+                 "y":0
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":46,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":672
+                }, 
+                {
+                 "gid":1,
+                 "height":32,
+                 "id":47,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":96,
+                 "y":672
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":8,
          "name":"doors",
          "objects":[
@@ -558,8 +725,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":12,
- "nextobjectid":12,
+ "nextlayerid":14,
+ "nextobjectid":48,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -576,6 +743,10 @@
         {
          "firstgid":5081,
          "source":"..\/sample_map\/Desierto.tsx"
+        }, 
+        {
+         "firstgid":5161,
+         "source":"..\/..\/..\/..\/plantilla-2025_grupoC.git\/resources\/sample_map\/Asets pmk\/Otros\/Outside.tsx"
         }],
  "tilewidth":32,
  "type":"map",

@@ -171,7 +171,7 @@ class GameView(arcade.View):
         self.casco_verde = False
         self.casco_azul = False
 
-        self.total_time = 20.0 # Tiempo (segundos) del temporizador
+        self.total_time = 30.0 # Tiempo (segundos) del temporizador
         self.output = "00:00:00"
         self.show_timer = False
 
@@ -275,7 +275,7 @@ class GameView(arcade.View):
         #self.load_hotbar_sprites() desactivado temporalmente
 
         self.clock_sprite= arcade.load_texture("../resources/misc/1.png")
-        self.total_time = 20.0
+        self.total_time = 30.0
 
     #FUNCIÓN DESACTIVADA TEMPORALMENTE (inventario)
     #def load_hotbar_sprites(self):
@@ -504,7 +504,7 @@ class GameView(arcade.View):
                 self.player_sprite, self.my_map.scene["timer_list"]
             )
             if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
-                self.total_time = 20.0
+                self.total_time = 30.0
                 self.show_timer = True
                 self.x_guardado = self.player_sprite.center_x
                 self.y_guardado = self.player_sprite.center_y
@@ -971,7 +971,7 @@ class GameView(arcade.View):
                 self.disable_debug_menu()
 
         elif key == arcade.key.J and self.show_timer== False: # Activar el temporizador por la tecla J
-            self.total_time = 20.0
+            self.total_time = 30.0
             self.show_timer = True
             self.x_guardado = self.player_sprite.center_x
             self.y_guardado = self.player_sprite.center_y
