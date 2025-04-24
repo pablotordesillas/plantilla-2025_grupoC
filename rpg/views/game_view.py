@@ -500,7 +500,7 @@ class GameView(arcade.View):
                     SPEED_AUX=0
 
         except KeyError:
-            pass  # No hay capa slow_list, ni push, así que no hacemos nada
+            pass  # No hay capa slow_list, ni push, así que no hacemos nada.
 
         try:
             timer_hit = arcade.check_for_collision_with_list(
