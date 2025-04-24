@@ -885,7 +885,7 @@ class GameView(arcade.View):
                 puertaM_sprite = puertaM_hit[0]  # El sprite de la puerta con la que hemos colisionado
                 if constants.Contador == 0:
                     if constants.Puerta == True:
-                        #print("CLICK") #MONDONGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        #print("CLICK") #MONDONGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                         arcade.play_sound(arcade.load_sound(":sounds:puerta.mp3"))
                         constants.Puerta = False
                         def reactivar_puerta():
