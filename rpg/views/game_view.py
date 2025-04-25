@@ -21,6 +21,7 @@ from rpg.sprites.player_sprite import PlayerSprite
 import threading
 
 from rpg.views.main_menu_view import MainMenuView
+from rpg.views.settings_view import SettingsView
 
 
 class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
@@ -273,8 +274,7 @@ class GameView(arcade.View):
         self.correr = False
         self.casco_azul = False
         self.casco_verde = False
-        # Set up the hotbar
-        #self.load_hotbar_sprites() desactivado temporalmente
+        self.show_timer = False
 
         self.clock_sprite= arcade.load_texture("../resources/misc/1.png")
         self.total_time = 30.0
@@ -916,66 +916,58 @@ class GameView(arcade.View):
         elif key in constants.KEY_SPACE:
             self.space_pressed = True
         #MIRA SI EL SHIFT ESTA PRESIONADO
-        elif key in constants.KEY_SHIFT:
+        elif key in constants.KEY_SHIFT or key == arcade.key.RSHIFT:
             self.shift_pressed = True
-        #elif key in constants.INVENTORY:
-            #self.window.show_view(self.window.views["inventory"])
+
         elif key == arcade.key.ESCAPE:
             print("game paused")
             pil_image = arcade.get_image()  #Saca una captura de pantalla del juego
             nombre_unico = f"pause_bg_{time.time()}" #Se asigna un nombre unico a cada captura, de manera que se actualiza correctamente el fondo
             bg_texture = arcade.Texture(name=nombre_unico, image=pil_image)
-            pause_menu = MainMenuView(background_texture=bg_texture)
-            self.window.show_view(pause_menu)
+
+            #Se limpian las teclas de movimiento
+            self.shift_pressed = False
+            self.space_pressed = False
+            self.up_pressed = False
+            self.down_pressed = False
+            self.left_pressed = False
+            self.right_pressed = False
+
+            #Se asigna el fondo al menú de pausa
+            self.window.views["settings"] = SettingsView(background_texture=bg_texture)
+            self.window.views["main_menu"] = MainMenuView(background_texture=bg_texture)
+            self.window.show_view(self.window.views["main_menu"])
 
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
-        elif key == arcade.key.KEY_1:
+
+        elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
             self.casco_azul = False
             self.casco_verde = False
             self.dash = False
             self.correr = False
 
-        elif key == arcade.key.KEY_2:
+        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
             self.casco_azul = True
             self.casco_verde = False
             self.dash = True
             self.correr = False
 
-        elif key == arcade.key.KEY_3:
+        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
             self.casco_azul = False
             self.casco_verde = True
             self.dash = False
             self.correr = True
-        elif key == arcade.key.KEY_4:
+        elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
             self.casco_azul = False
             self.casco_verde = True
             self.dash = False
             self.correr = True
-        #elif key == arcade.key.KEY_1:
-            #self.selected_item = 1
-        #elif key == arcade.key.KEY_2:
-            #self.selected_item = 2
-        #elif key == arcade.key.KEY_3:
-            #self.selected_item = 3
-        #elif key == arcade.key.KEY_4:
-            #self.selected_item = 4
-        #elif key == arcade.key.KEY_5:
-            #self.selected_item = 5
-        #elif key == arcade.key.KEY_6:
-            #self.selected_item = 6
-        #elif key == arcade.key.KEY_7:
-            #self.selected_item = 7
-        #elif key == arcade.key.KEY_8:
-            #self.selected_item = 8
-        #elif key == arcade.key.KEY_9:
-            #self.selected_item = 9
-        #elif key == arcade.key.KEY_0:
-            #self.selected_item = 10
+
         elif key == arcade.key.L:
             cur_map = self.map_list[self.cur_map_name]
             if self.player_light in cur_map.light_layer:
@@ -1044,7 +1036,7 @@ class GameView(arcade.View):
         elif key in constants.KEY_SPACE:
             self.space_pressed = False
         # MIRA SI EL SHIFT YA NO ESTA PRESIONADO
-        elif key in constants.KEY_SHIFT:
+        elif key in constants.KEY_SHIFT or key == arcade.key.RSHIFT:
             self.shift_pressed = False
 
     def on_mouse_motion(self, x, y, delta_x, delta_y):
