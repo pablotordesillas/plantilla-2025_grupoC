@@ -930,22 +930,26 @@ class GameView(arcade.View):
 
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
-        elif key == arcade.key.TAB:
-            if self.casco_verde == False: #Solo si no tiene el casco verde puesto
-                self.player_sprite.switch_spritesheet() #Cambia la spritesheet al casco azul/naranja
-                self.casco_azul = not self.casco_azul #Cambia casco azul de True a False o viceversa
-                if self.dash == True: #Si el dash esta activo (casco azul) lo quita
-                    self.dash = False
-                else:   #Activa el dash
-                    self.dash = True
-        elif key == arcade.key.ENTER:
-            if self.casco_azul == False: #Solo si no tiene el casco azul puesto
-                self.player_sprite.switch_spritesheet2() #Cambia la spritesheet al casco verde/naranja
-                self.casco_verde = not self.casco_verde #Cambia casco verde de True a False o viceversa
-                if self.correr == True: #Si el correr esta activo (casco verde) lo quita
-                    self.correr = False
-                else: #Activa el correr
-                    self.correr = True
+        elif key == arcade.key.KEY_1:
+            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
+            self.casco_azul = False
+            self.casco_verde = False
+            self.dash = False
+            self.correr = False
+
+        elif key == arcade.key.KEY_2:
+            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
+            self.casco_azul = True
+            self.casco_verde = False
+            self.dash = True
+            self.correr = False
+
+        elif key == arcade.key.KEY_3:
+            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
+            self.casco_azul = False
+            self.casco_verde = True
+            self.dash = False
+            self.correr = True
         #elif key == arcade.key.KEY_1:
             #self.selected_item = 1
         #elif key == arcade.key.KEY_2:

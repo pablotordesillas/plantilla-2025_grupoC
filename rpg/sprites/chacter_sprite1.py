@@ -47,32 +47,12 @@ class CharacterSprite_one(arcade.Sprite):
         self.using_alt_sheet = False #Dice si estas usando la segunda spritesheet
         self.using_third_sheet = False #Dice si estas usando la tercera spritesheet
 
+        self.current_direction = Direction.DOWN
+
         self.should_update = 0
         self.cur_texture_index = 0
         self.texture = self.textures[self.cur_texture_index]
         self.inventory = []
-
-    def switch_spritesheet(self):
-        """
-        Se encarga de cambiar entre la primera y la segunda spritesheet
-        """
-        self.using_alt_sheet = not self.using_alt_sheet
-        self.textures = self.sprite_sheet2 if self.using_alt_sheet else self.sprite_sheet1
-        # Aseguramos que el índice actual sea válido en el nuevo spritesheet
-        if self.cur_texture_index >= len(self.textures):
-            self.cur_texture_index = 0
-        self.texture = self.textures[self.cur_texture_index]
-
-    def switch_spritesheet2(self):
-        """
-        Se encarga de cambiar entre la primera y la tercera spritesheet
-        """
-        self.using_third_sheet = not self.using_third_sheet
-        self.textures = self.sprite_sheet3 if self.using_third_sheet else self.sprite_sheet1
-        if self.cur_texture_index >= len(self.textures):
-            self.cur_texture_index = 0
-        self.texture = self.textures[self.cur_texture_index]
-
     def on_update(self, delta_time):
         if not self.change_x and not self.change_y:
             return
@@ -103,4 +83,15 @@ class CharacterSprite_one(arcade.Sprite):
         if self.cur_texture_index not in SPRITE_INFO[direction]:
             self.cur_texture_index = SPRITE_INFO[direction][0]
 
+        self.current_direction = direction
+        self.texture = self.textures[self.cur_texture_index]
+
+    def set_spritesheet(self, sheet):
+        self.textures = sheet
+
+        # Encontrar el índice relativo actual (dentro de los 4 frames de la dirección)
+        relative_index = SPRITE_INFO[self.current_direction].index(self.cur_texture_index)
+
+        # Usar el mismo índice relativo en la nueva spritesheet para la misma dirección
+        self.cur_texture_index = SPRITE_INFO[self.current_direction][relative_index]
         self.texture = self.textures[self.cur_texture_index]
