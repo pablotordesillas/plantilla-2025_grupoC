@@ -964,9 +964,9 @@ class GameView(arcade.View):
         elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
             self.casco_azul = False
-            self.casco_verde = True
+            self.casco_verde = False
             self.dash = False
-            self.correr = True
+            self.correr = False
 
         elif key == arcade.key.L:
             cur_map = self.map_list[self.cur_map_name]
