@@ -263,7 +263,7 @@ class GameView(arcade.View):
         """Set up the game variables. Call to re-start the game."""
 
         # Crea la sprite del jugador, junto a sus spritesheets adicionales que usará
-        self.player_sprite = PlayerSprite(":characters:Male/Player-1.png",":characters:Male/Player-2.png", ":characters:Male/Player-3.png")
+        self.player_sprite = PlayerSprite(":characters:Male/Player-1.png",":characters:Male/Player-2.png", ":characters:Male/Player-3.png", ":characters:Male/Player-4.png")
         # Spawn the player
         start_x = constants.STARTING_X
         start_y = constants.STARTING_Y
@@ -946,6 +946,12 @@ class GameView(arcade.View):
 
         elif key == arcade.key.KEY_3:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
+            self.casco_azul = False
+            self.casco_verde = True
+            self.dash = False
+            self.correr = True
+        elif key == arcade.key.KEY_4:
+            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
             self.casco_azul = False
             self.casco_verde = True
             self.dash = False

@@ -19,7 +19,7 @@ SPRITE_INFO = {
 
 
 class CharacterSprite_one(arcade.Sprite):
-    def __init__(self, sheet_name, sheet_name2, sheet_name3):
+    def __init__(self, sheet_name, sheet_name2, sheet_name3, sheet_name4):
         super().__init__()
         self.sprite_sheet1 = arcade.load_spritesheet(
             sheet_name,
@@ -37,6 +37,13 @@ class CharacterSprite_one(arcade.Sprite):
         )
         self.sprite_sheet3 = arcade.load_spritesheet(
             sheet_name3,
+            sprite_width=SPRITE_SIZE,
+            sprite_height=SPRITE_SIZE,
+            columns=4,
+            count=16,
+        )
+        self.sprite_sheet4 = arcade.load_spritesheet(
+            sheet_name4,
             sprite_width=SPRITE_SIZE,
             sprite_height=SPRITE_SIZE,
             columns=4,
