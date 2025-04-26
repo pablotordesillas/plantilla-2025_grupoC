@@ -458,6 +458,7 @@ class GameView(arcade.View):
         All the logic to move, and the game logic goes here.
         """
 
+        global contador_puertaD
         if(self.total_time <= 0.0): # Si el temporizador llega a 0:
 
             if(self.show_timer==True):
@@ -869,9 +870,25 @@ class GameView(arcade.View):
             if len(monedo_hit) > 0:
                 monedo_sprite = monedo_hit[0]  # El sprite de la puerta con la que hemos colisionado
                 monedo_sprite.remove_from_sprite_lists()
-                constants.Contador -=1
+                if self.cur_map_name=="Prueba":
+                    constants.Contador -=1
+                if self.cur_map_name=="castillo_exterior":
+                    constants.Contador_castilloext-=1
 
 
+        if "puertaD" in map_layers:
+            if self.cur_map_name=="castillo_exterior":
+                contador_puertaD= constants.Contador_castilloext
+
+            if contador_puertaD>0:
+                for puertaD in map_layers["puertaD"]:
+                    if puertaD not in self.my_map.scene["wall_list"]:
+                        self.my_map.scene["wall_list"].append(puertaD)
+            elif contador_puertaD==0:
+                for puertaD in map_layers["puertaD"]:
+                    if puertaD in self.my_map.scene["wall_list"]:
+                        self.my_map.scene["wall_list"].remove(puertaD)
+                        puertaD.remove_from_sprite_lists()
 
         if "puertaM" in map_layers:
             for puertaM in map_layers["puertaM"]:
@@ -891,10 +908,12 @@ class GameView(arcade.View):
                         def reactivar_puerta():
                             constants.Puerta = True
                         threading.Timer(5, reactivar_puerta).start()
-                    #puertaM_sprite.remove_from_sprite_lists()#Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
+                        #puertaM_sprite.remove_from_sprite_lists()#Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
                 else:
                     print("Dale zelda dale")
                     self.my_map.scene["wall_list"].append(puertaM_sprite)
+
+
 
 
     def on_key_press(self, key, modifiers):

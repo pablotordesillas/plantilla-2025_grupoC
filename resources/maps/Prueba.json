@@ -389,6 +389,34 @@
                  "width":32,
                  "x":481.666666666667,
                  "y":137.333333333333
+                }, 
+                {
+                 "gid":4165,
+                 "height":32,
+                 "id":39,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"map_name",
+                         "type":"string",
+                         "value":"castillo_exterior"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":11
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":43
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":544.666666666667,
+                 "y":138
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -496,8 +524,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":322.666666666667,
-                 "y":547
+                 "x":321.333333333334,
+                 "y":543.666666666667
                 }, 
                 {
                  "gid":797,
@@ -508,8 +536,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":355.666666666667,
-                 "y":543.666666666667
+                 "x":352.333333333334,
+                 "y":544
                 }, 
                 {
                  "gid":797,
@@ -520,8 +548,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":354.666666666667,
-                 "y":576.333333333333
+                 "x":352.666666666667,
+                 "y":575.666666666666
                 }, 
                 {
                  "gid":797,
@@ -532,7 +560,7 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":322.333333333333,
+                 "x":321,
                  "y":575
                 }],
          "opacity":1,
@@ -622,7 +650,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":38,
+ "nextobjectid":40,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

@@ -194,6 +194,7 @@ def load_map(map_name):
         elif "_cuesta" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
             game_map.scene["cuesta_list"].extend(sprite_list)
+
     return game_map
 
 

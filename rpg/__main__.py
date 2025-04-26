@@ -29,6 +29,7 @@ def main():
     start_view = LoadingView()
     start_view.setup()
     window.show_view(start_view)
+
     arcade.run()
 
 
