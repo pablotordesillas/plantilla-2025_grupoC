@@ -279,8 +279,10 @@ class GameView(arcade.View):
         self.cur_map_name = constants.STARTING_MAP
         self.dash = False
         self.correr = False
+        self.embestir = False
         self.casco_azul = False
         self.casco_verde = False
+        self.casco_vikingo = False
         self.show_timer = False
 
         self.clock_sprite= arcade.load_texture("../resources/misc/1.png")
@@ -1186,7 +1188,7 @@ class GameView(arcade.View):
         smoke.center_y = y + offset_y
         smoke.alpha = 255
 
-        # Rutas absolutas de cada imagen
+
         rutas = [
             ":characters:Shadow/smokes_1.png",
             ":characters:Shadow/smokes_2.png",
@@ -1199,7 +1201,7 @@ class GameView(arcade.View):
         # Cargar las texturas
         for i, ruta in enumerate(rutas):
             frame_texture = arcade.load_texture(ruta)
-            keyframe = arcade.AnimationKeyframe(i, 200, frame_texture)
+            keyframe = arcade.AnimationKeyframe(i, 250, frame_texture)
             smoke.frames.append(keyframe)
 
         self.smokes_list.append(smoke)
