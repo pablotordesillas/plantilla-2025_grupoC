@@ -26,6 +26,8 @@ def main():
     """Main method"""
     window = MyWindow()
     window.center_window()
+    window.maximize()   #Ejecuta el juego en modo ventana maximizado
+
     start_view = LoadingView()
     start_view.setup()
     window.show_view(start_view)

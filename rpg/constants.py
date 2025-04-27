@@ -2,10 +2,15 @@
 Constant values for the game
 """
 import arcade
+import pyglet
 from pyglet.input.evdev_constants import KEY_SPACE
 
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+# Detectar la resolución principal del monitor
+_display = pyglet.canvas.get_display()
+_screen = _display.get_screens()[0] #El monitor principal
+SCREEN_WIDTH = _screen.width
+SCREEN_HEIGHT = _screen.height
+
 SCREEN_TITLE = "Python Community RPG"
 TILE_SCALING = 1.0
 SPRITE_SIZE = 32
