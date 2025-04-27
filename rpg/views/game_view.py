@@ -156,6 +156,11 @@ class GameView(arcade.View):
         self.player_sprite_list = None
         #PRUEBA
         self.smoke_list = arcade.SpriteList() #Lista para la estela del dash
+        self.cooldown1 = False
+        self.smokes_list = arcade.SpriteList()
+        self.humo_activo = False
+        self.dash_timer = 0  # Temporizador para la duración del dash
+        self.dash_duration = 0.2
 
         # Track the current state of what key is pressed
         self.left_pressed = False
@@ -169,8 +174,10 @@ class GameView(arcade.View):
         self.tab_pressed = False
         self.dash = False
         self.correr = False
+        self.embestir = False
         self.casco_verde = False
         self.casco_azul = False
+        self.casco_vikingo = False
 
         self.total_time = 30.0 # Tiempo (segundos) del temporizador
         self.output = "00:00:00"
@@ -402,7 +409,7 @@ class GameView(arcade.View):
             # Draw the player
             self.player_sprite_list.draw()
             self.smoke_list.draw() #Dibuja la estela del dash, Importante que este aqui o estaria debajo del mapa
-
+            self.smokes_list.draw()
             if(self.show_timer==True): # Parte visual del temporizador
 
                 arcade.draw_text(self.output,
@@ -763,6 +770,78 @@ class GameView(arcade.View):
                 smoke.center_x = x
                 smoke.center_y = y + 10
                 self.smoke_list.append(smoke)
+
+        if self.embestir == True: #Si puede embestir (casco vikingo)
+
+            x = self.player_sprite.center_x
+            y = self.player_sprite.center_y
+
+            # Mover a la derecha
+            if MOVING_RIGHT_SPACE and self.cooldown1 == False:
+                self.player_sprite.change_x = constants.MOVEMENT_SPEED + 7
+                threading.Timer(0.15, self.activar_cooldown1).start()
+                if not self.humo_activo:  # Solo crea humo si no hay uno activo
+                    self.crear_humo(x, y, offset_x=-20)
+                    self.humo_activo = True  # Marca que el humo está activo
+
+            # Mover a la izquierda
+            if MOVING_LEFT_SPACE and self.cooldown1 == False:
+                self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 7
+                threading.Timer(0.15, self.activar_cooldown1).start()
+                if not self.humo_activo:
+                    self.crear_humo(x, y, offset_x=20)
+                    self.humo_activo = True
+
+            # Mover hacia arriba
+            if MOVING_UP_SPACE and self.cooldown1 == False:
+                self.player_sprite.change_y = constants.MOVEMENT_SPEED + 7
+                threading.Timer(0.15, self.activar_cooldown1).start()
+                if not self.humo_activo:
+                    self.crear_humo(x, y, offset_y=-20)
+                    self.humo_activo = True
+
+            # Mover hacia abajo
+            if MOVING_DOWN_SPACE and self.cooldown1 == False:
+                self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 7
+                threading.Timer(0.15, self.activar_cooldown1).start()
+                if not self.humo_activo:
+                    self.crear_humo(x, y, offset_y=20)
+                    self.humo_activo = True
+
+            # Actualizar animaciones
+        self.smokes_list.update_animation(delta_time)
+        # PRUEBA CORRER
+        # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
+        if self.correr == True:  # Solo si tiene el casco verde puesto
+            if MOVING_UP_RUN:
+                self.player_sprite.change_y = SPEED_AUX * 2
+            if MOVING_DOWN_RUN:
+                self.player_sprite.change_y = -SPEED_AUX * 2
+            if MOVING_LEFT_RUN:
+                self.player_sprite.change_x = -SPEED_AUX * 2
+            if MOVING_RIGHT_RUN:
+                self.player_sprite.change_x = SPEED_AUX * 2
+            if MOVING_UP_LEFT_RUN:
+                self.player_sprite.change_y = SPEED_AUX * 2 / 1.5
+                self.player_sprite.change_x = -SPEED_AUX * 2 / 1.5
+            if MOVING_UP_RIGHT_RUN:
+                self.player_sprite.change_y = SPEED_AUX * 2 / 1.5
+                self.player_sprite.change_x = SPEED_AUX * 2 / 1.5
+            if MOVING_DOWN_LEFT_RUN:
+                self.player_sprite.change_y = -SPEED_AUX * 2 / 1.5
+                self.player_sprite.change_x = -SPEED_AUX * 2 / 1.5
+            if MOVING_DOWN_RIGHT_RUN:
+                self.player_sprite.change_y = -SPEED_AUX * 2 / 1.5
+                self.player_sprite.change_x = SPEED_AUX * 2 / 1.5
+
+        for smoke in self.smokes_list:
+            smoke.update_animation(delta_time)
+
+            if smoke.alpha > 0:
+                smoke.alpha -= 5  # Se va haciendo transparente
+            else:
+                smoke.remove_from_sprite_lists()
+
     #PRUEBA CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
         if self.correr == True: #Solo si tiene el casco verde puesto
@@ -966,6 +1045,8 @@ class GameView(arcade.View):
             self.casco_verde = False
             self.dash = False
             self.correr = False
+            self.casco_vikingo = False
+            self.embestir = False
 
         elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
@@ -973,6 +1054,8 @@ class GameView(arcade.View):
             self.casco_verde = False
             self.dash = True
             self.correr = False
+            self.casco_vikingo = False
+            self.embestir = False
 
         elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
@@ -980,12 +1063,16 @@ class GameView(arcade.View):
             self.casco_verde = True
             self.dash = False
             self.correr = True
+            self.casco_vikingo = False
+            self.embestir = False
         elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
             self.casco_azul = False
             self.casco_verde = False
             self.dash = False
             self.correr = False
+            self.casco_vikingo = True
+            self.embestir = True
 
         elif key == arcade.key.L:
             cur_map = self.map_list[self.cur_map_name]
@@ -1092,3 +1179,42 @@ class GameView(arcade.View):
     def desactivar_cooldown(self):
         """Desactiva el cooldown."""
         self.cooldown = False
+
+    def crear_humo(self, x, y, offset_x=0, offset_y=0):
+        smoke = arcade.AnimatedTimeBasedSprite(scale=0.5)
+        smoke.center_x = x + offset_x
+        smoke.center_y = y + offset_y
+        smoke.alpha = 255
+
+        # Rutas absolutas de cada imagen
+        rutas = [
+            ":characters:Shadow/smokes_1.png",
+            ":characters:Shadow/smokes_2.png",
+            ":characters:Shadow/smokes_3.png",
+            ":characters:Shadow/smokes_4.png",
+            ":characters:Shadow/smokes_5.png",
+            ":characters:Shadow/smokes_6.png",
+        ]
+
+        # Cargar las texturas
+        for i, ruta in enumerate(rutas):
+            frame_texture = arcade.load_texture(ruta)
+            keyframe = arcade.AnimationKeyframe(i, 200, frame_texture)
+            smoke.frames.append(keyframe)
+
+        self.smokes_list.append(smoke)
+
+        def eliminar_humo():
+            smoke.remove_from_sprite_lists()
+            self.humo_activo = False
+
+        threading.Timer(0.75, eliminar_humo).start()
+
+    def activar_cooldown1(self):
+        self.cooldown1 = True
+        threading.Timer(1, self.desactivar_cooldown1).start()
+
+    def desactivar_cooldown1(self):
+        self.cooldown1 = False
+        self.player_sprite.change_x = 0
+        self.player_sprite.change_y = 0
