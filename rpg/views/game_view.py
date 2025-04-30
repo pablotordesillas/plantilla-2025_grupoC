@@ -912,22 +912,22 @@ class GameView(arcade.View):
             # No doors, scroll normally
             self.scroll_to_player()
 
-        # Is there a layer named 'puelta' (door)?
-        if "puelta" in map_layers:
-            for puerta in map_layers["puelta"]:
-                if puerta in self.my_map.scene["wall_list"]:
-                    self.my_map.scene["wall_list"].remove(puerta)
+
+        if "dasheable" in map_layers:
+            for dasheable in map_layers["dasheable"]:
+                if dasheable in self.my_map.scene["wall_list"]:
+                    self.my_map.scene["wall_list"].remove(dasheable)
 
                 # Did we hit a door?
-            puelta_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["puelta"])
+            dasheable_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["dasheable"])
 
-            if len(puelta_hit) > 0:
-                puelta_sprite = puelta_hit[0]  # El sprite de la puerta con la que hemos colisionado
+            if len(dasheable_hit) > 0:
+                dasheable_sprite = dasheable_hit[0]  # El sprite del objeto con la que hemos colisionado
 
                 if not self.space_pressed or self.cooldown or self.casco_azul==False:
-                    self.my_map.scene["wall_list"].append(puelta_sprite)  # La puerta bloquea el paso
+                    self.my_map.scene["wall_list"].append(dasheable_sprite)  # El objeto bloquea el paso
 
-        # Is there a layer named 'puelta' (door)?
+
         if "rompible" in map_layers:
             for rompible in map_layers["rompible"]:
                 if rompible in self.my_map.scene["wall_list"]:
@@ -939,7 +939,7 @@ class GameView(arcade.View):
             if len(rompible_hit) > 0:
                 rompible_sprite = rompible_hit[0]  # El sprite de la puerta con la que hemos colisionado
 
-                if self.space_pressed or self.cooldown and self.casco_vikingo ==True:
+                if (self.space_pressed or self.cooldown) and self.casco_vikingo ==True:
                     #print("BOOOOOOOOOOM")
                     #UN RESPLANDOR Y HACE PUUUUUM
                     rompible_sprite.remove_from_sprite_lists()
