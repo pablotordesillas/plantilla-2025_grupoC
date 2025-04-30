@@ -371,6 +371,22 @@
                  "height":32,
                  "id":21,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"map_name",
+                         "type":"string",
+                         "value":"arena_main"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":12
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":29
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
