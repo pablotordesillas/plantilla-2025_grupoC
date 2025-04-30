@@ -375,17 +375,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"arena_main"
+                         "value":"coloss_main"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":12
+                         "value":22
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":29
+                         "value":35
                         }],
                  "rotation":0,
                  "type":"",
