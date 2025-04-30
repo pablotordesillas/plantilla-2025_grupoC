@@ -817,22 +817,22 @@ class GameView(arcade.View):
         if self.correr == True:  # Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2
-            if MOVING_DOWN_RUN:
+            elif MOVING_DOWN_RUN:
                 self.player_sprite.change_y = -SPEED_AUX * 2
-            if MOVING_LEFT_RUN:
+            elif MOVING_LEFT_RUN:
                 self.player_sprite.change_x = -SPEED_AUX * 2
-            if MOVING_RIGHT_RUN:
+            elif MOVING_RIGHT_RUN:
                 self.player_sprite.change_x = SPEED_AUX * 2
-            if MOVING_UP_LEFT_RUN:
+            elif MOVING_UP_LEFT_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX * 2 / 1.5
-            if MOVING_UP_RIGHT_RUN:
+            elif MOVING_UP_RIGHT_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX * 2 / 1.5
-            if MOVING_DOWN_LEFT_RUN:
+            elif MOVING_DOWN_LEFT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX * 2 / 1.5
-            if MOVING_DOWN_RIGHT_RUN:
+            elif MOVING_DOWN_RIGHT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX * 2 / 1.5
 
@@ -849,22 +849,22 @@ class GameView(arcade.View):
         if self.correr == True: #Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
                 self.player_sprite.change_y = SPEED_AUX*2
-            if MOVING_DOWN_RUN:
+            elif MOVING_DOWN_RUN:
                 self.player_sprite.change_y = -SPEED_AUX*2
-            if MOVING_LEFT_RUN:
+            elif MOVING_LEFT_RUN:
                 self.player_sprite.change_x = -SPEED_AUX*2
-            if MOVING_RIGHT_RUN:
+            elif MOVING_RIGHT_RUN:
                 self.player_sprite.change_x = SPEED_AUX*2
-            if MOVING_UP_LEFT_RUN:
+            elif MOVING_UP_LEFT_RUN:
                 self.player_sprite.change_y = SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
-            if MOVING_UP_RIGHT_RUN:
+            elif MOVING_UP_RIGHT_RUN:
                 self.player_sprite.change_y = SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX*2 / 1.5
-            if MOVING_DOWN_LEFT_RUN:
+            elif MOVING_DOWN_LEFT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
-            if MOVING_DOWN_RIGHT_RUN:
+            elif MOVING_DOWN_RIGHT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX*2 / 1.5
         # Call update to move the sprite
@@ -912,22 +912,22 @@ class GameView(arcade.View):
             # No doors, scroll normally
             self.scroll_to_player()
 
-        # Is there a layer named 'puelta' (door)?
-        if "puelta" in map_layers:
-            for puerta in map_layers["puelta"]:
-                if puerta in self.my_map.scene["wall_list"]:
-                    self.my_map.scene["wall_list"].remove(puerta)
+
+        if "dasheable" in map_layers:
+            for dasheable in map_layers["dasheable"]:
+                if dasheable in self.my_map.scene["wall_list"]:
+                    self.my_map.scene["wall_list"].remove(dasheable)
 
                 # Did we hit a door?
-            puelta_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["puelta"])
+            dasheable_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["dasheable"])
 
-            if len(puelta_hit) > 0:
-                puelta_sprite = puelta_hit[0]  # El sprite de la puerta con la que hemos colisionado
+            if len(dasheable_hit) > 0:
+                dasheable_sprite = dasheable_hit[0]  # El sprite del objeto con la que hemos colisionado
 
                 if not self.space_pressed or self.cooldown or self.casco_azul==False:
-                    self.my_map.scene["wall_list"].append(puelta_sprite)  # La puerta bloquea el paso
+                    self.my_map.scene["wall_list"].append(dasheable_sprite)  # El objeto bloquea el paso
 
-        # Is there a layer named 'puelta' (door)?
+
         if "rompible" in map_layers:
             for rompible in map_layers["rompible"]:
                 if rompible in self.my_map.scene["wall_list"]:
@@ -939,7 +939,7 @@ class GameView(arcade.View):
             if len(rompible_hit) > 0:
                 rompible_sprite = rompible_hit[0]  # El sprite de la puerta con la que hemos colisionado
 
-                if self.space_pressed or self.cooldown and self.casco_azul==True:
+                if (self.space_pressed or self.cooldown) and self.casco_vikingo ==True:
                     #print("BOOOOOOOOOOM")
                     #UN RESPLANDOR Y HACE PUUUUUM
                     rompible_sprite.remove_from_sprite_lists()
@@ -1041,7 +1041,7 @@ class GameView(arcade.View):
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
 
-        elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:
+        elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:  #Casco naranja, sin efecto especial
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
             self.casco_azul = False
             self.casco_verde = False
@@ -1050,7 +1050,7 @@ class GameView(arcade.View):
             self.casco_vikingo = False
             self.embestir = False
 
-        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2:
+        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2: #Casco azul, posibilidad de hacer dash
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
             self.casco_azul = True
             self.casco_verde = False
@@ -1059,7 +1059,7 @@ class GameView(arcade.View):
             self.casco_vikingo = False
             self.embestir = False
 
-        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:
+        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:  #Casco verde, permite correr
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
             self.casco_azul = False
             self.casco_verde = True
@@ -1067,7 +1067,7 @@ class GameView(arcade.View):
             self.correr = True
             self.casco_vikingo = False
             self.embestir = False
-        elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:
+        elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:  #Casco de vikingo, permite embestir para romper muros
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
             self.casco_azul = False
             self.casco_verde = False

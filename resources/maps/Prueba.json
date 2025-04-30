@@ -505,7 +505,7 @@
         {
          "draworder":"topdown",
          "id":9,
-         "name":"puelta",
+         "name":"dasheable",
          "objects":[
                 {
                  "gid":1324,
