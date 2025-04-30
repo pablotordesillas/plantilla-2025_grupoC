@@ -34,21 +34,23 @@ Graphics Assets From:
 * [Pipoya Free RPG Tileset 32x32](https://pipoya.itch.io/pipoya-rpg-tileset-32x32)
 * [Pipoya Free RPG Character Sprites 32x32](https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32)
 * [Kenney Input Prompts Pixel 16x16](https://kenney.nl/assets/input-prompts-pixel-16)
+* [Itch.io Game Assets](https://itch.io/game-assets)
 
-##  Gameplay
+##  <u>Gameplay.</u>
 This is where we are supposed to explain how the game works and tell about its mechanics.
 
-## Controls
+## <u>Controls.</u>
 - **Movement:** WASD / Arrow Keys
-- **Toggle Flashlight:** L *(Must be inside of the cave)*
-- **Pick Up Items:** E
-- **Open Inventory:** I *(Inventory has no purpose yet but to show and select items)*
-- **Inventory item selection** 1-0 *(Number keys)*
+- **Power-up mode / Helmet selector** 1-4 *(Number keys, not NumPad)*:<br>
+-> Mode 1: Standard mode: does nothing, makes the player move normally.<br>
+-> Mode 2: Dash mode [SPACEBAR]: allows the player to dash and leap / go through objects.<br>
+-> Mode 3: Sprint mode [Hold LSHIFT]: allows the player to sprint and move faster than usual.<br>
+-> Mode 4: Ram mode [SPACEBAR]: similarly to dash mode, but slower and further.
 - **Open Menu:** ESC
 
-## Development and execution
+## <u>Development and execution.</u>
 
-This project requires at least **Python version 3.7** (game was made in  Python ver. 3.9) and must use **Arcade ver. 2.6.17**.
+This project requires <u>**at least Python version 3.7**</u> (game was made in  Python ver. 3.9) and must use <u>**Arcade ver. 2.6.17**</u>.
 Arcade version might not be installed when the assets are downloaded so you may install it manually after forking and cloning with the following steps:
 - Go to File, Settings (or just do CTRL + Comma) and click the option where your project name is displayed.
 - Select 'Python Interpreter'.
@@ -59,11 +61,11 @@ Arcade version might not be installed when the assets are downloaded so you may 
 - Go to 'rpg' folder, click 'main' (between double underscores) and execute the file.
 - If it doesn't work, please refer to the next section.
 
-## Contact the developers of the game.
+## <u>Contact the developers of the game.</u>
 (Outlook school e-mails go here)
 If devs cannot help as well, please contact the maintainer of the original project.
 
-## Contact Maintainer of the original project
+## <u>Contact Maintainer of the original project.</u>
 
 paul@cravenfamily.com
 
