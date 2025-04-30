@@ -939,7 +939,7 @@ class GameView(arcade.View):
             if len(rompible_hit) > 0:
                 rompible_sprite = rompible_hit[0]  # El sprite de la puerta con la que hemos colisionado
 
-                if self.space_pressed or self.cooldown and self.casco_azul==True:
+                if self.space_pressed or self.cooldown and self.casco_vikingo ==True:
                     #print("BOOOOOOOOOOM")
                     #UN RESPLANDOR Y HACE PUUUUUM
                     rompible_sprite.remove_from_sprite_lists()
@@ -1041,7 +1041,7 @@ class GameView(arcade.View):
         elif key in constants.SEARCH: #Esto en una constante es la letra E
             self.search()
 
-        elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:
+        elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:  #Casco naranja, sin efecto especial
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
             self.casco_azul = False
             self.casco_verde = False
@@ -1050,7 +1050,7 @@ class GameView(arcade.View):
             self.casco_vikingo = False
             self.embestir = False
 
-        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2:
+        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2: #Casco azul, posibilidad de hacer dash
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
             self.casco_azul = True
             self.casco_verde = False
@@ -1059,7 +1059,7 @@ class GameView(arcade.View):
             self.casco_vikingo = False
             self.embestir = False
 
-        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:
+        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:  #Casco verde, permite correr
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
             self.casco_azul = False
             self.casco_verde = True
@@ -1067,7 +1067,7 @@ class GameView(arcade.View):
             self.correr = True
             self.casco_vikingo = False
             self.embestir = False
-        elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:
+        elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:  #Casco de vikingo, permite embestir para romper muros
             self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
             self.casco_azul = False
             self.casco_verde = False
