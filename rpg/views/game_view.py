@@ -817,22 +817,22 @@ class GameView(arcade.View):
         if self.correr == True:  # Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2
-            if MOVING_DOWN_RUN:
+            elif MOVING_DOWN_RUN:
                 self.player_sprite.change_y = -SPEED_AUX * 2
-            if MOVING_LEFT_RUN:
+            elif MOVING_LEFT_RUN:
                 self.player_sprite.change_x = -SPEED_AUX * 2
-            if MOVING_RIGHT_RUN:
+            elif MOVING_RIGHT_RUN:
                 self.player_sprite.change_x = SPEED_AUX * 2
-            if MOVING_UP_LEFT_RUN:
+            elif MOVING_UP_LEFT_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX * 2 / 1.5
-            if MOVING_UP_RIGHT_RUN:
+            elif MOVING_UP_RIGHT_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX * 2 / 1.5
-            if MOVING_DOWN_LEFT_RUN:
+            elif MOVING_DOWN_LEFT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX * 2 / 1.5
-            if MOVING_DOWN_RIGHT_RUN:
+            elif MOVING_DOWN_RIGHT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX * 2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX * 2 / 1.5
 
@@ -849,22 +849,22 @@ class GameView(arcade.View):
         if self.correr == True: #Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
                 self.player_sprite.change_y = SPEED_AUX*2
-            if MOVING_DOWN_RUN:
+            elif MOVING_DOWN_RUN:
                 self.player_sprite.change_y = -SPEED_AUX*2
-            if MOVING_LEFT_RUN:
+            elif MOVING_LEFT_RUN:
                 self.player_sprite.change_x = -SPEED_AUX*2
-            if MOVING_RIGHT_RUN:
+            elif MOVING_RIGHT_RUN:
                 self.player_sprite.change_x = SPEED_AUX*2
-            if MOVING_UP_LEFT_RUN:
+            elif MOVING_UP_LEFT_RUN:
                 self.player_sprite.change_y = SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
-            if MOVING_UP_RIGHT_RUN:
+            elif MOVING_UP_RIGHT_RUN:
                 self.player_sprite.change_y = SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX*2 / 1.5
-            if MOVING_DOWN_LEFT_RUN:
+            elif MOVING_DOWN_LEFT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
-            if MOVING_DOWN_RIGHT_RUN:
+            elif MOVING_DOWN_RIGHT_RUN:
                 self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
                 self.player_sprite.change_x = SPEED_AUX*2 / 1.5
         # Call update to move the sprite
