@@ -783,7 +783,10 @@ class GameView(arcade.View):
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 if not self.humo_activo:  # Solo crea humo si no hay uno activo
-                    self.crear_humo(x, y, offset_x=-20)
+                    threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_x': -20}).start()
+                    threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_x': 10}).start()
+                    threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_x': 40}).start()
+                    threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_x': 70}).start()
                     self.humo_activo = True  # Marca que el humo está activo
 
             # Mover a la izquierda
@@ -791,7 +794,10 @@ class GameView(arcade.View):
                 self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 if not self.humo_activo:
-                    self.crear_humo(x, y, offset_x=20)
+                    threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_x': 20}).start()
+                    threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_x': -10}).start()
+                    threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_x': -40}).start()
+                    threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_x': -70}).start()
                     self.humo_activo = True
 
             # Mover hacia arriba
@@ -799,7 +805,10 @@ class GameView(arcade.View):
                 self.player_sprite.change_y = constants.MOVEMENT_SPEED + 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 if not self.humo_activo:
-                    self.crear_humo(x, y, offset_y=-20)
+                    threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_y': -20}).start()
+                    threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_y': 10}).start()
+                    threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_y': 40}).start()
+                    threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_y': 70}).start()
                     self.humo_activo = True
 
             # Mover hacia abajo
@@ -807,7 +816,10 @@ class GameView(arcade.View):
                 self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 if not self.humo_activo:
-                    self.crear_humo(x, y, offset_y=20)
+                    threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_y': 20}).start()
+                    threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_y': -10}).start()
+                    threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_y': -40}).start()
+                    threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_y': -70}).start()
                     self.humo_activo = True
 
             # Actualizar animaciones
