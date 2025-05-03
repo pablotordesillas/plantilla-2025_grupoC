@@ -26,6 +26,8 @@ Contador = 5
 Puerta = True
 #Contador de monedas del castillo exterior
 Contador_castilloext=6
+#Contador llaves del castillo principal
+Contador_castilloprinc=2
 
 
 # How many pixels to keep as a minimum margin between the character

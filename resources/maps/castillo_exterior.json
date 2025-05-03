@@ -247,12 +247,12 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":15
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":15
                         }],
                  "rotation":0,
                  "type":"",
@@ -270,17 +270,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"castillo_principal"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":31
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":41
                         }],
                  "rotation":0,
                  "type":"",
@@ -545,23 +545,23 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/sample_map\/Castillo.tsx"
+         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Castillo.tsx"
         }, 
         {
          "firstgid":257,
-         "source":"..\/sample_map\/Dungeon1.tsx"
+         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon1.tsx"
         }, 
         {
          "firstgid":449,
-         "source":"..\/sample_map\/Dungeon2.tsx"
+         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon2.tsx"
         }, 
         {
          "firstgid":705,
-         "source":"..\/sample_map\/Dungeon3.tsx"
+         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon3.tsx"
         }, 
         {
          "firstgid":961,
-         "source":"..\/tilesets\/Caves.json"
+         "source":"..\/..\/..\/Pruebas\/resources\/tilesets\/Caves.json"
         }],
  "tilewidth":32,
  "type":"map",

@@ -140,12 +140,12 @@ class GameView(arcade.View):
     def __init__(self, map_list):
         super().__init__()
 
+        self.contadorB = 0
         self.clock_sprite = None
         self.y_guardado = None # Posicion guardada en la que se incio el temporizador
         self.x_guardado = None # Posicion guardada en la que se incio el temporizador
         self.mapa_guardado = None # Mapa guardado en el que se inicio el temporizador
         arcade.set_background_color(arcade.color.AMAZON)
-
         self.setup_debug_menu()
 
         self.ui_manager = arcade.gui.UIManager()
@@ -230,7 +230,6 @@ class GameView(arcade.View):
         :param start_y: Grid y location to spawn at
         """
         self.cur_map_name = map_name
-
         try:
             self.my_map = self.map_list[self.cur_map_name]
         except KeyError:
@@ -251,7 +250,6 @@ class GameView(arcade.View):
         self.player_sprite_list.append(self.player_sprite)
 
         self.setup_physics()
-
         if self.my_map.light_layer:
             self.my_map.light_layer.resize(self.window.width, self.window.height)
 
@@ -467,7 +465,6 @@ class GameView(arcade.View):
         All the logic to move, and the game logic goes here.
         """
 
-        global contador_puertaD
         if(self.total_time <= 0.0): # Si el temporizador llega a 0:
 
             if(self.show_timer==True):
@@ -965,25 +962,70 @@ class GameView(arcade.View):
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name=="Prueba":
                     constants.Contador -=1
-                if self.cur_map_name=="castillo_exterior":
+                elif self.cur_map_name=="castillo_exterior":
                     constants.Contador_castilloext-=1
-
+                elif self.cur_map_name=="castillo_principal":
+                    constants.Contador_castilloprinc-=1
 
         if "puertaD" in map_layers:
-            if self.cur_map_name=="castillo_exterior":
-                contador_puertaD= constants.Contador_castilloext
 
-            if contador_puertaD>0:
+            if self.cur_map_name == "castillo_exterior":
+                contador_puertaD = constants.Contador_castilloext
+            elif self.cur_map_name == "castillo_principal":
+                contador_puertaD = constants.Contador_castilloprinc
+            else:
+                contador_puertaD=0
+
+            if contador_puertaD > 0:
                 for puertaD in map_layers["puertaD"]:
                     if puertaD not in self.my_map.scene["wall_list"]:
                         self.my_map.scene["wall_list"].append(puertaD)
-            elif contador_puertaD==0:
+            elif contador_puertaD == 0:
                 for puertaD in map_layers["puertaD"]:
                     if puertaD in self.my_map.scene["wall_list"]:
                         self.my_map.scene["wall_list"].remove(puertaD)
                         puertaD.remove_from_sprite_lists()
 
+        if "puertaB" in map_layers:
+
+            for puertaB in map_layers["puertaB"]:
+                if puertaB.visible==True:
+                    puertaB.visible=False
+            doorsB_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, map_layers["puertaB"]
+            )
+
+            if len(doorsB_hit) > 0:
+                doorB = doorsB_hit[0]
+                self.contadorB+=1
+
+                doorB.visible = True
+                try:
+
+                    # Grab the info we need
+
+                    map_name = doorB.properties["map_name"]
+                    start_x = doorB.properties["start_x"]
+                    start_y = doorB.properties["start_y"]
+                except KeyError:
+                    raise KeyError(
+                        "Door objects must have 'map_name', 'start_x', and 'start_y' properties defined."
+                    )
+
+                # Swap to the new map
+                if(doorB.visible==True and self.contadorB==2):
+                    time.sleep(0.5)
+                    self.switch_map(map_name, start_x, start_y)
+                    self.contadorB=0
+                    doorB.visible=False
+
         if "puertaM" in map_layers:
+            if self.cur_map_name=="Prueba":
+                contador_puertaM = constants.Contador
+            elif self.cur_map_name == "castillo_principal":
+                contador_puertaM = constants.Contador_castilloprinc
+            else:
+                contador_puertaM=0
             for puertaM in map_layers["puertaM"]:
                 if puertaM in self.my_map.scene["wall_list"]:
                     self.my_map.scene["wall_list"].remove(puertaM)
@@ -993,7 +1035,7 @@ class GameView(arcade.View):
 
             if len(puertaM_hit) > 0:
                 puertaM_sprite = puertaM_hit[0]  # El sprite de la puerta con la que hemos colisionado
-                if constants.Contador == 0:
+                if contador_puertaM == 0:
                     if constants.Puerta == True:
                         #print("CLICK") #MONDONGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                         arcade.play_sound(arcade.load_sound(":sounds:puerta.mp3"))
