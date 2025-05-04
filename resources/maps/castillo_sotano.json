@@ -379,15 +379,15 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon1.tsx"
+         "source":"..\/sample_map\/Dungeon1.tsx"
         }, 
         {
          "firstgid":193,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon2.tsx"
+         "source":"..\/sample_map\/Dungeon2.tsx"
         }, 
         {
          "firstgid":449,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon3.tsx"
+         "source":"..\/sample_map\/Dungeon3.tsx"
         }, 
         {
          "firstgid":705,
