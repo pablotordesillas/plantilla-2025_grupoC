@@ -17,35 +17,32 @@ class LoadingView(arcade.View):
         self.started = False
         self.progress = 0
         self.map_list = None
-        arcade.set_background_color(arcade.color.ALMOND)
+        arcade.set_background_color(arcade.color.BLACK_OLIVE)
 
     def on_draw(self):
         arcade.start_render()
-        arcade.draw_text(
-            "Loading...",
-            self.window.width / 2,
-            self.window.height / 2,
-            arcade.color.ALLOY_ORANGE,
-            44,
-            anchor_x="center",
-            anchor_y="center",
-            align="center",
-            width=self.window.width,
-        )
         self.started = True
+        #Se dibuja la imagen de la pantalla de carga
+        arcade.draw_lrwh_rectangle_textured((self.window.width - self.background.width) / 2,(self.window.height - self.background.height) / 2, self.background.width, self.background.height, self.background)
+        #Barra de carga
         draw_bar(
             current_amount=self.progress,
             max_amount=100,
             center_x=self.window.width / 2,
-            center_y=20,
-            width=self.window.width,
-            height=10,
+            center_y=120,
+            width=400,
+            height=40,
             color_a=arcade.color.BLACK,
             color_b=arcade.color.WHITE,
         )
+        #Borde alrededor de la barra de carga
+        arcade.draw_rectangle_outline(center_x= self.window.width/2, center_y = 120, width=400, height = 40, color=arcade.color.BISTRE, border_width=10)
+        #Texto loading
+        arcade.draw_texture_rectangle(self.window.width/2, 180, self.loading_text_texture.width, self.loading_text_texture.height, self.loading_text_texture)
 
     def setup(self):
-        pass
+        self.background = arcade.load_texture(":misc:loading_screen.PNG")
+        self.loading_text_texture = arcade.load_texture(":misc:loading_text.PNG")
 
     def on_update(self, delta_time: float):
         # Dictionary to hold all our maps

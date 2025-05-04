@@ -78,7 +78,6 @@ class MainMenuView(arcade.View):
 
     def on_show_view(self):
         self.manager.enable()
-        #arcade.set_background_color(arcade.color.ALMOND)
 
     def on_hide_view(self):
         self.manager.disable()

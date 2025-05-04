@@ -12,7 +12,7 @@ from rpg.views import LoadingView
 
 class MyWindow(arcade.Window):
     def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, resizable=True)
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, resizable=True, vsync=True)
         self.views = {}
 
         arcade.resources.add_resource_handle("characters", "../resources/characters")

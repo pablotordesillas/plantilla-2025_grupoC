@@ -2,17 +2,35 @@
 Settings
 """
 import arcade
+import arcade.gui
 import rpg.constants as constants
+from rpg.constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 
 class SettingsView(arcade.View):
     def __init__(self, background_texture = None):
         super().__init__()
         self.started = False
+
+        # --- Required for all code that uses UI element, a UIManager to handle the UI.
+        self.manager = arcade.gui.UIManager()
+
+        # Create a vertical BoxGroup to align buttons
+        self.v_box = arcade.gui.UIBoxLayout()
+
         # Fondo
         self.background_texture = background_texture
+
         # Recuadro
         self.panel_texture = arcade.load_texture(":misc:recuadro.PNG")
+
+        # Create a widget to hold the v_box widget, that will center the buttons
+        self.manager.add(
+            arcade.gui.UIAnchorWidget(
+                anchor_x="center_x", anchor_y="center_y", align_y=-20, child=self.v_box
+                # Align_y sirve para desplazar verticalmente TODOS los botones (positivo arriba, negativo abajo)
+            )
+        )
 
     def on_draw(self):
         arcade.start_render()
@@ -36,12 +54,13 @@ class SettingsView(arcade.View):
             self.panel_texture,
             scale=1.0
         )
+        self.manager.draw()
 
     def setup(self):
         pass
 
     def on_show_view(self):
-        arcade.set_background_color(arcade.color.ALMOND)
+        self.manager.enable()
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_key_press(self, symbol: int, modifiers: int):
