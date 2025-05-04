@@ -30,8 +30,8 @@ class MainMenuView(arcade.View):
         self.play_hover = arcade.load_texture(":misc:play_hover.png")
 
         #Botón settings
-        self.settings_normal = arcade.load_texture(":misc:settings_normal.png")
-        self.settings_hover = arcade.load_texture(":misc:settings_hover.png")
+        self.controls_normal = arcade.load_texture(":misc:controls_normal.png")
+        self.controls_hover = arcade.load_texture(":misc:controls_hover.png")
 
         #Botón new game
         self.new_game_normal = arcade.load_texture(":misc:new_game_normal.png")
@@ -50,9 +50,9 @@ class MainMenuView(arcade.View):
         play_button.on_click = self.on_click_resume
 
         #Settings
-        settings_button = arcade.gui.UITextureButton(texture=self.settings_normal, texture_hovered=self.settings_hover)
-        self.v_box.add(settings_button.with_space_around(bottom=10))
-        settings_button.on_click = self.on_click_settings
+        controls_button = arcade.gui.UITextureButton(texture=self.controls_normal, texture_hovered=self.controls_hover)
+        self.v_box.add(controls_button.with_space_around(bottom=10))
+        controls_button.on_click = self.on_click_settings
 
         #OPCIÓN DESACTIVADA TEMPORALMENTE
         #battle_button = arcade.gui.UIFlatButton(text="Battle Screen", width=200)

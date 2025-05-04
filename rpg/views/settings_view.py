@@ -22,15 +22,8 @@ class SettingsView(arcade.View):
         self.background_texture = background_texture
 
         # Recuadro
-        self.panel_texture = arcade.load_texture(":misc:recuadro.PNG")
+        self.panel_texture = arcade.load_texture(":misc:recuadro_controls.PNG")
 
-        # Create a widget to hold the v_box widget, that will center the buttons
-        self.manager.add(
-            arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", align_y=-20, child=self.v_box
-                # Align_y sirve para desplazar verticalmente TODOS los botones (positivo arriba, negativo abajo)
-            )
-        )
 
     def on_draw(self):
         arcade.start_render()
