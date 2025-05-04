@@ -1646,11 +1646,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon2.tsx"
+         "source":"..\/sample_map\/Dungeon2.tsx"
         }, 
         {
          "firstgid":257,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon1.tsx"
+         "source":"..\/sample_map\/Dungeon1.tsx"
         }, 
         {
          "firstgid":449,
@@ -1658,15 +1658,15 @@
         }, 
         {
          "firstgid":1513,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Dungeon3.tsx"
+         "source":"..\/sample_map\/Dungeon3.tsx"
         }, 
         {
          "firstgid":1769,
-         "source":"..\/..\/..\/Pruebas\/resources\/tilesets\/Caves.json"
+         "source":"..\/tilesets\/Caves.json"
         }, 
         {
          "firstgid":3361,
-         "source":"..\/..\/..\/Pruebas\/resources\/sample_map\/Castillo.tsx"
+         "source":"..\/sample_map\/Castillo.tsx"
         }, 
         {
          "firstgid":3617,
