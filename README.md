@@ -37,7 +37,9 @@ Graphics Assets From:
 * [Itch.io Game Assets](https://itch.io/game-assets)
 
 ##  <u>Gameplay.</u>
-This is where we are supposed to explain how the game works and tell about its mechanics.
+>Your objective is to escape a set of labyrinthically thought levels before the time runs out.<br>
+However, if you don't make it, worry not! You will be resetted to the start of the level!<br>
+All the information about the game can also be found (in Spanish) in our 'docs' folder within the 'gdd.md' file!
 
 ## <u>Controls.</u>
 - **Movement:** WASD / Arrow Keys
@@ -50,22 +52,27 @@ This is where we are supposed to explain how the game works and tell about its m
 
 ## <u>Development and execution.</u>
 
-This project requires <u>**at least Python version 3.7**</u> (game was made in  Python ver. 3.9) and must use <u>**Arcade ver. 2.6.17**</u>.
+This project requires <u>**at least Python version 3.7**</u> (game was made in  Python ver. 3.9 / 3.10) and must use <u>**Arcade ver. 2.6.17**</u>.
 Arcade version might not be installed when the assets are downloaded so you may install it manually after forking and cloning with the following steps:
 - Go to File, Settings (or just do CTRL + Comma) and click the option where your project name is displayed.
 - Select 'Python Interpreter'.
-- Click the '+' button and search for Arcade library.
+- Select 'Add interpreter'
+- Choose ver. 3.7 - 3.10
+- Click the '+' button and search for <u>Arcade</u> library.
 - Select the aforementioned library and check the 'Specify other version' box.
 - Select ver. 2.6.17 and press 'Install'.
-- Wait until it's done and press 'Close'.
+- Wait until it's done and press 'Close'. <i>It will show somewhere below that it has been implemented.</i>
 - Go to 'rpg' folder, click 'main' (between double underscores) and execute the file.
 - If it doesn't work, please refer to the next section.
 
 ## <u>Contact the developers of the game.</u>
-(Outlook school e-mails go here)
+- emanuel.baciu@edu.uah.es<br>
+- <br>
+- <br>
+- <br>
+- <br>
 If devs cannot help as well, please contact the maintainer of the original project.
 
 ## <u>Contact Maintainer of the original project.</u>
-
 paul@cravenfamily.com
 
