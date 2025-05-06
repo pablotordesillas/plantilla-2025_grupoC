@@ -29,7 +29,7 @@ Contador_castilloext=6
 #Contador llaves del castillo principal
 Contador_castilloprinc=2
 #Contador gemas coliseo main.
-Contador_colossmain=5
+Contador_colossmain=6
 
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
