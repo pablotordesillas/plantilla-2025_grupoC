@@ -1047,7 +1047,7 @@ class GameView(arcade.View):
                         def reactivar_puerta():
                             constants.Puerta = True
                         threading.Timer(5, reactivar_puerta).start()
-                        #puertaM_sprite.remove_from_sprite_lists()#Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
+                        puertaM_sprite.remove_from_sprite_lists() #Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
                 else:
                     print("Dale zelda dale")
                     self.my_map.scene["wall_list"].append(puertaM_sprite)
