@@ -41,8 +41,8 @@ class LoadingView(arcade.View):
         arcade.draw_texture_rectangle(self.window.width/2, 180, self.loading_text_texture.width, self.loading_text_texture.height, self.loading_text_texture)
 
     def setup(self):
-        self.background = arcade.load_texture(":misc:loading_screen.PNG")
-        self.loading_text_texture = arcade.load_texture(":misc:loading_text.PNG")
+        self.background = arcade.load_texture(":misc:loading_screen.png")
+        self.loading_text_texture = arcade.load_texture(":misc:loading_text.png")
 
     def on_update(self, delta_time: float):
         # Dictionary to hold all our maps

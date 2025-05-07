@@ -1042,7 +1042,7 @@ class GameView(arcade.View):
                 if contador_puertaM == 0:
                     if constants.Puerta == True:
                         #print("CLICK") #MONDONGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                        arcade.play_sound(arcade.load_sound(":sounds:puerta.mp3"))
+                        arcade.play_sound(arcade.load_sound(":sounds:puerta.wav"))
                         constants.Puerta = False
                         def reactivar_puerta():
                             constants.Puerta = True

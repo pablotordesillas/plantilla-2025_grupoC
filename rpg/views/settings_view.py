@@ -22,7 +22,7 @@ class SettingsView(arcade.View):
         self.background_texture = background_texture
 
         # Recuadro
-        self.panel_texture = arcade.load_texture(":misc:recuadro_controls.PNG")
+        self.panel_texture = arcade.load_texture(":misc:recuadro_controls.png")
 
 
     def on_draw(self):
