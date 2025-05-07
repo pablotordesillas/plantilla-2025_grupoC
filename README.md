@@ -44,10 +44,10 @@ All the information about the game can also be found (in Spanish) in our 'docs' 
 ## <u>Controls.</u>
 - <u>**Movement</u>:** WASD / Arrow Keys
 - <u>**Power helmets selector**</u> 1-4 *(Number keys, not NumPad)*:<br>
--> Mode 1: Standard helmet: does nothing, makes the player move normally.<br>
--> Mode 2: Dash helmet [SPACEBAR]: allows the player to dash and leap / go through objects.<br>
--> Mode 3: Swift helmet  [Hold LSHIFT]: allows the player to sprint and move faster than usual.<br>
--> Mode 4: Ram helmet [SPACEBAR]: similarly to the dash helmet, but slower and further.
+-> Mode 1: <span style="color:orange;">**Standard**</span> helmet: does nothing, makes the player move normally.<br>
+-> Mode 2: <span style="color:lightgreen;">**Dashing**</span> helmet <span style="color:lightgreen;">[SPACEBAR]</span>: allows the player to <u>dash</u> through objects.<br>
+-> Mode 3: <span style="color:lightblue;">**Swift**</span> helmet  <span style="color:lightblue;">[Hold LSHIFT]</span>: allows the player to <u>sprint</u> and move faster than usual.<br>
+-> Mode 4: <span style="color:grey;">**Ramming**</span> helmet <span style="color:grey;">[SPACEBAR]</span>: allows the player to <u>ram</u> onto objects and break them.
 - <u>**Open Menu</u>:** [ESC] Pause the game and take a break! (Cannot restart or save) 
 
 ## <u>Development and execution.</u>
