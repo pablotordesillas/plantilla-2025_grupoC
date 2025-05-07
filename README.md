@@ -56,27 +56,20 @@ This project requires <u>**at least Python version 3.7**</u> (game was made in  
 Arcade version might not be installed when the assets are downloaded so you may install it manually after forking and cloning with the following steps:
 - Go to File, Settings (or just do CTRL + Comma) and click the option where your project name is displayed.<br>
 ![Step1](/steps/1.png)<br>
-<br>
 - Select 'Python Interpreter'.<br>
 ![Step2](/steps/2.png)<br>
-<br>
 - Select 'Add interpreter' and select 'Add Local'.<br>
 ![Step3](/steps/3.png)<br>
-<br>
 - Choose ver. 3.7 - 3.10<br>
 ![Step4](/steps/4.png)<br>
-<br>
 - Click the '+' button and search for <u>Arcade</u> library.<br>
 ![Step5](/steps/5.png)<br>
-<br>
 - Select the aforementioned library and check the 'Specify other version' box.
 - Select ver. 2.6.17 and press 'Install'.
 - Wait until it's done and press 'Close'. <i>It will show somewhere below that it has been implemented.</i><br>
 ![Step6](/steps/6.png)<br>
-<br>
 - Go to 'rpg' folder, click 'main' (between double underscores) and execute the file.<br>
 ![Step7](/steps/7.png)<br>
-<br>
 - If it doesn't work, please refer to the next section.
 
 ## <u>Contact the developers of the game.</u>
