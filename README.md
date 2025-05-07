@@ -42,36 +42,44 @@ However, if you don't make it, worry not! You will be resetted to the start of t
 All the information about the game can also be found (in Spanish) in our 'docs' folder within the 'gdd.md' file!
 
 ## <u>Controls.</u>
-- **Movement:** WASD / Arrow Keys
-- **Power-up mode / Helmet selector** 1-4 *(Number keys, not NumPad)*:<br>
--> Mode 1: Standard mode: does nothing, makes the player move normally.<br>
--> Mode 2: Dash mode [SPACEBAR]: allows the player to dash and leap / go through objects.<br>
--> Mode 3: Sprint mode [Hold LSHIFT]: allows the player to sprint and move faster than usual.<br>
--> Mode 4: Ram mode [SPACEBAR]: similarly to dash mode, but slower and further.
-- **Open Menu:** ESC
+- <u>**Movement</u>:** WASD / Arrow Keys
+- <u>**Power helmets selector**</u> 1-4 *(Number keys, not NumPad)*:<br>
+-> Mode 1: Standard helmet: does nothing, makes the player move normally.<br>
+-> Mode 2: Dash helmet [SPACEBAR]: allows the player to dash and leap / go through objects.<br>
+-> Mode 3: Swift helmet  [Hold LSHIFT]: allows the player to sprint and move faster than usual.<br>
+-> Mode 4: Ram helmet [SPACEBAR]: similarly to the dash helmet, but slower and further.
+- <u>**Open Menu</u>:** [ESC] Pause the game and take a break! (Cannot restart or save) 
 
 ## <u>Development and execution.</u>
 
 This project requires <u>**at least Python version 3.7**</u> (game was made in  Python ver. 3.9 / 3.10) and must use <u>**Arcade ver. 2.6.17**</u>.
 Arcade version might not be installed when the assets are downloaded so you may install it manually after forking and cloning with the following steps:
-- Go to File, Settings (or just do CTRL + Comma) and click the option where your project name is displayed.
-- Select 'Python Interpreter'.
-- Select 'Add interpreter'
-- Choose ver. 3.7 - 3.10
-- Click the '+' button and search for <u>Arcade</u> library.
+- Go to File, Settings (or just do CTRL + Comma) and click the option where your project name is displayed.<br>
+![Step1](https://imgur.com/a/fhBMvTw)<br>
+- Select 'Python Interpreter'.<br>
+![Step2](https://imgur.com/Z2oXldY)<br>
+- Select 'Add interpreter' and select 'Add Local'.<br>
+![Step3](https://imgur.com/lxlAbY6)<br>
+- Choose ver. 3.7 - 3.10<br>
+![Step4](https://imgur.com/TrbuXqF)<br>
+- Click the '+' button and search for <u>Arcade</u> library.<br>
+![Step5](https://imgur.com/CfEp9tP)<br>
 - Select the aforementioned library and check the 'Specify other version' box.
 - Select ver. 2.6.17 and press 'Install'.
-- Wait until it's done and press 'Close'. <i>It will show somewhere below that it has been implemented.</i>
-- Go to 'rpg' folder, click 'main' (between double underscores) and execute the file.
+- Wait until it's done and press 'Close'. <i>It will show somewhere below that it has been implemented.</i><br>
+![Step6](https://imgur.com/RMTaWHa)<br>
+- Go to 'rpg' folder, click 'main' (between double underscores) and execute the file.<br>
+![Step7](https://imgur.com/Tlq55zS)<br>
 - If it doesn't work, please refer to the next section.
 
 ## <u>Contact the developers of the game.</u>
 - emanuel.baciu@edu.uah.es<br>
-- <br>
-- <br>
-- <br>
-- <br>
-If devs cannot help as well, please contact the maintainer of the original project.
+- casia.enoiu@edu.uah.es<br>
+- pablo.straus@edu.uah.es<br>
+- alejandro.mata@edu.uah.es<br>
+- pablo.tordesillas@edu.uah.es<br>
+- isaac.quintian@edu.uah.es
+>If the devs of this project cannot help, please refer to the next section to contact the maintainer of the original project.
 
 ## <u>Contact Maintainer of the original project.</u>
 paul@cravenfamily.com
