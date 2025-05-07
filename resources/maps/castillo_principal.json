@@ -92,17 +92,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"castillo_salida"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":65
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":106
                         }],
                  "rotation":0,
                  "type":"",
@@ -120,17 +120,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"castillo_salida"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":65
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":106
                         }],
                  "rotation":0,
                  "type":"",
@@ -148,17 +148,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"castillo_salida"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":65
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":106
                         }],
                  "rotation":0,
                  "type":"",
@@ -176,17 +176,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"castillo_salida"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":65
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":106
                         }],
                  "rotation":0,
                  "type":"",
@@ -1573,7 +1573,7 @@
          "name":"puertaM",
          "objects":[
                 {
-                 "gid":7261,
+                 "gid":5669,
                  "height":32,
                  "id":83,
                  "name":"",
@@ -1585,7 +1585,7 @@
                  "y":896
                 }, 
                 {
-                 "gid":2147490909,
+                 "gid":2147489317,
                  "height":32,
                  "id":84,
                  "name":"",
@@ -1670,10 +1670,6 @@
         }, 
         {
          "firstgid":3617,
-         "source":"..\/tilesets\/Caves.json"
-        }, 
-        {
-         "firstgid":5209,
          "source":"..\/sample_map\/Outside.tsx"
         }],
  "tilewidth":32,
