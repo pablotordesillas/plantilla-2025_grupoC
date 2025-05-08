@@ -967,6 +967,8 @@ class GameView(arcade.View):
                     constants.Contador_castilloprinc-=1
                 elif self.cur_map_name=="coloss_main":
                     constants.Contador_colossmain-=1
+                elif self.cur_map_name=="castillo_salida":
+                    constants.Contador_castillosal-=1
 
         if "puertaD" in map_layers:
 
@@ -1027,6 +1029,8 @@ class GameView(arcade.View):
                 contador_puertaM = constants.Contador_castilloprinc
             elif self.cur_map_name == "coloss_main":
                 contador_puertaM = constants.Contador_colossmain
+            elif self.cur_map_name == "castillo_salida":
+                contador_puertaM = constants.Contador_castillosal
             else:
                 contador_puertaM=0
             for puertaM in map_layers["puertaM"]:
