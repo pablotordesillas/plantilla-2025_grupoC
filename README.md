@@ -59,7 +59,8 @@ Arcade version might not be installed when the assets are downloaded so you may 
 - Select 'Python Interpreter'.<br>
 ![Step2](/steps/2.png)<br>
 - Select 'Add interpreter' and select 'Add Local'.<br>
-  - Choose ver. 3.7 - 3.10<br>
+  - Choose a version between 3.7 and 3.10 (most devs used 3.9 or 3.10)<br>
+  - Accept everything it tells you to (we don't know why, but it works if so)
 ![Step3](/steps/3.png)<br>
 - Click the '+' button and search for <u>Arcade</u> library.<br>
 ![Step4](/steps/4.png)<br>
