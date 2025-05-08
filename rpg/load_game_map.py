@@ -184,7 +184,7 @@ def load_map(map_name):
             game_map.scene["timer_list"].extend(sprite_list)
         elif "_stop" in layer:
             print("TIMER_STOP")
-            game_map.scene.remove_sprite_list_by_object(sprite_list)
+
 
             game_map.scene["stop_list"].extend(sprite_list)
         elif "_push" in layer:
