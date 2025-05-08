@@ -514,10 +514,10 @@ class GameView(arcade.View):
                 self.player_sprite, self.my_map.scene["timer_list"]
             )
             if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
-                if(self.cur_map_name=="Unfinished-Cave"):
-                    self.total_time = 30.0
-                elif(self.cur_map_name=="pyramid_main"):
+                if(self.cur_map_name=="Unfinished-Cave"): # Segun el mapa hay una cantdad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
                     self.total_time = 50.0
+                elif(self.cur_map_name=="pyramid_main"):
+                    self.total_time = 45.0
                 elif(self.cur_map_name=="coloss_main"):
                     self.total_time = 70.0
                 elif(self.cur_map_name=="castillo_principal"):
