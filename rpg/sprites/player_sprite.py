@@ -1,5 +1,5 @@
 import arcade
-
+import time
 from rpg.sprites.chacter_sprite1 import CharacterSprite_one
 from rpg.sprites.character_sprite import CharacterSprite
 
@@ -22,7 +22,7 @@ class PlayerSprite(CharacterSprite_one):
             self.sound_update += 1
             print(self.sound_update)
 
-        if self.sound_update >= 6:
+        if self.sound_update >= 4:
             arcade.play_sound(self.footstep_sound)
             self.sound_update = 0
             print("c")
