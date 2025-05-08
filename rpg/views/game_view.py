@@ -975,8 +975,10 @@ class GameView(arcade.View):
 
         if "un_monedo" in map_layers:
             monedo_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["un_monedo"])
+
             if len(monedo_hit) > 0:
-                monedo_sprite = monedo_hit[0]  # El sprite de la puerta con la que hemos colisionado
+                monedo_sprite = monedo_hit[0]  #El sprite de la puerta con la que hemos colisionado
+                arcade.play_sound(arcade.load_sound(":sounds:puerta.wav")) #sonido moneda cuando pillas
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name=="Prueba":
                     constants.Contador -=1
