@@ -1,0 +1,14 @@
+{ "columns":4,
+ "image":"..\/characters\/Male\/Player-4.png",
+ "imageheight":128,
+ "imagewidth":128,
+ "margin":0,
+ "name":"Player-4",
+ "spacing":0,
+ "tilecount":16,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

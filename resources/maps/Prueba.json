@@ -191,6 +191,71 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":18,
+         "name":"searchable",
+         "objects":[
+                {
+                 "gid":5865,
+                 "height":32,
+                 "id":41,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"item",
+                         "type":"string",
+                         "value":"Dashing_Helmet"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":448
+                }, 
+                {
+                 "gid":5881,
+                 "height":32,
+                 "id":42,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"item",
+                         "type":"string",
+                         "value":"Fleeting_Helmet"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":512
+                }, 
+                {
+                 "gid":5897,
+                 "height":32,
+                 "id":43,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"item",
+                         "type":"string",
+                         "value":"Charging_Helmet"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":576
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[0, 0, 0, 0, 0, 0, 816, 816, 816, 816, 816, 816, 816, 816, 816, 816, 816, 816, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -665,8 +730,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":18,
- "nextobjectid":41,
+ "nextlayerid":19,
+ "nextobjectid":44,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -683,6 +748,18 @@
         {
          "firstgid":5609,
          "source":"..\/sample_map\/Dungeon3.tsx"
+        }, 
+        {
+         "firstgid":5865,
+         "source":"..\/tilesets\/Player-2.json"
+        }, 
+        {
+         "firstgid":5881,
+         "source":"..\/tilesets\/Player-3.json"
+        }, 
+        {
+         "firstgid":5897,
+         "source":"..\/tilesets\/Player-4.json"
         }],
  "tilewidth":32,
  "type":"map",

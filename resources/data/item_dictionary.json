@@ -10,5 +10,17 @@
              "damage_amount": 10},
   "Lesser_Healing_Potion": {"short_name": "Lesser Healing Potion",
               "type": "Potion",
-              "heal_amount": 10}
+              "heal_amount": 10},
+  "Fleeting_Helmet": {
+    "short_name":"Fleeting Helmet",
+    "type": "Helmet"
+  },
+   "Charging_Helmet": {
+    "short_name":"Charging Helmet",
+    "type": "Helmet"
+  },
+   "Dashing_Helmet": {
+    "short_name":"Dashing Helmet",
+    "type": "Helmet"
+  }
 }
