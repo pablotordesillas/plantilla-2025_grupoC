@@ -32,6 +32,7 @@ class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
         noclip_callback: Callable,
         hyper_callback: Callable,
     ):
+        constants.SONIDO=0
         reproducir_musica_fondo()
         self.off_style = {
             "bg_color": arcade.color.BLACK,
@@ -515,12 +516,20 @@ class GameView(arcade.View):
             if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
                 if(self.cur_map_name=="Unfinished-Cave"): # Segun el mapa hay una cantdad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
                     self.total_time = 50.0
+                    constants.SONIDO=1
+                    reproducir_musica_fondo()
                 elif(self.cur_map_name=="pyramid_main"):
                     self.total_time = 45.0
+                    constants.SONIDO = 2
+                    reproducir_musica_fondo()
                 elif(self.cur_map_name=="coloss_main"):
                     self.total_time = 70.0
+                    constants.SONIDO = 3
+                    reproducir_musica_fondo()
                 elif(self.cur_map_name=="castillo_principal"):
                     self.total_time = 50.0
+                    constants.SONIDO = 4
+                    reproducir_musica_fondo()
                 else:
                     self.total_time = 30.0
                 self.show_timer = True
@@ -1302,7 +1311,10 @@ class GameView(arcade.View):
         self.player_sprite.change_y = 0
 
 def reproducir_musica_fondo():
-    sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    if constants.SONIDO==0:
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    if constants.SONIDO==1:
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     def loop_sound():
         player = arcade.play_sound(sonido)
         player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
