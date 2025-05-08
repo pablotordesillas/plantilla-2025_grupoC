@@ -14,16 +14,9 @@ class PlayerSprite(CharacterSprite_one):
     def on_update(self, delta_time):
         super().on_update(delta_time)
         if not self.change_x and not self.change_y:
-            #self.sound_update = 0
-            #print("a")
             return
-
-        if self.should_update > 4:
-            self.sound_update += 1
-            print(self.sound_update)
-
-        if self.sound_update >= 4:
+        speed = (self.change_x ** 2 + self.change_y ** 2) ** 0.5
+        self.sound_update += speed * delta_time
+        if self.sound_update >= 1.0:
             arcade.play_sound(self.footstep_sound)
             self.sound_update = 0
-            print("c")
-
