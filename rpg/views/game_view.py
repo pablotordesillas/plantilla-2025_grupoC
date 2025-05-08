@@ -935,6 +935,16 @@ class GameView(arcade.View):
                 if not self.space_pressed or self.cooldown or self.casco_azul==False:
                     self.my_map.scene["wall_list"].append(dasheable_sprite)  # El objeto bloquea el paso
 
+        if "timer" in map_layers:
+            timer_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["timer"])
+            if len(timer_hit) > 0 and self.show_timer == False:  # Activar el temporizador
+                self.total_time = timer_hit[0].properties["time"]
+                self.show_timer = True
+                self.x_guardado = self.player_sprite.center_x
+                self.y_guardado = self.player_sprite.center_y
+                self.mapa_guardado = self.cur_map_name
+
+
 
         if "rompible" in map_layers:
             for rompible in map_layers["rompible"]:
