@@ -1315,6 +1315,12 @@ def reproducir_musica_fondo():
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     if constants.SONIDO==1:
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    if constants.SONIDO==2:
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    if constants.SONIDO==3:
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    if constants.SONIDO==4:
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     def loop_sound():
         player = arcade.play_sound(sonido)
         player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
