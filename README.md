@@ -59,16 +59,17 @@ Arcade version might not be installed when the assets are downloaded so you may 
 - Select 'Python Interpreter'.<br>
 ![Step2](/steps/2.png)<br>
 - Select 'Add interpreter' and select 'Add Local'.<br>
+  - Choose a version between 3.7 and 3.10 (most devs used 3.9 or 3.10)<br>
+  - Accept everything it tells you to (we don't know why, but it works if so)
 ![Step3](/steps/3.png)<br>
-- Choose ver. 3.7 - 3.10<br>
-![Step4](/steps/4.png)<br>
 - Click the '+' button and search for <u>Arcade</u> library.<br>
-![Step5](/steps/5.png)<br>
+![Step4](/steps/4.png)<br>
 - Select the aforementioned library and check the 'Specify other version' box.
-- Select ver. 2.6.17 and press 'Install'.
-- Wait until it's done and press 'Close'. <i>It will show somewhere below that it has been implemented.</i><br>
-![Step6](/steps/6.png)<br>
+  - Select ver. 2.6.17 and press 'Install'.
+  - Wait until it's done and press 'Close'. <i>It will show somewhere below that it has been implemented.</i><br>
+  ![Step5](/steps/5.png)<br>
 - Go to 'rpg' folder, click 'main' (between double underscores) and execute the file.<br>
+![Step6](/steps/6.png)
 ![Step7](/steps/7.png)<br>
 - If it doesn't work, please refer to the next section.
 
