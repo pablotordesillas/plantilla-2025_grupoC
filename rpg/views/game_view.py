@@ -6,7 +6,7 @@ import json
 import time
 from functools import partial
 from typing import Callable
-
+import pyglet
 import arcade
 import arcade.gui
 import rpg.constants as constants
@@ -23,7 +23,6 @@ import threading
 from rpg.views.main_menu_view import MainMenuView
 from rpg.views.settings_view import SettingsView
 
-
 class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
     def __init__(
         self,
@@ -33,7 +32,7 @@ class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
         noclip_callback: Callable,
         hyper_callback: Callable,
     ):
-
+        reproducir_musica_fondo()
         self.off_style = {
             "bg_color": arcade.color.BLACK,
         }
@@ -1278,3 +1277,10 @@ class GameView(arcade.View):
         self.cooldown1 = False
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
+
+def reproducir_musica_fondo():
+    sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    def loop_sound():
+        player = arcade.play_sound(sonido)
+        player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
+    loop_sound()
