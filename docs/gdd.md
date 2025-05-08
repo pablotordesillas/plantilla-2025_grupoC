@@ -39,9 +39,7 @@
 > Tiene varias habitaciones en donde hay que recoger items para abrir puertas, una de ellas llena de trampas.
 ## <u>Personajes</u>:
 > - <u>Protagonista</u>: Explorador nato que no parara ante nada hasta conseguir escapar vivo.<br>
-><br>
 > - <u>Posibles NPCs enemigos</u>: tienen una ruta especifica que siguen a lo largo de una sala el cual el jugador tiene que evitar o derrotar con un disparo.<br>
-><br>
 > - <u>Voz misteriosa</u>: No se sabe quien es ni cual es su fuente de diversion perversa, solo sabemos que tiene el poder de teletransportarte entre diferente dimensiones, sitios e incluso épocas.
 ## <u>Físicas</u>:
 >- Colision con obstáculos.<br>
