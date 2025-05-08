@@ -28,6 +28,8 @@ Puerta = True
 Contador_castilloext=6
 #Contador llaves del castillo principal
 Contador_castilloprinc=2
+#Contador llaves del castillo salida
+Contador_castillosal=6
 #Contador gemas coliseo main.
 Contador_colossmain=6
 

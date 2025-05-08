@@ -6,7 +6,7 @@ import json
 import time
 from functools import partial
 from typing import Callable
-
+import pyglet
 import arcade
 import arcade.gui
 import rpg.constants as constants
@@ -23,7 +23,6 @@ import threading
 from rpg.views.main_menu_view import MainMenuView
 from rpg.views.settings_view import SettingsView
 
-
 class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
     def __init__(
         self,
@@ -33,7 +32,7 @@ class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
         noclip_callback: Callable,
         hyper_callback: Callable,
     ):
-
+        reproducir_musica_fondo()
         self.off_style = {
             "bg_color": arcade.color.BLACK,
         }
@@ -977,6 +976,8 @@ class GameView(arcade.View):
                     constants.Contador_castilloprinc-=1
                 elif self.cur_map_name=="coloss_main":
                     constants.Contador_colossmain-=1
+                elif self.cur_map_name=="castillo_salida":
+                    constants.Contador_castillosal-=1
 
         if "puertaD" in map_layers:
 
@@ -1037,6 +1038,8 @@ class GameView(arcade.View):
                 contador_puertaM = constants.Contador_castilloprinc
             elif self.cur_map_name == "coloss_main":
                 contador_puertaM = constants.Contador_colossmain
+            elif self.cur_map_name == "castillo_salida":
+                contador_puertaM = constants.Contador_castillosal
             else:
                 contador_puertaM=0
             for puertaM in map_layers["puertaM"]:
@@ -1287,3 +1290,10 @@ class GameView(arcade.View):
         self.cooldown1 = False
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
+
+def reproducir_musica_fondo():
+    sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+    def loop_sound():
+        player = arcade.play_sound(sonido)
+        player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
+    loop_sound()
