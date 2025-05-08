@@ -23,7 +23,7 @@
 
 ><u>Escapada contrarreloj</u>: Si se acaba el tiempo antes de que salgas de la sala, vuelves al principio.<br>
 
-><u>Trampas</u>: Pueden haber unas trampas en algunas de las salas que modifiquen la velocidad, impidan el movimiento del jugador o teletransportarlo del camino principal.☑️<br>
+><u>Trampas</u>: Pueden haber unas trampas en algunas de las salas que modifiquen la velocidad, impidan el movimiento del jugador o teletransportarlo del camino principal.<br>
 
 ## <u>Secuencia de niveles</u>:
 > 1- <u>**Cueva**</u>:<br>
