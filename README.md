@@ -37,17 +37,17 @@ Graphics Assets From:
 * [Itch.io Game Assets](https://itch.io/game-assets)
 
 ##  <u>Gameplay.</u>
->Your objective is to escape a set of labyrinthically thought levels before the time runs out.<br>
+>Your objective is to escape a set of labyrinthically thought levels before the timer runs out.<br>
 However, if you don't make it, worry not! You will be resetted to the start of the level!<br>
-All the information about the game can also be found (in Spanish) in our 'docs' folder within the 'gdd.md' file!
+All the information about the game can also be found (in Spanish) in our <u>[GDD](/docs/gdd.md)</u>
 
 ## <u>Controls.</u>
 - <u>**Movement</u>:** WASD / Arrow Keys
 - <u>**Power helmets selector**</u> 1-4 *(Number keys, not NumPad)*:<br>
 -> Mode 1: <font color ="orange">**Standard**</font> helmet: does nothing, makes the player move normally.<br>
--> Mode 2: <font color="lightgreen">**Dashing**</font> helmet <font color="lightgreen">[SPACEBAR]</font>: allows the player to <u>dash</u> through objects.<br>
+-> Mode 2: <font color="lightgreen">**Dashing**</font> helmet <font color="lightgreen">[SPACEBAR]</font>: allows the player to <u>dash</u> through certain objects.<br>
 -> Mode 3: <font color="lightblue">**Swift**</font> helmet  <font color="lightblue">[Hold LSHIFT]</font>: allows the player to <u>sprint</u> and move faster than usual.<br>
--> Mode 4: <font color="gray">**Ramming**</font> helmet <font color="gray">[SPACEBAR]</font>: allows the player to <u>ram</u> onto objects and break them.
+-> Mode 4: <font color="gray">**Ramming**</font> helmet <font color="gray">[SPACEBAR]</font>: allows the player to <u>ram</u> onto specific objects and break them.
 - <u>**Open Menu</u>:** [ESC] Pause the game and take a break! <font color="red">(Cannot restart or save)</font>
 
 ## <u>Development and execution.</u>
