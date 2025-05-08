@@ -159,9 +159,9 @@
          "name":"searchable",
          "objects":[
                 {
-                 "gid":4563,
+                 "gid":4579,
                  "height":32,
-                 "id":75,
+                 "id":76,
                  "name":"",
                  "properties":[
                         {
@@ -1069,7 +1069,7 @@
          "y":0
         }],
  "nextlayerid":21,
- "nextobjectid":76,
+ "nextobjectid":77,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -1094,6 +1094,10 @@
         {
          "firstgid":4563,
          "source":"..\/tilesets\/Player-3.json"
+        }, 
+        {
+         "firstgid":4579,
+         "source":"..\/tilesets\/Casco_verde.json"
         }],
  "tilewidth":32,
  "type":"map",

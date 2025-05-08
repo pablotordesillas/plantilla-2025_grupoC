@@ -196,9 +196,27 @@
          "name":"searchable",
          "objects":[
                 {
-                 "gid":5865,
+                 "gid":5913,
                  "height":32,
-                 "id":41,
+                 "id":44,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"item",
+                         "type":"string",
+                         "value":"Feeting_Helmet"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":64,
+                 "y":416
+                }, 
+                {
+                 "gid":5914,
+                 "height":32,
+                 "id":45,
                  "name":"",
                  "properties":[
                         {
@@ -210,31 +228,13 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":32,
-                 "y":448
+                 "x":64,
+                 "y":480
                 }, 
                 {
-                 "gid":5881,
+                 "gid":5915,
                  "height":32,
-                 "id":42,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"item",
-                         "type":"string",
-                         "value":"Fleeting_Helmet"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":32,
-                 "y":512
-                }, 
-                {
-                 "gid":5897,
-                 "height":32,
-                 "id":43,
+                 "id":46,
                  "name":"",
                  "properties":[
                         {
@@ -246,8 +246,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":32,
-                 "y":576
+                 "x":64,
+                 "y":544
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -731,7 +731,7 @@
          "y":0
         }],
  "nextlayerid":19,
- "nextobjectid":44,
+ "nextobjectid":47,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -760,6 +760,18 @@
         {
          "firstgid":5897,
          "source":"..\/tilesets\/Player-4.json"
+        }, 
+        {
+         "firstgid":5913,
+         "source":"..\/tilesets\/Casco_verde.json"
+        }, 
+        {
+         "firstgid":5914,
+         "source":"..\/tilesets\/Casco_azul.json"
+        }, 
+        {
+         "firstgid":5915,
+         "source":"..\/tilesets\/Casco_vikingo.json"
         }],
  "tilewidth":32,
  "type":"map",
