@@ -62,5 +62,6 @@ MESSAGE_BOX_MARGIN = 30
 
 # How fast does the camera pan to the user
 CAMERA_SPEED = 0.1
-
-SONIDO=0
+# Constantes para las canciones
+SONIDO = 0
+SOUND_STOPPABLE = False # No se como usarlo, pero sera de ayuda.
