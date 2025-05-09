@@ -781,6 +781,7 @@ class GameView(arcade.View):
                 smoke.center_x = x - 5
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
+                arcade.play_sound(arcade.load_sound(":sounds:dash.mp3"))
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_LEFT_SPACE and self.cooldown == False:
