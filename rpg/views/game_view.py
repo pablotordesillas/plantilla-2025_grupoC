@@ -407,17 +407,26 @@ class GameView(arcade.View):
                 ).draw()
 
             # Draw the player
+
             self.player_sprite_list.draw()
             self.smoke_list.draw() #Dibuja la estela del dash, Importante que este aqui o estaria debajo del mapa
             self.smokes_list.draw()
             if(self.show_timer==True): # Parte visual del temporizador
+                if (self.cur_map_name=="Cave"): # Si el mapa es el de la cueva, que lo baje
+                    arcade.draw_text(self.output,
+                                     self.player_sprite.center_x , self.player_sprite.center_y + 50  ,
+                                     arcade.color.WHITE, 20,
+                                     anchor_x="center") # Texto del tiempo
 
-                arcade.draw_text(self.output,
-                                 self.player_sprite.center_x , self.player_sprite.center_y + 200  ,
-                                 arcade.color.WHITE, 20,
-                                 anchor_x="center")
+                    arcade.draw_texture_rectangle(self.player_sprite.center_x, self.player_sprite.center_y + 100, 50, 50, self.clock_sprite) # Sprite del reloj [Referencia para cambios]
+                else: # Si no es la cueva, que lo vuela a subir como antes
+                    arcade.draw_text(self.output,
+                                     self.player_sprite.center_x , self.player_sprite.center_y + 200  ,
+                                     arcade.color.WHITE, 20,
+                                     anchor_x="center")
 
-                arcade.draw_texture_rectangle(self.player_sprite.center_x, self.player_sprite.center_y + 250, 50, 50, self.clock_sprite)
+                    arcade.draw_texture_rectangle(self.player_sprite.center_x, self.player_sprite.center_y + 250, 50, 50, self.clock_sprite)
+
 
 
         if cur_map.light_layer:

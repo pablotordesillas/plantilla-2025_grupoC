@@ -334,6 +334,17 @@
         }, 
         {
          "draworder":"topdown",
+         "id":25,
+         "name":"lights",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":12,
          "name":"border_blocking",
          "objects":[
@@ -1068,9 +1079,15 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":25,
- "nextobjectid":155,
+ "nextlayerid":26,
+ "nextobjectid":156,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"ambient_color",
+         "type":"color",
+         "value":"#ff0a0a0a"
+        }],
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
  "tileheight":32,

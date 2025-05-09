@@ -464,6 +464,22 @@
                  "height":32,
                  "id":22,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"map_name",
+                         "type":"string",
+                         "value":"old_main_map"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":11
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":19
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
