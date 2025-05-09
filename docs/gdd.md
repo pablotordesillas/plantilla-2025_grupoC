@@ -17,9 +17,9 @@
 > - Posible disparo para defenderse de unos posibles NPC enemigos.<br>
 
 > - Habilidades. El jugador tiene una serie de habilidades especiales que lo ayudan en unos casos especificos:<br>
->   - Una embestida que cumple la misma función que la mecanica anterior además de que provee la habilidad de atravesar paredes frágiles.<br>
->   - Un dash que permite atravesar una serie de muros especiales.<br>
 >   - Una opcion de correr mas rapido para gastar menos tiempo.<br>
+>   - Un dash que permite atravesar una serie de muros especiales.<br>
+>   - Una embestida que provee la habilidad de 'romper' paredes u objetos frágiles.<br>
 
 ><u>Escapada contrarreloj</u>: Si se acaba el tiempo antes de que salgas de la sala, vuelves al principio.<br>
 
@@ -27,7 +27,7 @@
 
 ## <u>Secuencia de niveles</u>:
 > 1- <u>**Cueva**</u>:<br>
-> Un solo camino sin trampas.
+> Un solo a oscuras camino sin trampas.
 
 > 2- <u>**Piramide**</u>:<br>
 > Tiene varias habitaciones y con un solo camino el correcto. Puede tener trampas.
