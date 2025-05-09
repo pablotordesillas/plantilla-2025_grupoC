@@ -356,7 +356,7 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Unfinished-Cave"
+                         "value":"Cave"
                         }, 
                         {
                          "name":"start_x",

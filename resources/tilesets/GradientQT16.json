@@ -1,0 +1,14 @@
+{ "columns":1,
+ "image":"shadows\/Gradients\/Gradient QT16.png",
+ "imageheight":96,
+ "imagewidth":48,
+ "margin":0,
+ "name":"Gradient QT16",
+ "spacing":0,
+ "tilecount":3,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

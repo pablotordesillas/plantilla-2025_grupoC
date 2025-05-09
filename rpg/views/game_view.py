@@ -514,12 +514,12 @@ class GameView(arcade.View):
                 self.player_sprite, self.my_map.scene["timer_list"]
             )
             if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
-                if(self.cur_map_name=="Unfinished-Cave"): # Segun el mapa hay una cantdad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
-                    self.total_time = 35.0
+                if(self.cur_map_name=="Cave"): # Segun el mapa hay una cantdad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
+                    self.total_time = 40.0
                     constants.SONIDO=1
                     reproducir_musica_fondo()
                 elif(self.cur_map_name=="pyramid_main"):
-                    self.total_time = 45.0
+                    self.total_time = 60.0
                     constants.SONIDO = 2
                     reproducir_musica_fondo()
                 elif(self.cur_map_name=="coloss_main"):
@@ -527,7 +527,7 @@ class GameView(arcade.View):
                     constants.SONIDO = 3
                     reproducir_musica_fondo()
                 elif(self.cur_map_name=="castillo_principal"):
-                    self.total_time = 50.0
+                    self.total_time = 80.0
                     constants.SONIDO = 4
                     reproducir_musica_fondo()
                 else:
@@ -1316,7 +1316,7 @@ def reproducir_musica_fondo():
     if constants.SONIDO==0:
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     if constants.SONIDO==1:
-        sonido = arcade.load_sound(":sounds:nivel1/ctmK.mp3")
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     if constants.SONIDO==2:
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     if constants.SONIDO==3:
