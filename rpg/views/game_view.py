@@ -535,22 +535,26 @@ class GameView(arcade.View):
                 self.player_sprite, self.my_map.scene["timer_list"]
             )
             if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
-                if(self.cur_map_name=="Cave"): # Segun el mapa hay una cantdad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
+                if(self.cur_map_name=="Cave"): # Segun el mapa hay una cantidad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
                     self.total_time = 40.0
+                    pausar_musica()
                     constants.SONIDO=1
-                    reproducir_musica_fondo()
+                    reanudar_musica()
                 elif(self.cur_map_name=="pyramid_main"):
                     self.total_time = 60.0
+                    pausar_musica()
                     constants.SONIDO = 2
-                    reproducir_musica_fondo()
+                    reanudar_musica()
                 elif(self.cur_map_name=="coloss_main"):
                     self.total_time = 70.0
+                    pausar_musica()
                     constants.SONIDO = 3
-                    reproducir_musica_fondo()
+                    reanudar_musica()
                 elif(self.cur_map_name=="castillo_principal"):
                     self.total_time = 80.0
+                    pausar_musica()
                     constants.SONIDO = 4
-                    reproducir_musica_fondo()
+                    reanudar_musica()
                 else:
                     self.total_time = 30.0
                 self.show_timer = True
@@ -1337,30 +1341,27 @@ class GameView(arcade.View):
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
 
+
 def reproducir_musica_fondo():
-    """
-     Segun el mapa, tenemos un valor de constants.SONIDO especifico:
-         constants.SONIDO==0 -> Casa / 'Patio'
-         constants.SONIDO==1 -> Cueva
-         constants.SONIDO==2 -> Piramide
-         constants.SONIDO==3 -> Coliseo
-         constants.SONIDO==4 -> Castillo
-         constants.SONIDO==5 -> Laboratorio TODO:Crear mapa
-     """
-    if constants.SONIDO==0:
-        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3") # Guardamos  en una variable local la carga de un sonido, en este caso el de la musica de nivel.
-    if constants.SONIDO==1:
-        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
-    if constants.SONIDO==2:
-        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
-    if constants.SONIDO==3:
-        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
-    if constants.SONIDO==4:
-        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
-    def loop_sound(): # Se llama constantemente para reproducir de nuevo el audio en caso de que termine
-        player = arcade.play_sound(sonido)
-        if not arcade.Sound.is_playing(sonido,player) and arcade.Sound.is_complete(sonido,player):
-            player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
-        else:
-            pass
+    if constants.SONIDO == 0:
+        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+    elif constants.SONIDO == 1:
+        constants.sonido = arcade.load_sound(":sounds:nasti.mp3", streaming=True)
+    elif constants.SONIDO == 2:
+        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+    elif constants.SONIDO == 3:
+        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+    elif constants.SONIDO == 4:
+        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+    constants.player = constants.sonido.play()
+    def loop_sound():
+        constants.player.push_handlers(on_eos=lambda: loop_sound())
     loop_sound()
+
+def pausar_musica():
+    if constants.player is not None:
+        constants.player.pause()
+
+def reanudar_musica():
+    if constants.player is not None:
+        constants.player.play()
