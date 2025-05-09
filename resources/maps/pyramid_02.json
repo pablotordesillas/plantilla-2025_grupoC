@@ -259,40 +259,6 @@
         }, 
         {
          "draworder":"topdown",
-         "id":9,
-         "name":"lights",
-         "objects":[
-                {
-                 "height":0,
-                 "id":30,
-                 "name":"",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"color",
-                         "type":"color",
-                         "value":"#ffffffff"
-                        }, 
-                        {
-                         "name":"radius",
-                         "type":"int",
-                         "value":40
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":1071.5,
-                 "y":1552
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
          "id":4,
          "name":"doors",
          "objects":[

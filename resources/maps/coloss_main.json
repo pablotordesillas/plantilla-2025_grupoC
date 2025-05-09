@@ -1103,12 +1103,12 @@
                  "height":32,
                  "id":174,
                  "name":"",
-                 "rotation":0,
+                 "rotation":180,
                  "type":"",
                  "visible":true,
                  "width":32,
                  "x":288,
-                 "y":1024
+                 "y":1120
                 }],
          "opacity":1,
          "type":"objectgroup",
