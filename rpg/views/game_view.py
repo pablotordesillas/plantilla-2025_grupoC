@@ -538,23 +538,23 @@ class GameView(arcade.View):
                 if(self.cur_map_name=="Cave"): # Segun el mapa hay una cantidad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
                     self.total_time = 40.0
                     pausar_musica()
-                    constants.SONIDO=1
-                    reanudar_musica()
+                    constants.SONIDO = 1
+                    reproducir_musica_fondo()
                 elif(self.cur_map_name=="pyramid_main"):
                     self.total_time = 60.0
                     pausar_musica()
                     constants.SONIDO = 2
-                    reanudar_musica()
+                    reproducir_musica_fondo()
                 elif(self.cur_map_name=="coloss_main"):
                     self.total_time = 70.0
                     pausar_musica()
                     constants.SONIDO = 3
-                    reanudar_musica()
+                    reproducir_musica_fondo()
                 elif(self.cur_map_name=="castillo_principal"):
                     self.total_time = 80.0
                     pausar_musica()
                     constants.SONIDO = 4
-                    reanudar_musica()
+                    reproducir_musica_fondo()
                 else:
                     self.total_time = 30.0
                 self.show_timer = True
@@ -1344,15 +1344,15 @@ class GameView(arcade.View):
 
 def reproducir_musica_fondo():
     if constants.SONIDO == 0:
-        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 1:
-        constants.sonido = arcade.load_sound(":sounds:nasti.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 2:
-        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 3:
-        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 4:
-        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     constants.player = constants.sonido.play()
     def loop_sound():
         constants.player.push_handlers(on_eos=lambda: loop_sound())
@@ -1361,7 +1361,3 @@ def reproducir_musica_fondo():
 def pausar_musica():
     if constants.player is not None:
         constants.player.pause()
-
-def reanudar_musica():
-    if constants.player is not None:
-        constants.player.play()
