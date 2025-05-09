@@ -1012,7 +1012,7 @@ class GameView(arcade.View):
 
             if len(monedo_hit) > 0:
                 monedo_sprite = monedo_hit[0]  #El sprite de la puerta con la que hemos colisionado
-                arcade.play_sound(arcade.load_sound(":sounds:moneda.mp3")) #sonido moneda cuando pillas
+                arcade.play_sound(arcade.load_sound(":sounds:coin.mp3")) #sonido moneda cuando pillas
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name=="Prueba":
                     constants.Contador -=1
