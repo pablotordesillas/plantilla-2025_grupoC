@@ -8,7 +8,7 @@ class PlayerSprite(CharacterSprite_one):
     def __init__(self, sheet_name, sheet_name2, sheet_name3, sheet_name4):
         super().__init__(sheet_name, sheet_name2, sheet_name3, sheet_name4)
         self.sound_update = 0
-        self.footstep_sound = arcade.load_sound(":sounds:nivel1/pasos.mp3") #cambialo reventado de mierda
+        self.footstep_sound = arcade.load_sound(":sounds:nivel0/pasos.mp3") #cambialo reventado de mierda
         print(self.footstep_sound)
 
     def on_update(self, delta_time):
