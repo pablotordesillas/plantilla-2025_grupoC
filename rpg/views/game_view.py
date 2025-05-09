@@ -1012,7 +1012,7 @@ class GameView(arcade.View):
 
             if len(monedo_hit) > 0:
                 monedo_sprite = monedo_hit[0]  #El sprite de la puerta con la que hemos colisionado
-                arcade.play_sound(arcade.load_sound(":sounds:puerta.wav")) #sonido moneda cuando pillas
+                arcade.play_sound(arcade.load_sound(":sounds:moneda.mp3")) #sonido moneda cuando pillas
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name=="Prueba":
                     constants.Contador -=1
@@ -1346,7 +1346,7 @@ def reproducir_musica_fondo():
     if constants.SONIDO == 0:
         constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 1:
-        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
     elif constants.SONIDO == 2:
         constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 3:
