@@ -460,7 +460,7 @@
          "objects":[
                 {
                  "gid":2737,
-                 "height":32,
+                 "height":43.6363636363637,
                  "id":175,
                  "name":"",
                  "properties":[
@@ -472,9 +472,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32,
-                 "x":864,
-                 "y":1600
+                 "width":45.2727272727273,
+                 "x":856.545454545455,
+                 "y":1604.27272727273
                 }],
          "opacity":1,
          "type":"objectgroup",

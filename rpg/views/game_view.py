@@ -32,8 +32,15 @@ class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
         noclip_callback: Callable,
         hyper_callback: Callable,
     ):
+        # Es como decir que "No tenemos los cascos obtenidos nada mas empezar".
+        constants.FLEETING_OBTAINED = False
+        constants.DASHING_OBTAINED = False
+        constants.CHARGING_OBTAINED = False
+
+        # Reproducir musica por defecto nada mas empezar
         constants.SONIDO=0
         reproducir_musica_fondo()
+
         self.off_style = {
             "bg_color": arcade.color.BLACK,
         }
@@ -473,6 +480,11 @@ class GameView(arcade.View):
         """
         All the logic to move, and the game logic goes here.
         """
+        cur_map = self.map_list[self.cur_map_name]
+        if self.cur_map_name == "Cave" and not self.player_light in cur_map.light_layer:
+            cur_map.light_layer.add(self.player_light)
+        elif self.cur_map_name!="Cave" and self.player_light in cur_map.light_layer:
+            cur_map.light_layer.remove(self.player_light)
 
         if(self.total_time <= 0.0): # Si el temporizador llega a 0:
 
@@ -1272,17 +1284,18 @@ class GameView(arcade.View):
             cur_map.light_layer.resize(width, height)
 
     def activar_cooldown(self):
-        """Activa el cooldown y lo desactiva después de 2 segundos."""
+        """Activa el cooldown  el dash y lo desactiva después de 2 segundos."""
         self.cooldown = True
 
         # Usamos threading.Timer para desactivar después de 2 segundos
         threading.Timer(1, self.desactivar_cooldown).start()
 
     def desactivar_cooldown(self):
-        """Desactiva el cooldown."""
+        """Desactiva el cooldown del dash."""
         self.cooldown = False
 
     def crear_humo(self, x, y, offset_x=0, offset_y=0):
+        """Dibuja / crea el humo que hace el dash"""
         smoke = arcade.AnimatedTimeBasedSprite(scale=0.5)
         smoke.center_x = x + offset_x
         smoke.center_y = y + offset_y
@@ -1307,23 +1320,35 @@ class GameView(arcade.View):
         self.smokes_list.append(smoke)
 
         def eliminar_humo():
+            """Elimina el humo del dash"""
             smoke.remove_from_sprite_lists()
             self.humo_activo = False
 
         threading.Timer(0.75, eliminar_humo).start()
 
     def activar_cooldown1(self):
+        """TODO:Documentation"""
         self.cooldown1 = True
         threading.Timer(1, self.desactivar_cooldown1).start()
 
     def desactivar_cooldown1(self):
+        """TODO:Documentation"""
         self.cooldown1 = False
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
 
 def reproducir_musica_fondo():
+    """
+     Segun el mapa, tenemos un valor de constants.SONIDO especifico:
+         constants.SONIDO==0 -> Casa / 'Patio'
+         constants.SONIDO==1 -> Cueva
+         constants.SONIDO==2 -> Piramide
+         constants.SONIDO==3 -> Coliseo
+         constants.SONIDO==4 -> Castillo
+         constants.SONIDO==5 -> Laboratorio TODO:Crear mapa
+     """
     if constants.SONIDO==0:
-        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
+        sonido = arcade.load_sound(":sounds:nivel1/theme.mp3") # Guardamos  en una variable local la carga de un sonido, en este caso el de la musica de nivel.
     if constants.SONIDO==1:
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     if constants.SONIDO==2:
@@ -1332,7 +1357,10 @@ def reproducir_musica_fondo():
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
     if constants.SONIDO==4:
         sonido = arcade.load_sound(":sounds:nivel1/theme.mp3")
-    def loop_sound():
+    def loop_sound(): # Se llama constantemente para reproducir de nuevo el audio en caso de que termine
         player = arcade.play_sound(sonido)
-        player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
+        if not arcade.Sound.is_playing(sonido,player) and arcade.Sound.is_complete(sonido,player):
+            player.push_handlers(on_eos=lambda: loop_sound())  # Reproduce de nuevo cuando termine
+        else:
+            pass
     loop_sound()

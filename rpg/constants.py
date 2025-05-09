@@ -65,3 +65,8 @@ CAMERA_SPEED = 0.1
 # Constantes para las canciones
 SONIDO = 0
 SOUND_STOPPABLE = False # No se como usarlo, pero sera de ayuda.
+
+#Constantes para los cascos (Esto lo podemos usar para ver si se tienen los cascos obtenidos o no, por default estaran en False y de ahi podemos partir a hacer cosas)
+FLEETING_OBTAINED = False
+DASHING_OBTAINED = False
+CHARGING_OBTAINED = False
