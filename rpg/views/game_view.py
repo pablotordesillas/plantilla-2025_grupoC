@@ -771,95 +771,106 @@ class GameView(arcade.View):
         - threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
         Añade el humo a la lista (para luego ser dibujado) y tras un tiempo este es borrado
         """
+        self.dash_sound = arcade.load_sound(":sounds:dash.mp3")
         if self.dash == True: #Solo si tiene el casco azul puesto
-            if MOVING_RIGHT_SPACE and self.cooldown == False:
+            if MOVING_RIGHT_SPACE and not self.cooldown:
+                self.cooldown = True
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
-                x = self.player_sprite.center_x
-                y = self.player_sprite.center_y
+                x, y = self.player_sprite.center_x, self.player_sprite.center_y
                 smoke.center_x = x - 5
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
+                arcade.play_sound(self.dash_sound)
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
-            if MOVING_LEFT_SPACE and self.cooldown == False:
+            if MOVING_LEFT_SPACE and not self.cooldown:
+                self.cooldown = True
                 self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
-                x = self.player_sprite.center_x
-                y = self.player_sprite.center_y
+                x, y = self.player_sprite.center_x, self.player_sprite.center_y
                 smoke.center_x = x + 40
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
+                arcade.play_sound(self.dash_sound)
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
-            if MOVING_UP_SPACE and self.cooldown == False:
+
+            if MOVING_UP_SPACE and not self.cooldown:
+                self.cooldown = True
                 self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
-                x = self.player_sprite.center_x
-                y = self.player_sprite.center_y
+                x, y = self.player_sprite.center_x, self.player_sprite.center_y
                 smoke.center_x = x
                 smoke.center_y = y - 45
                 self.smoke_list.append(smoke)
-            if MOVING_DOWN_SPACE and self.cooldown == False:
+                arcade.play_sound(self.dash_sound)
+
+            if MOVING_DOWN_SPACE and not self.cooldown:
+                self.cooldown = True
                 self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
-                x = self.player_sprite.center_x
-                y = self.player_sprite.center_y
+                x, y = self.player_sprite.center_x, self.player_sprite.center_y
                 smoke.center_x = x
                 smoke.center_y = y + 10
                 self.smoke_list.append(smoke)
+                arcade.play_sound(self.dash_sound)
 
-        if self.embestir == True: #Si puede embestir (casco vikingo)
-
+        self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
+        if self.embestir:  # Si puede embestir (casco vikingo)
             x = self.player_sprite.center_x
             y = self.player_sprite.center_y
 
-            # Mover a la derecha
-            if MOVING_RIGHT_SPACE and self.cooldown1 == False:
+            if MOVING_RIGHT_SPACE and not self.cooldown1:
+                self.cooldown1 = True
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
-                if not self.humo_activo:  # Solo crea humo si no hay uno activo
+                arcade.play_sound(self.estampida_sound)
+                if not self.humo_activo:
+                    self.humo_activo = True
                     threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_x': -20}).start()
                     threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_x': 10}).start()
                     threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_x': 40}).start()
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_x': 70}).start()
-                    self.humo_activo = True  # Marca que el humo está activo
 
-            # Mover a la izquierda
-            if MOVING_LEFT_SPACE and self.cooldown1 == False:
+            if MOVING_LEFT_SPACE and not self.cooldown1:
+                self.cooldown1 = True
                 self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
+                arcade.play_sound(self.estampida_sound)
                 if not self.humo_activo:
+                    self.humo_activo = True
                     threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_x': 20}).start()
                     threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_x': -10}).start()
                     threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_x': -40}).start()
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_x': -70}).start()
-                    self.humo_activo = True
 
-            # Mover hacia arriba
-            if MOVING_UP_SPACE and self.cooldown1 == False:
+            if MOVING_UP_SPACE and not self.cooldown1:
+                self.cooldown1 = True
                 self.player_sprite.change_y = constants.MOVEMENT_SPEED + 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
+                arcade.play_sound(self.estampida_sound)
                 if not self.humo_activo:
+                    self.humo_activo = True
                     threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_y': -20}).start()
                     threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_y': 10}).start()
                     threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_y': 40}).start()
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_y': 70}).start()
-                    self.humo_activo = True
 
-            # Mover hacia abajo
-            if MOVING_DOWN_SPACE and self.cooldown1 == False:
+            if MOVING_DOWN_SPACE and not self.cooldown1:
+                self.cooldown1 = True
                 self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
+                arcade.play_sound(self.estampida_sound)
                 if not self.humo_activo:
+                    self.humo_activo = True
                     threading.Timer(0.0, self.crear_humo, args=(x, y), kwargs={'offset_y': 20}).start()
                     threading.Timer(0.1, self.crear_humo, args=(x, y), kwargs={'offset_y': -10}).start()
                     threading.Timer(0.2, self.crear_humo, args=(x, y), kwargs={'offset_y': -40}).start()
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_y': -70}).start()
-                    self.humo_activo = True
 
             # Actualizar animaciones
         self.smokes_list.update_animation(delta_time)
