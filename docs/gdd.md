@@ -19,7 +19,7 @@
 > - Habilidades. El jugador tiene una serie de habilidades especiales que lo ayudan en unos casos especificos:<br>
 >   - Una opcion de correr mas rapido para gastar menos tiempo.<br>
 >   - Un dash que permite atravesar una serie de muros especiales.<br>
->   - Una embestida que provee la habilidad de 'romper' paredes u objetos frágiles.<br>
+>   - Una embestida que provee la habilidad de romper paredes u objetos frágiles.<br>
 
 ><u>Escapada contrarreloj</u>: Si se acaba el tiempo antes de que salgas de la sala, vuelves al principio.<br>
 
