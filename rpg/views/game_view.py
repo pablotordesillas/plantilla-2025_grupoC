@@ -190,10 +190,8 @@ class GameView(arcade.View):
         self.output = "00:00:00"
         self.show_timer = False
 
-        self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
         self.dash_sound = arcade.load_sound(":sounds:dash.mp3")
-        #BOOOOOOOOOOOOOOOOOOOOOOOOOOOOMBA
-
+        self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
 
         # Physics engine
         self.physics_engine = None
@@ -778,11 +776,12 @@ class GameView(arcade.View):
         #self.dash_sound = arcade.load_sound(":sounds:dash.mp3")
         if self.dash == True: #Solo si tiene el casco azul puesto
             if MOVING_RIGHT_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
-                x, y = self.player_sprite.center_x, self.player_sprite.center_y
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
                 smoke.center_x = x - 5
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
@@ -790,11 +789,12 @@ class GameView(arcade.View):
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_LEFT_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
-                x, y = self.player_sprite.center_x, self.player_sprite.center_y
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
                 smoke.center_x = x + 40
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
@@ -802,22 +802,24 @@ class GameView(arcade.View):
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_UP_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
-                x, y = self.player_sprite.center_x, self.player_sprite.center_y
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
                 smoke.center_x = x
                 smoke.center_y = y - 45
                 self.smoke_list.append(smoke)
                 arcade.play_sound(self.dash_sound)
 
             if MOVING_DOWN_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
-                x, y = self.player_sprite.center_x, self.player_sprite.center_y
+                x = self.player_sprite.center_x
+                y = self.player_sprite.center_y
                 smoke.center_x = x
                 smoke.center_y = y + 10
                 self.smoke_list.append(smoke)
@@ -878,7 +880,7 @@ class GameView(arcade.View):
 
             # Actualizar animaciones
         self.smokes_list.update_animation(delta_time)
-        # PRUEBA CORRER
+        #CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
         if self.correr == True:  # Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
@@ -910,7 +912,7 @@ class GameView(arcade.View):
             else:
                 smoke.remove_from_sprite_lists()
 
-    #PRUEBA CORRER
+    #CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
         if self.correr == True: #Solo si tiene el casco verde puesto
             if MOVING_UP_RUN:
