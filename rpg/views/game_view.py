@@ -829,7 +829,7 @@ class GameView(arcade.View):
             y = self.player_sprite.center_y
 
             if MOVING_RIGHT_SPACE and not self.cooldown1:
-                self.cooldown1 = True
+                #self.cooldown1 = True
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 arcade.play_sound(self.estampida_sound)
@@ -841,7 +841,7 @@ class GameView(arcade.View):
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_x': 70}).start()
 
             if MOVING_LEFT_SPACE and not self.cooldown1:
-                self.cooldown1 = True
+                #self.cooldown1 = True
                 self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 arcade.play_sound(self.estampida_sound)
@@ -853,7 +853,7 @@ class GameView(arcade.View):
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_x': -70}).start()
 
             if MOVING_UP_SPACE and not self.cooldown1:
-                self.cooldown1 = True
+                #self.cooldown1 = True
                 self.player_sprite.change_y = constants.MOVEMENT_SPEED + 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 arcade.play_sound(self.estampida_sound)
@@ -865,7 +865,7 @@ class GameView(arcade.View):
                     threading.Timer(0.3, self.crear_humo, args=(x, y), kwargs={'offset_y': 70}).start()
 
             if MOVING_DOWN_SPACE and not self.cooldown1:
-                self.cooldown1 = True
+                #self.cooldown1 = True
                 self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 7
                 threading.Timer(0.15, self.activar_cooldown1).start()
                 arcade.play_sound(self.estampida_sound)
