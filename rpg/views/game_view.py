@@ -190,10 +190,8 @@ class GameView(arcade.View):
         self.output = "00:00:00"
         self.show_timer = False
 
-        self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
         self.dash_sound = arcade.load_sound(":sounds:dash.mp3")
-        #BOOOOOOOOOOOOOOOOOOOOOOOOOOOOMBA
-
+        self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
 
         # Physics engine
         self.physics_engine = None
@@ -778,7 +776,7 @@ class GameView(arcade.View):
         #self.dash_sound = arcade.load_sound(":sounds:dash.mp3")
         if self.dash == True: #Solo si tiene el casco azul puesto
             if MOVING_RIGHT_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_x = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
@@ -791,7 +789,7 @@ class GameView(arcade.View):
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_LEFT_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_x = -constants.MOVEMENT_SPEED - 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/1.png", 1)
@@ -804,7 +802,7 @@ class GameView(arcade.View):
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_UP_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_y = constants.MOVEMENT_SPEED + 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
@@ -816,7 +814,7 @@ class GameView(arcade.View):
                 arcade.play_sound(self.dash_sound)
 
             if MOVING_DOWN_SPACE and not self.cooldown:
-                #self.cooldown = True
+                self.cooldown = True
                 self.player_sprite.change_y = -constants.MOVEMENT_SPEED - 5
                 threading.Timer(0.15, self.activar_cooldown).start()
                 smoke = arcade.Sprite(":characters:Shadow/3.png", 1)
