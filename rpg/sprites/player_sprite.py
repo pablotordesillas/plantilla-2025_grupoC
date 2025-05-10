@@ -20,3 +20,5 @@ class PlayerSprite(CharacterSprite_one):
         if self.sound_update >= 1.0:
             arcade.play_sound(self.footstep_sound)
             self.sound_update = 0
+
+
