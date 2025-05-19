@@ -61,7 +61,7 @@ MESSAGE_BOX_FONT_SIZE = 38
 MESSAGE_BOX_MARGIN = 30
 
 # How fast does the camera pan to the user
-CAMERA_SPEED = 0.1
+CAMERA_SPEED = 0.8
 
 #Constantes para los cascos (Esto lo podemos usar para ver si se tienen los cascos obtenidos o no, por default estaran en False y de ahi podemos partir a hacer cosas)
 FLEETING_OBTAINED = False

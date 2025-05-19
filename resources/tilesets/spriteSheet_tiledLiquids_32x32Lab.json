@@ -1,0 +1,14 @@
+{ "columns":16,
+ "image":"tiles_laboratory_LandOfPixels\/tiles_laboratory_LandOfPixels\/32px\/spriteSheet_tiledLiquids_32x32.png",
+ "imageheight":96,
+ "imagewidth":512,
+ "margin":0,
+ "name":"spriteSheet_tiledLiquids_32x32Lab",
+ "spacing":0,
+ "tilecount":48,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}
