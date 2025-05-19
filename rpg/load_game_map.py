@@ -171,7 +171,16 @@ def load_map(map_name):
         if "_blocking" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
 
-            game_map.scene["wall_list"].extend(sprite_list)
+            # Crear nueva lista filtrada con solo los que tienen hitbox
+            filtered = arcade.SpriteList(use_spatial_hash=True)
+            for sprite in sprite_list:
+                if sprite.get_hit_box():
+                    filtered.append(sprite)
+                else:
+                    print(f"[AVISO] Sprite ignorado por hitbox vacía en capa '{layer}': {sprite}")
+
+            # Añadir a wall_list
+            game_map.scene["wall_list"].extend(filtered)
 
         elif "_slow" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
