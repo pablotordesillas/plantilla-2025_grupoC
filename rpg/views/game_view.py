@@ -150,6 +150,7 @@ class GameView(arcade.View):
 
         # condicional dash / embestida
         self.ya_ocurrido = False
+        self.ya_ocurrido_emb = False
 
         self.contadorB = 0
         self.clock_sprite = None
@@ -1346,15 +1347,7 @@ class GameView(arcade.View):
 
        # elif key == arcade.key.K and self.show_timer == True: # Desactivar el temporizador con la tecla K
         #    self.show_timer = False
-# Prueba para el sonido de la embestida ( no funciona )
-        elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.embestir:
-            arcade.play_sound(self.estampida_sound)
-        elif key==arcade.key.SPACE and (key==arcade.key.S or key==arcade.key.DOWN) and self.embestir:
-            arcade.play_sound(self.estampida_sound)
-        elif key==arcade.key.SPACE and (key==arcade.key.A or key==arcade.key.LEFT) and self.embestir:
-            arcade.play_sound(self.estampida_sound)
-        elif key==arcade.key.SPACE and (key==arcade.key.D or key==arcade.key.RIGHT) and self.embestir:
-            arcade.play_sound(self.estampida_sound)
+
 # SONIDO DASH ( funciona )
         DASH_DOWN = (
                 self.down_pressed
@@ -1409,9 +1402,59 @@ class GameView(arcade.View):
         if DASH_RIGHT and not self.ya_ocurrido:
             arcade.play_sound(self.dash_sound)
             self.activar_ya_ocurrido()
-
-
-
+# SONIDO EMBESTIDA ( funciona )
+        CHARGE_DOWN = (
+                self.down_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and self.casco_vikingo
+                and self.embestir
+                and not self.cooldown
+        )
+        CHARGE_UP = (
+                self.up_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.down_pressed
+                and not self.right_pressed
+                and self.casco_vikingo
+                and self.embestir
+                and not self.cooldown
+        )
+        CHARGE_LEFT = (
+                self.left_pressed
+                and self.space_pressed
+                and not self.down_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and self.casco_vikingo
+                and self.embestir
+                and not self.cooldown
+        )
+        CHARGE_RIGHT = (
+                self.right_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.down_pressed
+                and self.casco_vikingo
+                and self.embestir
+                and not self.cooldown
+        )
+        if CHARGE_DOWN and not self.ya_ocurrido:
+            arcade.play_sound(self.estampida_sound)
+            self.activar_ya_ocurrido_emb()
+        if CHARGE_UP and not self.ya_ocurrido:
+            arcade.play_sound(self.estampida_sound)
+            self.activar_ya_ocurrido_emb()
+        if CHARGE_LEFT and not self.ya_ocurrido:
+            arcade.play_sound(self.estampida_sound)
+            self.activar_ya_ocurrido_emb()
+        if CHARGE_RIGHT and not self.ya_ocurrido:
+            arcade.play_sound(self.estampida_sound)
+            self.activar_ya_ocurrido_emb()
 
 
 
@@ -1542,12 +1585,20 @@ class GameView(arcade.View):
         self.player_sprite.change_y = 0
 
     def activar_ya_ocurrido(self):
-        """Cambia una variable llamada 'ya_ocurrido' a 'True' que indica si el dash ya se ha hecho o no"""
+        """Cambia una variable llamada 'ya_ocurrido' a 'True' que indica que el sonido del dash ya se ha hecho o no"""
         self.ya_ocurrido = True
         threading.Timer(1, self.desactivar_ya_ocurrido).start()
     def desactivar_ya_ocurrido(self):
         """Cambia a 'False' la variable 'ya_ocurrido'"""
         self.ya_ocurrido = False
+
+    def activar_ya_ocurrido_emb(self):
+        """Cambia una variable llamada 'ya_ocurrido_emb' a 'True' que indica  que el sonido de la embestida ya se ha hecho o no"""
+        self.ya_ocurrido_emb = True
+        threading.Timer(1, self.desactivar_ya_ocurrido_emb).start()
+    def desactivar_ya_ocurrido_emb(self):
+        """Cambia a 'False' la variable 'ya_ocurrido_emb'"""
+        self.ya_ocurrido_emb = False
 
 
 
