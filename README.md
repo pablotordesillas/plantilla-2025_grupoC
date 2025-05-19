@@ -45,8 +45,8 @@ All the information about the game can also be found (in Spanish) in our <u>[GDD
 - <u>**Movement</u>:** WASD / Arrow Keys
 - <u>**Power helmets selector**</u> 1-4 *(Number keys, not NumPad)*:<br>
 -> Mode 1: <font color ="orange">**Standard**</font> helmet: does nothing, makes the player move normally.<br>
--> Mode 2: <font color="lightgreen">**Dashing**</font> helmet <font color="lightgreen">[SPACEBAR]</font>: allows the player to <u>dash</u> through certain objects.<br>
--> Mode 3: <font color="lightblue">**Fleeting**</font> helmet  <font color="lightblue">[Hold LSHIFT]</font>: allows the player to <u>sprint</u> and move faster than usual.<br>
+-> Mode 2: <font color="lightgreen">**Fleeting**</font> helmet  <font color="lightgreen">[Hold LSHIFT]</font>: allows the player to <u>sprint</u> and move faster than usual.<br>
+-> Mode 3: <font color="lightblue">**Dashing**</font> helmet <font color="lightblue">[SPACEBAR]</font>: allows the player to <u>dash</u> through certain objects.<br>
 -> Mode 4: <font color="gray">**Charging**</font> helmet <font color="gray">[SPACEBAR]</font>: allows the player to <u>charge</u> onto specific objects and break them.
 - <u>**Open Menu</u>:** [ESC] Pause the game and take a break! <font color="red">(Cannot restart or save)</font>
 
@@ -80,8 +80,8 @@ Arcade version might not be installed when the assets are downloaded so you may 
 - alejandro.mata@edu.uah.es<br>
 - pablo.tordesillas@edu.uah.es<br>
 - isaac.quintian@edu.uah.es
->If the devs of this project cannot help, please refer to the next section to contact the maintainer of the original project.
+>If the devs of this project cannot help, please proceed to the section below to contact the maintainer of the original project.
 
-## <u>Contact Maintainer of the original project.</u>
+## <u>Contact THE maintainer of the original project.</u>
 paul@cravenfamily.com
 
