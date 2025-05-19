@@ -1443,16 +1443,16 @@ class GameView(arcade.View):
                 and self.embestir
                 and not self.cooldown
         )
-        if CHARGE_DOWN and not self.ya_ocurrido:
+        if CHARGE_DOWN and not self.ya_ocurrido_emb:
             arcade.play_sound(self.estampida_sound)
             self.activar_ya_ocurrido_emb()
-        if CHARGE_UP and not self.ya_ocurrido:
+        if CHARGE_UP and not self.ya_ocurrido_emb:
             arcade.play_sound(self.estampida_sound)
             self.activar_ya_ocurrido_emb()
-        if CHARGE_LEFT and not self.ya_ocurrido:
+        if CHARGE_LEFT and not self.ya_ocurrido_emb:
             arcade.play_sound(self.estampida_sound)
             self.activar_ya_ocurrido_emb()
-        if CHARGE_RIGHT and not self.ya_ocurrido:
+        if CHARGE_RIGHT and not self.ya_ocurrido_emb:
             arcade.play_sound(self.estampida_sound)
             self.activar_ya_ocurrido_emb()
 
