@@ -5,6 +5,7 @@ Main game view
 import json
 import time
 from functools import partial
+from symbol import return_stmt
 from typing import Callable
 import pyglet
 import arcade
@@ -349,7 +350,7 @@ class GameView(arcade.View):
 
     #FUNCIÓN DESACTIVADA TEMPORALMENTE (inventario)
     #def draw_inventory(self):
-        #capacity = 10
+        #capacity = 3
         #vertical_hotbar_location = 40
         #hotbar_height = 80
         #sprite_height = 16
@@ -380,6 +381,55 @@ class GameView(arcade.View):
             # Add whitespace so the item text doesn't hide behind the number pad sprite
             #text = f"     {item_name}"
             #arcade.draw_text(text, x, y, arcade.color.ALLOY_ORANGE, 16)
+
+    def confirmar_casco_verde(self):
+        """Hace una pasada por el inventario del jugador para verificar si tiene el casco verde en el inventario.
+         En caso afirmativo, cambia la constante FLEETING_OBTAINED a True para que nos deje cambiar al casco de correr.
+         En caso negativo, cambia la constant FLEETING_OBTAINED a False para que no deje cambiar. (Esto en caso de que podamos perder el caso)
+        """
+        capacity = 4 # se puede cambiar segun los cascos que queremos tener
+        for i in range(capacity):
+            if len(self.player_sprite.inventory) > i:
+                item = self.player_sprite.inventory[i]
+                item_name = self.player_sprite.inventory[i]["short_name"]
+                if item_name=="Fleeting Helmet" and item in self.player_sprite.inventory:
+                    constants.FLEETING_OBTAINED=True
+                else:
+                    pass
+            else:
+                item_name = ""
+    def confirmar_casco_azul(self):
+        """Hace una pasada por el inventario del jugador para verificar si tiene el casco azul en el inventario.
+           En caso afirmativo, cambia la constante DASHING_OBTAINED a True para que nos deje cambiar al casco del dash.
+           En caso negativo, cambia la constant DASHING_OBTAINED a False para que no deje cambiar. (Esto en caso de que podamos perder el caso)
+          """
+        capacity = 4 # se puede cambiar segun los cascos que queremos tener
+        for i in range(capacity):
+            if len(self.player_sprite.inventory) > i:
+                item = self.player_sprite.inventory[i]
+                item_name = self.player_sprite.inventory[i]["short_name"]
+                if item_name=="Dashing Helmet" and item in self.player_sprite.inventory:
+                    constants.DASHING_OBTAINED=True
+                else:
+                    pass
+            else:
+                item_name = ""
+    def confirmar_casco_gris(self):
+        """Hace una pasada por el inventario del jugador para verificar si tiene el casco gris en el inventario.
+           En caso afirmativo, cambia la constante CHARGING_OBTAINED a True para que nos deje cambiar al casco de la embestida.
+           En caso negativo, cambia la constant CHARGING_OBTAINED a False para que no deje cambiar. (Esto en caso de que podamos perder el caso)
+          """
+        capacity = 4 # se puede cambiar segun los cascos que queremos tener
+        for i in range(capacity):
+            if len(self.player_sprite.inventory) > i:
+                item = self.player_sprite.inventory[i]
+                item_name = self.player_sprite.inventory[i]["short_name"]
+                if item_name=="Charging Helmet" and item in self.player_sprite.inventory:
+                    constants.CHARGING_OBTAINED=True
+                else:
+                    pass
+            else:
+                item_name = ""
 
     def on_draw(self):
         """
@@ -785,7 +835,6 @@ class GameView(arcade.View):
                 smoke.center_x = x - 5
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
-                arcade.play_sound(self.dash_sound)
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_LEFT_SPACE and not self.cooldown:
@@ -798,7 +847,6 @@ class GameView(arcade.View):
                 smoke.center_x = x + 40
                 smoke.center_y = y
                 self.smoke_list.append(smoke)
-                arcade.play_sound(self.dash_sound)
                 threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_UP_SPACE and not self.cooldown:
@@ -811,7 +859,7 @@ class GameView(arcade.View):
                 smoke.center_x = x
                 smoke.center_y = y - 45
                 self.smoke_list.append(smoke)
-                arcade.play_sound(self.dash_sound)
+                threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
             if MOVING_DOWN_SPACE and not self.cooldown:
                 #self.cooldown = True
@@ -823,7 +871,7 @@ class GameView(arcade.View):
                 smoke.center_x = x
                 smoke.center_y = y + 10
                 self.smoke_list.append(smoke)
-                arcade.play_sound(self.dash_sound)
+                threading.Timer(3, lambda: smoke.remove_from_sprite_lists()).start()
 
         #self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
         if self.embestir:  # Si puede embestir (casco vikingo)
@@ -882,7 +930,7 @@ class GameView(arcade.View):
         self.smokes_list.update_animation(delta_time)
         #CORRER
         # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
-        if self.correr == True:  # Solo si tiene el casco verde puesto
+        if self.correr == True:  # Solo si tiene el casco verde puesto y lo tenga en el inventario
             if MOVING_UP_RUN:
                 self.player_sprite.change_y = SPEED_AUX * 2
             elif MOVING_DOWN_RUN:
@@ -1183,31 +1231,38 @@ class GameView(arcade.View):
             self.casco_vikingo = False
             self.embestir = False
 
-        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2: #Casco azul, posibilidad de hacer dash
-            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
-            self.casco_azul = True
-            self.casco_verde = False
-            self.dash = True
-            self.correr = False
-            self.casco_vikingo = False
-            self.embestir = False
+        elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2:  #Casco verde, permite correr
+            self.confirmar_casco_verde()
+            if constants.FLEETING_OBTAINED:
+                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
+                self.casco_azul = False
+                self.casco_verde = True
+                self.dash = False
+                self.correr = True
+                self.casco_vikingo = False
+                self.embestir = False
 
-        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3:  #Casco verde, permite correr
-            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
-            self.casco_azul = False
-            self.casco_verde = True
-            self.dash = False
-            self.correr = True
-            self.casco_vikingo = False
-            self.embestir = False
+        elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3: #Casco azul, posibilidad de hacer dash
+            self.confirmar_casco_azul()
+            if constants.DASHING_OBTAINED:
+                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
+                self.casco_azul = True
+                self.casco_verde = False
+                self.dash = True
+                self.correr = False
+                self.casco_vikingo = False
+                self.embestir = False
+
         elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:  #Casco de vikingo, permite embestir para romper muros
-            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
-            self.casco_azul = False
-            self.casco_verde = False
-            self.dash = False
-            self.correr = False
-            self.casco_vikingo = True
-            self.embestir = True
+            self.confirmar_casco_gris()
+            if constants.CHARGING_OBTAINED:
+                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
+                self.casco_azul = False
+                self.casco_verde = False
+                self.dash = False
+                self.correr = False
+                self.casco_vikingo = True
+                self.embestir = True
 
         elif key == arcade.key.L:
             cur_map = self.map_list[self.cur_map_name]
@@ -1215,13 +1270,13 @@ class GameView(arcade.View):
                 cur_map.light_layer.remove(self.player_light)
             else:
                 cur_map.light_layer.add(self.player_light)
-        elif key == arcade.key.G:  # G
+        #elif key == arcade.key.G:  # G
             # toggle debug
-            self.debug = True if not self.debug else False
-            if self.debug:
-                self.enable_debug_menu()
-            else:
-                self.disable_debug_menu()
+         #   self.debug = True if not self.debug else False
+          #  if self.debug:
+           #     self.enable_debug_menu()
+            #else:
+             #   self.disable_debug_menu()
 
         elif key == arcade.key.J and self.show_timer== False: # Activar el temporizador por la tecla J
             self.total_time = 30.0
@@ -1232,6 +1287,25 @@ class GameView(arcade.View):
 
         elif key == arcade.key.K and self.show_timer == True: # Desactivar el temporizador con la tecla K
             self.show_timer = False
+# Prueba para el sonido del dash
+        elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.dash:
+            arcade.play_sound(self.dash_sound)
+        elif key==arcade.key.SPACE and (key==arcade.key.S or key==arcade.key.DOWN) and self.dash:
+            arcade.play_sound(self.dash_sound)
+        elif key==arcade.key.SPACE and (key==arcade.key.A or key==arcade.key.LEFT) and self.dash:
+            arcade.play_sound(self.dash_sound)
+        elif key==arcade.key.SPACE and (key==arcade.key.D or key==arcade.key.RIGHT) and self.dash:
+            arcade.play_sound(self.dash_sound)
+# Prueba para el sonido de la embestida
+        elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.embestir:
+            arcade.play_sound(self.estampida_sound)
+        elif key==arcade.key.SPACE and (key==arcade.key.S or key==arcade.key.DOWN) and self.embestir:
+            arcade.play_sound(self.estampida_sound)
+        elif key==arcade.key.SPACE and (key==arcade.key.A or key==arcade.key.LEFT) and self.embestir:
+            arcade.play_sound(self.estampida_sound)
+        elif key==arcade.key.SPACE and (key==arcade.key.D or key==arcade.key.RIGHT) and self.embestir:
+            arcade.play_sound(self.estampida_sound)
+
 
 
     def close_message_box(self):
@@ -1257,6 +1331,8 @@ class GameView(arcade.View):
                 sprite.remove_from_sprite_lists()
                 lookup_item = self.item_dictionary[sprite.properties["item"]]
                 self.player_sprite.inventory.append(lookup_item)
+                sonido_conseguido = arcade.load_sound(":sounds:Trowelgotsomething.wav")
+                arcade.play_sound(sonido_conseguido) # Produce un sonido cuando consigues un item.
             else:
                 print(
                     "The 'item' property was not set for the sprite. Can't get any items from this."
