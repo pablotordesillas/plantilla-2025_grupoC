@@ -1,0 +1,14 @@
+{ "columns":11,
+ "image":"tiles_laboratory_LandOfPixels\/tiles_laboratory_LandOfPixels\/32px\/tilesFloor32.png",
+ "imageheight":576,
+ "imagewidth":352,
+ "margin":0,
+ "name":"tilesFloor32Lab",
+ "spacing":0,
+ "tilecount":198,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}
