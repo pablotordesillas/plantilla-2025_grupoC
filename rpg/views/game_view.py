@@ -148,6 +148,9 @@ class GameView(arcade.View):
         constants.SONIDO=0
         reproducir_musica_fondo()
 
+        # condicional dash / embestida
+        self.ya_ocurrido = False
+
         self.contadorB = 0
         self.clock_sprite = None
         self.y_guardado = None # Posicion guardada en la que se incio el temporizador
@@ -1343,15 +1346,6 @@ class GameView(arcade.View):
 
        # elif key == arcade.key.K and self.show_timer == True: # Desactivar el temporizador con la tecla K
         #    self.show_timer = False
-# Prueba para el sonido del dash ( no funciona )
-        elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.dash:
-            arcade.play_sound(self.dash_sound)
-        elif key==arcade.key.SPACE and (key==arcade.key.S or key==arcade.key.DOWN) and self.dash:
-            arcade.play_sound(self.dash_sound)
-        elif key==arcade.key.SPACE and (key==arcade.key.A or key==arcade.key.LEFT) and self.dash:
-            arcade.play_sound(self.dash_sound)
-        elif key==arcade.key.SPACE and (key==arcade.key.D or key==arcade.key.RIGHT) and self.dash:
-            arcade.play_sound(self.dash_sound)
 # Prueba para el sonido de la embestida ( no funciona )
         elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.embestir:
             arcade.play_sound(self.estampida_sound)
@@ -1361,6 +1355,63 @@ class GameView(arcade.View):
             arcade.play_sound(self.estampida_sound)
         elif key==arcade.key.SPACE and (key==arcade.key.D or key==arcade.key.RIGHT) and self.embestir:
             arcade.play_sound(self.estampida_sound)
+# SONIDO DASH ( funciona )
+        DASH_DOWN = (
+                self.down_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and self.casco_azul
+                and self.dash
+                and not self.cooldown
+        )
+        DASH_UP = (
+                self.up_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.down_pressed
+                and not self.right_pressed
+                and self.casco_azul
+                and self.dash
+                and not self.cooldown
+        )
+        DASH_LEFT = (
+                self.left_pressed
+                and self.space_pressed
+                and not self.down_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and self.casco_azul
+                and self.dash
+                and not self.cooldown
+        )
+        DASH_RIGHT = (
+                self.right_pressed
+                and self.space_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.down_pressed
+                and self.casco_azul
+                and self.dash
+                and not self.cooldown
+        )
+
+        if DASH_DOWN and not self.ya_ocurrido:
+            arcade.play_sound(self.dash_sound)
+            self.activar_ya_ocurrido()
+        if DASH_UP and not self.ya_ocurrido:
+            arcade.play_sound(self.dash_sound)
+            self.activar_ya_ocurrido()
+        if DASH_LEFT and not self.ya_ocurrido:
+            arcade.play_sound(self.dash_sound)
+            self.activar_ya_ocurrido()
+        if DASH_RIGHT and not self.ya_ocurrido:
+            arcade.play_sound(self.dash_sound)
+            self.activar_ya_ocurrido()
+
+
+
 
 
 
@@ -1489,6 +1540,16 @@ class GameView(arcade.View):
         self.cooldown1 = False
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
+
+    def activar_ya_ocurrido(self):
+        """Cambia una variable llamada 'ya_ocurrido' a 'True' que indica si el dash ya se ha hecho o no"""
+        self.ya_ocurrido = True
+        threading.Timer(1, self.desactivar_ya_ocurrido).start()
+    def desactivar_ya_ocurrido(self):
+        """Cambia a 'False' la variable 'ya_ocurrido'"""
+        self.ya_ocurrido = False
+
+
 
 
 def reproducir_musica_fondo():
