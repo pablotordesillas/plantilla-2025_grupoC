@@ -33,14 +33,6 @@ class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
         noclip_callback: Callable,
         hyper_callback: Callable,
     ):
-        # Es como decir que "No tenemos los cascos obtenidos nada mas empezar".
-        constants.FLEETING_OBTAINED = False
-        constants.DASHING_OBTAINED = False
-        constants.CHARGING_OBTAINED = False
-
-        # Reproducir musica por defecto nada mas empezar
-        constants.SONIDO=0
-        reproducir_musica_fondo()
 
         self.off_style = {
             "bg_color": arcade.color.BLACK,
@@ -147,6 +139,14 @@ class GameView(arcade.View):
 
     def __init__(self, map_list):
         super().__init__()
+        # Es como decir que "No tenemos los cascos obtenidos nada mas empezar".
+        constants.FLEETING_OBTAINED = False
+        constants.DASHING_OBTAINED = False
+        constants.CHARGING_OBTAINED = False
+
+        # Reproducir musica por defecto nada mas empezar
+        constants.SONIDO=0
+        reproducir_musica_fondo()
 
         self.contadorB = 0
         self.clock_sprite = None
@@ -186,6 +186,7 @@ class GameView(arcade.View):
         self.casco_verde = False
         self.casco_azul = False
         self.casco_vikingo = False
+        self.casco_naranja = True
 
         self.total_time = 30.0 # Tiempo (segundos) del temporizador
         self.output = "00:00:00"
@@ -1180,6 +1181,10 @@ class GameView(arcade.View):
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
+        sonido_casco_correr_poner = arcade.load_sound(":sounds:robloxSpeedCoilSFX.wav")
+        sonido_casco_dash_poner = arcade.load_sound(":sounds:robloxSwooshSFX2.wav")
+        sonido_casco_embestida_poner = arcade.load_sound(":sounds:robloxUnseathSwordSFX.wav")
+        sonido_cambiar_casco = arcade.load_sound(":sounds:robloxOldButtonSFX.wav")
 
         if self.message_box:
             self.message_box.on_key_press(key, modifiers)
@@ -1223,53 +1228,104 @@ class GameView(arcade.View):
             self.search()
 
         elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:  #Casco naranja, sin efecto especial
-            self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
-            self.casco_azul = False
-            self.casco_verde = False
-            self.dash = False
-            self.correr = False
-            self.casco_vikingo = False
-            self.embestir = False
+            if not self.casco_naranja:
+                arcade.play_sound(sonido_cambiar_casco)
+                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
+                self.casco_azul = False
+                self.casco_verde = False
+                self.dash = False
+                self.correr = False
+                self.casco_vikingo = False
+                self.embestir = False
+                self.casco_naranja = True
+            else:
+                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet1)
+                self.casco_azul = False
+                self.casco_verde = False
+                self.dash = False
+                self.correr = False
+                self.casco_vikingo = False
+                self.embestir = False
+                self.casco_naranja=True
 
         elif key == arcade.key.KEY_2 or key == arcade.key.NUM_2:  #Casco verde, permite correr
             self.confirmar_casco_verde()
             if constants.FLEETING_OBTAINED:
-                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
-                self.casco_azul = False
-                self.casco_verde = True
-                self.dash = False
-                self.correr = True
-                self.casco_vikingo = False
-                self.embestir = False
+                if not self.casco_verde:
+                    arcade.play_sound(sonido_cambiar_casco)
+                    self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
+                    self.casco_azul = False
+                    self.casco_verde = True
+                    self.dash = False
+                    self.correr = True
+                    self.casco_vikingo = False
+                    self.embestir = False
+                    self.casco_naranja = False
+                    arcade.play_sound(sonido_casco_correr_poner)
+                else:
+                    self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet3)
+                    self.casco_azul = False
+                    self.casco_verde = True
+                    self.dash = False
+                    self.correr = True
+                    self.casco_vikingo = False
+                    self.embestir = False
+                    self.casco_naranja = False
 
         elif key == arcade.key.KEY_3 or key == arcade.key.NUM_3: #Casco azul, posibilidad de hacer dash
             self.confirmar_casco_azul()
             if constants.DASHING_OBTAINED:
-                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
-                self.casco_azul = True
-                self.casco_verde = False
-                self.dash = True
-                self.correr = False
-                self.casco_vikingo = False
-                self.embestir = False
+                if not self.casco_azul:
+                    arcade.play_sound(sonido_cambiar_casco)
+                    self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
+                    self.casco_azul = True
+                    self.casco_verde = False
+                    self.dash = True
+                    self.correr = False
+                    self.casco_vikingo = False
+                    self.embestir = False
+                    self.casco_naranja = False
+                    arcade.play_sound(sonido_casco_dash_poner)
+                else:
+                    self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet2)
+                    self.casco_azul = True
+                    self.casco_verde = False
+                    self.dash = True
+                    self.correr = False
+                    self.casco_vikingo = False
+                    self.embestir = False
+                    self.casco_naranja = False
 
         elif key == arcade.key.KEY_4 or key == arcade.key.NUM_4:  #Casco de vikingo, permite embestir para romper muros
             self.confirmar_casco_gris()
             if constants.CHARGING_OBTAINED:
-                self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
-                self.casco_azul = False
-                self.casco_verde = False
-                self.dash = False
-                self.correr = False
-                self.casco_vikingo = True
-                self.embestir = True
+                if not self.casco_vikingo:
+                    arcade.play_sound(sonido_cambiar_casco)
+                    self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
+                    self.casco_azul = False
+                    self.casco_verde = False
+                    self.dash = False
+                    self.correr = False
+                    self.casco_vikingo = True
+                    self.embestir = True
+                    self.casco_naranja = False
+                    arcade.play_sound(sonido_casco_embestida_poner)
+                else:
+                    self.player_sprite.set_spritesheet(self.player_sprite.sprite_sheet4)
+                    self.casco_azul = False
+                    self.casco_verde = False
+                    self.dash = False
+                    self.correr = False
+                    self.casco_vikingo = True
+                    self.embestir = True
+                    self.casco_naranja = False
 
-        elif key == arcade.key.L:
-            cur_map = self.map_list[self.cur_map_name]
-            if self.player_light in cur_map.light_layer:
-                cur_map.light_layer.remove(self.player_light)
-            else:
-                cur_map.light_layer.add(self.player_light)
+        #elif key == arcade.key.L:
+         #   cur_map = self.map_list[self.cur_map_name]
+          #  if self.player_light in cur_map.light_layer:
+           #     cur_map.light_layer.remove(self.player_light)
+            #else:
+              #  cur_map.light_layer.add(self.player_light)
         #elif key == arcade.key.G:  # G
             # toggle debug
          #   self.debug = True if not self.debug else False
@@ -1278,16 +1334,16 @@ class GameView(arcade.View):
             #else:
              #   self.disable_debug_menu()
 
-        elif key == arcade.key.J and self.show_timer== False: # Activar el temporizador por la tecla J
-            self.total_time = 30.0
-            self.show_timer = True
-            self.x_guardado = self.player_sprite.center_x
-            self.y_guardado = self.player_sprite.center_y
-            self.mapa_guardado = self.cur_map_name
+       # elif key == arcade.key.J and self.show_timer== False: # Activar el temporizador por la tecla J
+        #    self.total_time = 30.0
+         #   self.show_timer = True
+          #  self.x_guardado = self.player_sprite.center_x
+           # self.y_guardado = self.player_sprite.center_y
+            #self.mapa_guardado = self.cur_map_name
 
-        elif key == arcade.key.K and self.show_timer == True: # Desactivar el temporizador con la tecla K
-            self.show_timer = False
-# Prueba para el sonido del dash
+       # elif key == arcade.key.K and self.show_timer == True: # Desactivar el temporizador con la tecla K
+        #    self.show_timer = False
+# Prueba para el sonido del dash ( no funciona )
         elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.dash:
             arcade.play_sound(self.dash_sound)
         elif key==arcade.key.SPACE and (key==arcade.key.S or key==arcade.key.DOWN) and self.dash:
@@ -1296,7 +1352,7 @@ class GameView(arcade.View):
             arcade.play_sound(self.dash_sound)
         elif key==arcade.key.SPACE and (key==arcade.key.D or key==arcade.key.RIGHT) and self.dash:
             arcade.play_sound(self.dash_sound)
-# Prueba para el sonido de la embestida
+# Prueba para el sonido de la embestida ( no funciona )
         elif key==arcade.key.SPACE and (key==arcade.key.W or key==arcade.key.UP) and self.embestir:
             arcade.play_sound(self.estampida_sound)
         elif key==arcade.key.SPACE and (key==arcade.key.S or key==arcade.key.DOWN) and self.embestir:
