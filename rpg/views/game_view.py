@@ -5,7 +5,7 @@ Main game view
 import json
 import time
 from functools import partial
-from symbol import return_stmt
+#from symbol import return_stmt
 from typing import Callable
 import pyglet
 import arcade
