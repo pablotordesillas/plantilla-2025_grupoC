@@ -36,6 +36,8 @@ Graphics Assets From:
 * [Kenney Input Prompts Pixel 16x16](https://kenney.nl/assets/input-prompts-pixel-16)
 * [Itch.io Game Assets](https://itch.io/game-assets)
 
+All rights to their respective owners.
+
 ##  <u>Gameplay.</u>
 >Your objective is to escape a set of labyrinthically thought levels before the timer runs out.<br>
 However, if you don't make it, worry not! You will be resetted to the start of the level!<br>
