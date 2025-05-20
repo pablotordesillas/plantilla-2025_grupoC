@@ -1505,8 +1505,15 @@ class GameView(arcade.View):
         print(f"Found {len(sprites_in_range)} searchable sprite(s) in range.")
         for sprite in sprites_in_range:
             if "item" in sprite.properties:
+                cascos = ["dashing helmet", "fleeting helmet", "charging helmet"]
+                if sprite.properties['item'] == "Dashing_Helmet":
+                    casco = cascos[0]
+                elif sprite.properties['item'] == "Fleeting_Helmet":
+                    casco = cascos[1]
+                else:
+                    casco = cascos[2]
                 self.message_box = MessageBox(
-                    self, f"Found: {sprite.properties['item']}"
+                    self, f"You have found the {casco}!"
                 )
                 sprite.remove_from_sprite_lists()
                 lookup_item = self.item_dictionary[sprite.properties["item"]]

@@ -17,24 +17,24 @@ class MessageBox:
         arcade.draw_rectangle_filled(
             cx,
             cy,
-            self.width + MESSAGE_BOX_MARGIN * 2,
-            self.height + MESSAGE_BOX_MARGIN * 2,
-            arcade.color.ALMOND,
+            self.width,
+            self.height,
+            (41,41,41,255),
         )
         arcade.draw_rectangle_outline(
             cx,
             cy,
-            self.width + MESSAGE_BOX_MARGIN * 2,
-            self.height + MESSAGE_BOX_MARGIN * 2,
-            arcade.color.ALLOY_ORANGE,
-            4,
+            self.width,
+            self.height,
+            (19,19,19,255),
+            6,
         )
 
         arcade.draw_text(
             self.message,
             cx,
             cy,
-            arcade.color.ALLOY_ORANGE,
+            arcade.color.WHITE,
             MESSAGE_BOX_FONT_SIZE,
             anchor_x="center",
             anchor_y="center",
