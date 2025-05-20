@@ -366,7 +366,7 @@
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":47
+                         "value":49
                         }],
                  "rotation":0,
                  "type":"",
@@ -412,17 +412,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"ruin_map"
+                         "value":"lab"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":14
+                         "value":1
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":28
+                         "value":39
                         }],
                  "rotation":0,
                  "type":"",
