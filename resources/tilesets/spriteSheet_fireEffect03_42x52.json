@@ -1,0 +1,14 @@
+{ "columns":7,
+ "image":"tiles_laboratory_LandOfPixels\/tiles_laboratory_LandOfPixels\/32px\/spriteSheet_fireEffect03_42x52.png",
+ "imageheight":312,
+ "imagewidth":252,
+ "margin":0,
+ "name":"spriteSheet_fireEffect03_42x52",
+ "spacing":0,
+ "tilecount":63,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

@@ -1,0 +1,14 @@
+{ "columns":37,
+ "image":"tilesStuff_roto.png",
+ "imageheight":512,
+ "imagewidth":1184,
+ "margin":0,
+ "name":"tilesStuff_roto",
+ "spacing":0,
+ "tilecount":592,
+ "tiledversion":"1.11.2",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":"1.10"
+}

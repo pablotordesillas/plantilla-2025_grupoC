@@ -1066,7 +1066,7 @@ class GameView(arcade.View):
             if len(rompible_hit) > 0:
                 rompible_sprite = rompible_hit[0]  # El sprite de la puerta con la que hemos colisionado
 
-                if (self.space_pressed or self.cooldown) and self.casco_vikingo ==True:
+                if (self.space_pressed or self.cooldown1) and self.casco_vikingo ==True:
                     #print("BOOOOOOOOOOM")
                     #UN RESPLANDOR Y HACE PUUUUUM
                     rompible_sprite.remove_from_sprite_lists()
@@ -1077,7 +1077,7 @@ class GameView(arcade.View):
             monedo_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["un_monedo"])
 
             if len(monedo_hit) > 0:
-                monedo_sprite = monedo_hit[0]  #El sprite de la puerta con la que hemos colisionado
+                monedo_sprite = monedo_hit[0]  #El sprite de la moneda con la que hemos colisionado
                 arcade.play_sound(arcade.load_sound(":sounds:coin.mp3")) #sonido moneda cuando pillas
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name=="Prueba":
@@ -1090,6 +1090,19 @@ class GameView(arcade.View):
                     constants.Contador_colossmain-=1
                 elif self.cur_map_name=="castillo_salida":
                     constants.Contador_castillosal-=1
+                elif self.cur_map_name == "lab":
+                    constants.CONTADOR_LAB1-=1
+
+        if "un_monedo2" in map_layers:
+            monedo_hit2 = arcade.check_for_collision_with_list(self.player_sprite, map_layers["un_monedo2"])
+
+            if len(monedo_hit2) > 0:
+                monedo_sprite = monedo_hit2[0]  #El sprite de la moneda con la que hemos colisionado
+                arcade.play_sound(arcade.load_sound(":sounds:coin.mp3")) #sonido moneda cuando pillas
+                monedo_sprite.remove_from_sprite_lists()
+                if self.cur_map_name == "lab":
+                    constants.CONTADOR_LAB2-=1
+
 
         if "puertaD" in map_layers:
 
@@ -1097,8 +1110,11 @@ class GameView(arcade.View):
                 contador_puertaD = constants.Contador_castilloext
             elif self.cur_map_name == "castillo_principal":
                 contador_puertaD = constants.Contador_castilloprinc
+            elif self.cur_map_name == "lab":
+                contador_puertaD = constants.CONTADOR_LAB1
             else:
                 contador_puertaD=0
+
 
             if contador_puertaD > 0:
                 for puertaD in map_layers["puertaD"]:
@@ -1109,6 +1125,24 @@ class GameView(arcade.View):
                     if puertaD in self.my_map.scene["wall_list"]:
                         self.my_map.scene["wall_list"].remove(puertaD)
                         puertaD.remove_from_sprite_lists()
+                        arcade.play_sound(arcade.load_sound(":sounds:puerta.wav"))
+
+        if "puertaD2" in map_layers:
+            if self.cur_map_name == "lab":
+                contador_puertaD2 = constants.CONTADOR_LAB2
+            else:
+                contador_puertaD2 = 0
+
+            if contador_puertaD2 > 0:
+                for puertaD2 in map_layers["puertaD2"]:
+                    if puertaD2 not in self.my_map.scene["wall_list"]:
+                        self.my_map.scene["wall_list"].append(puertaD2)
+            elif contador_puertaD2 == 0:
+                for puertaD2 in map_layers["puertaD2"]:
+                    if puertaD2 in self.my_map.scene["wall_list"]:
+                        self.my_map.scene["wall_list"].remove(puertaD2)
+                        puertaD2.remove_from_sprite_lists()
+                        arcade.play_sound(arcade.load_sound(":sounds:puerta.wav"))
 
         if "puertaB" in map_layers:
 
