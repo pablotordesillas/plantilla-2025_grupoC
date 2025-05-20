@@ -484,8 +484,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":481.666666666667,
-                 "y":137.333333333333
+                 "x":580.333333333334,
+                 "y":39.9999999999997
                 }, 
                 {
                  "gid":4165,
@@ -512,8 +512,36 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":544.666666666667,
-                 "y":138
+                 "x":483.333333333334,
+                 "y":136.666666666667
+                }, 
+                {
+                 "gid":6793,
+                 "height":32,
+                 "id":47,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"map_name",
+                         "type":"string",
+                         "value":"farmhouse"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":2
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":2.66666666666666,
+                 "y":34.6666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -747,7 +775,7 @@
          "y":0
         }],
  "nextlayerid":19,
- "nextobjectid":47,
+ "nextobjectid":48,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -788,6 +816,10 @@
         {
          "firstgid":5915,
          "source":"..\/tilesets\/Casco_vikingo.json"
+        }, 
+        {
+         "firstgid":5916,
+         "source":"..\/tilesets\/[Base]BaseChip_pipo.json"
         }],
  "tilewidth":32,
  "type":"map",
