@@ -2785,17 +2785,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"lab"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":10
+                         "value":1
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":10
+                         "value":39
                         }],
                  "rotation":0,
                  "type":"",
