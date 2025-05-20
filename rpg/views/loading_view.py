@@ -17,6 +17,8 @@ class LoadingView(arcade.View):
         self.started = False
         self.progress = 0
         self.map_list = None
+        self.background = arcade.load_texture(":misc:loading_screen.png")
+        self.loading_text_texture = arcade.load_texture(":misc:loading_text.png")
         arcade.set_background_color(arcade.color.BLACK_OLIVE)
 
     def on_draw(self):

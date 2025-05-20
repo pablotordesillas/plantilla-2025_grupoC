@@ -126,9 +126,18 @@ class MainMenuView(arcade.View):
         #self.window.show_view(self.window.views["battle"])
 
     def on_click_new_game(self, event):
-        print("restart game")
-        self.window.views["game"].setup()
-        self.window.show_view(self.window.views["game"])
+        from rpg.views import game_view
+        game_view.pausar_musica()
+
+        # Resetear mapas
+        from rpg import load_game_map
+        load_game_map.load_maps.map_file_names = None
+        load_game_map.load_maps.map_list = None
+        load_game_map.load_maps.file_count = None
+
+        # Cambiar a la vista de carga
+        from rpg.views.loading_view import LoadingView
+        self.window.show_view(LoadingView())
 
     def on_click_quit(self, event):
         print("quitting")
