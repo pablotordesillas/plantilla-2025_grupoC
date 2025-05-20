@@ -603,7 +603,7 @@ class GameView(arcade.View):
                     constants.SONIDO = 2
                     reproducir_musica_fondo()
                 elif(self.cur_map_name=="coloss_main"):
-                    self.total_time = 70.0
+                    self.total_time = 105.0
                     pausar_musica()
                     constants.SONIDO = 3
                     reproducir_musica_fondo()
