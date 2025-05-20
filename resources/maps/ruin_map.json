@@ -255,7 +255,7 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":1
+                         "value":4
                         }, 
                         {
                          "name":"start_y",
