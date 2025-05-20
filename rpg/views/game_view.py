@@ -612,6 +612,11 @@ class GameView(arcade.View):
                     pausar_musica()
                     constants.SONIDO = 4
                     reproducir_musica_fondo()
+                elif(self.cur_map_name=="lab"):
+                    self.total_time= 120
+                    pausar_musica()
+                    constants.SONIDO=5
+                    reproducir_musica_fondo()
                 else:
                     self.total_time = 30.0
                 self.show_timer = True
@@ -1651,6 +1656,8 @@ def reproducir_musica_fondo():
         constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
     elif constants.SONIDO == 4:
         constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
+    elif constants.SONIDO==5:
+        constants.sonido = arcade.load_sound(":sounds:defectAwariaOST.wav", streaming=True)
     constants.player = constants.sonido.play()
     def loop_sound():
         constants.player.push_handlers(on_eos=lambda: loop_sound())
