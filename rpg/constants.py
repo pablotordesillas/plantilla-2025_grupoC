@@ -35,6 +35,7 @@ Contador_colossmain=6
 #Contadores gemas laboatorio
 CONTADOR_LAB1 = 7
 CONTADOR_LAB2 = 9
+
 # Lista de los cascos
 CASCOS_LIST = ["Dashing Helmet", "Fleeting Helmet", "Charging Helmet"]
 
