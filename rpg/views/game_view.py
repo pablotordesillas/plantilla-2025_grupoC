@@ -590,8 +590,10 @@ class GameView(arcade.View):
             # En caso contrario, si la propiedad no equivale a ninguna de las 3, cambia la variable "casco" a un String vacio y crea otra variable item que tiene la clave "short_name" del item con el que hemos chocado.
                     if casco != "":
                         self.message_box = MessageBox(self, f"You have found the {casco}!") # Imprime el mensaje si la variable casco no es un String vacio
+                        threading.Timer(1.5,self.close_message_box).start()
                     else:
                         self.message_box = MessageBox(self, f"You have found the {item}!") # Imprime el mensaje del item si no es un tipo de casco
+                        threading.Timer(1.5, self.close_message_box).start()
 
                     sprite.remove_from_sprite_lists() # Elimina el casco del mapa
                     lookup_item = self.item_dictionary[sprite.properties["item"]] # No se / entiendo que hace
@@ -602,7 +604,8 @@ class GameView(arcade.View):
                     print(
                         "The 'item' property was not set for the sprite. Can't get any items from this." # Si el item no tiene la propiedad "item" y un nombre del diccionario item_dictionary.json, imprime que no tiene dicha propiedad.
                     )
-        except KeyError:
+        except TypeError:
+            print("Error de tipo TypeError ha ocurrido")
             pass
 
         try:
@@ -1240,9 +1243,9 @@ class GameView(arcade.View):
         sonido_casco_embestida_poner = arcade.load_sound(":sounds:robloxUnseathSwordSFX.wav")
         sonido_cambiar_casco = arcade.load_sound(":sounds:robloxOldButtonSFX.wav")
 
-        if self.message_box:
-            self.message_box.on_key_press(key, modifiers)
-            return
+        #if self.message_box:
+         #   self.message_box.on_key_press(key, modifiers)
+          #  return
 
         if key in constants.KEY_UP:
             self.up_pressed = True
