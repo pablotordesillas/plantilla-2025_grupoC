@@ -1651,11 +1651,11 @@ def reproducir_musica_fondo():
     elif constants.SONIDO == 1:
         constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
     elif constants.SONIDO == 2:
-        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel2/theme.mp3", streaming=True)
     elif constants.SONIDO == 3:
-        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel3/theme.mp3", streaming=True)
     elif constants.SONIDO == 4:
-        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel4/theme.mp3", streaming=True)
     elif constants.SONIDO==5:
         constants.sonido = arcade.load_sound(":sounds:defectAwariaOST.wav", streaming=True)
     constants.player = constants.sonido.play()
