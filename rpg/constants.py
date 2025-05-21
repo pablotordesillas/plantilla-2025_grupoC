@@ -35,6 +35,8 @@ Contador_colossmain=6
 #Contadores gemas laboatorio
 CONTADOR_LAB1 = 7
 CONTADOR_LAB2 = 9
+# Lista de los cascos
+CASCOS_LIST = ["Dashing Helmet", "Fleeting Helmet", "Charging Helmet"]
 
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
@@ -66,7 +68,7 @@ MESSAGE_BOX_MARGIN = 30
 # How fast does the camera pan to the user
 CAMERA_SPEED = 0.8
 
-#Constantes para los cascos (Esto lo podemos usar para ver si se tienen los cascos obtenidos o no, por default estaran en False y de ahi podemos partir a hacer cosas)
+#Constantes para los cascos (Esto lo podemos usar para ver si se tienen los cascos obtenidos o no, por default estaran en False)
 FLEETING_OBTAINED = False
 DASHING_OBTAINED = False
 CHARGING_OBTAINED = False

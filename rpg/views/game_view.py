@@ -10,6 +10,8 @@ from typing import Callable
 import pyglet
 import arcade
 import arcade.gui
+from pyglet import sprite
+
 import rpg.constants as constants
 from arcade.experimental.lights import Light
 from pyglet.math import Vec2
@@ -196,7 +198,7 @@ class GameView(arcade.View):
         self.output = "00:00:00"
         self.show_timer = False
 
-        self.dash_sound = arcade.load_sound(":sounds:dash.mp3")
+        self.dash_sound = arcade.load_sound(":sounds:dash.wav")
         self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
 
         # Physics engine
@@ -565,6 +567,43 @@ class GameView(arcade.View):
         self.player_sprite.change_y = 0
 
         SPEED_AUX = constants.MOVEMENT_SPEED
+
+# Para recoger items nada mas pasar por encima de ellos
+        try:
+            map_layers_searchable = self.map_list[self.cur_map_name].map_layers # Guarda las capas del mapa en el que estamos en una variable.
+            searchable_sprites = map_layers_searchable["searchable"] # De la variable anterior, digamos que es una lista, recoge  todos los "sprites" o, mejor dicho, los "tiles", en otra variable, siendo esta otra lista.
+            sprites_in_range = arcade.check_for_collision_with_list(self.player_sprite, searchable_sprites) # Verifica cada 1/60 segundos (es decir 60 veces por segundo) si estamos colsionando con algun tile de la lista anterior. Puede bajar el rendimiento, no se sabe aun.
+
+            for sprite in sprites_in_range: # por cada "tile" en la lista de tiles con las que hemos colisionado anteriormente:
+                if "item" in sprite.properties: # si la palabra "item" se encuentra en el objeto de la capa de objetos que usamos para crear items recaudables.
+                    if sprite.properties["item"] == "Dashing_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
+                        casco = constants.CASCOS_LIST[0]
+                    elif sprite.properties["item"] == "Fleeting_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
+                        casco = constants.CASCOS_LIST[1]
+                    elif sprite.properties["item"] == "Charging_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
+                        casco = constants.CASCOS_LIST[2]
+                    else:
+                        casco = ""
+                        item = self.item_dictionary[sprite.properties["item"]]["short_name"]
+
+            # Lo que hace el if de encima es que, si la propiedad "item" se denomina "Dashing_Helmet","Fleeting_Helmet" o "Charging_Helmet" y la clave "short_name" del conjunto de items en item_dictionary.json se encuentra en la lista CASCOS_LIST en constants.py, se le indica un nombre a la variable casco de la misma lista CASCOS_LIST.
+            # En caso contrario, si la propiedad no equivale a ninguna de las 3, cambia la variable "casco" a un String vacio y crea otra variable item que tiene la clave "short_name" del item con el que hemos chocado.
+                    if casco != "":
+                        self.message_box = MessageBox(self, f"You have found the {casco}!") # Imprime el mensaje si la variable casco no es un String vacio
+                    else:
+                        self.message_box = MessageBox(self, f"You have found the {item}!") # Imprime el mensaje del item si no es un tipo de casco
+
+                    sprite.remove_from_sprite_lists() # Elimina el casco del mapa
+                    lookup_item = self.item_dictionary[sprite.properties["item"]] # No se / entiendo que hace
+                    self.player_sprite.inventory.append(lookup_item) # No se / entiendo que hace
+                    arcade.play_sound(arcade.load_sound(":sounds:Trowelgotsomething.wav"))  # Produce un sonido cuando consigues un item.
+                    print(f"Found item:{lookup_item}")
+                else:
+                    print(
+                        "The 'item' property was not set for the sprite. Can't get any items from this." # Si el item no tiene la propiedad "item" y un nombre del diccionario item_dictionary.json, imprime que no tiene dicha propiedad.
+                    )
+        except KeyError:
+            pass
 
         try:
             slow_tiles_hit = arcade.check_for_collision_with_list(self.player_sprite, self.my_map.scene["slow_list"])
@@ -965,30 +1004,6 @@ class GameView(arcade.View):
                 smoke.alpha -= 5  # Se va haciendo transparente
             else:
                 smoke.remove_from_sprite_lists()
-
-    #CORRER
-        # Similar a cuando anda el personaje solo que ponemos RUN_MOVEMENT_SPEED que es superior
-        if self.correr == True: #Solo si tiene el casco verde puesto
-            if MOVING_UP_RUN:
-                self.player_sprite.change_y = SPEED_AUX*2
-            elif MOVING_DOWN_RUN:
-                self.player_sprite.change_y = -SPEED_AUX*2
-            elif MOVING_LEFT_RUN:
-                self.player_sprite.change_x = -SPEED_AUX*2
-            elif MOVING_RIGHT_RUN:
-                self.player_sprite.change_x = SPEED_AUX*2
-            elif MOVING_UP_LEFT_RUN:
-                self.player_sprite.change_y = SPEED_AUX*2 / 1.5
-                self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
-            elif MOVING_UP_RIGHT_RUN:
-                self.player_sprite.change_y = SPEED_AUX*2 / 1.5
-                self.player_sprite.change_x = SPEED_AUX*2 / 1.5
-            elif MOVING_DOWN_LEFT_RUN:
-                self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
-                self.player_sprite.change_x = -SPEED_AUX*2 / 1.5
-            elif MOVING_DOWN_RIGHT_RUN:
-                self.player_sprite.change_y = -SPEED_AUX*2 / 1.5
-                self.player_sprite.change_x = SPEED_AUX*2 / 1.5
         # Call update to move the sprite
         self.physics_engine.update()
 
@@ -1263,8 +1278,8 @@ class GameView(arcade.View):
             self.window.views["main_menu"] = MainMenuView(background_texture=bg_texture)
             self.window.show_view(self.window.views["main_menu"])
 
-        elif key in constants.SEARCH: #Esto en una constante es la letra E
-            self.search()
+        #elif key in constants.SEARCH: #Esto en una constante es la letra E
+         #   self.search()
 
         elif key == arcade.key.KEY_1 or key == arcade.key.NUM_1:  #Casco naranja, sin efecto especial
             if not self.casco_naranja:
@@ -1496,39 +1511,39 @@ class GameView(arcade.View):
     def close_message_box(self):
         self.message_box = None
 
-    def search(self):
-        """Search for things"""
-        map_layers = self.map_list[self.cur_map_name].map_layers
-        if "searchable" not in map_layers:
-            print(f"No searchable sprites on {self.cur_map_name} map layer.")
-            return
+    #def search(self):
+     #   """Search for things"""
+      #  map_layers = self.map_list[self.cur_map_name].map_layers
+       # if "searchable" not in map_layers:
+        #    print(f"No searchable sprites on {self.cur_map_name} map layer.")
+         #   return
 
-        searchable_sprites = map_layers["searchable"]
-        sprites_in_range = arcade.check_for_collision_with_list(
-            self.player_sprite, searchable_sprites
-        )
-        print(f"Found {len(sprites_in_range)} searchable sprite(s) in range.")
-        for sprite in sprites_in_range:
-            if "item" in sprite.properties:
-                cascos = ["dashing helmet", "fleeting helmet", "charging helmet"]
-                if sprite.properties['item'] == "Dashing_Helmet":
-                    casco = cascos[0]
-                elif sprite.properties['item'] == "Fleeting_Helmet":
-                    casco = cascos[1]
-                else:
-                    casco = cascos[2]
-                self.message_box = MessageBox(
-                    self, f"You have found the {casco}!"
-                )
-                sprite.remove_from_sprite_lists()
-                lookup_item = self.item_dictionary[sprite.properties["item"]]
-                self.player_sprite.inventory.append(lookup_item)
-                sonido_conseguido = arcade.load_sound(":sounds:Trowelgotsomething.wav")
-                arcade.play_sound(sonido_conseguido) # Produce un sonido cuando consigues un item.
-            else:
-                print(
-                    "The 'item' property was not set for the sprite. Can't get any items from this."
-                )
+        #searchable_sprites = map_layers["searchable"]
+        #sprites_in_range = arcade.check_for_collision_with_list(
+       #     self.player_sprite, searchable_sprites
+        #)
+        #print(f"Found {len(sprites_in_range)} searchable sprite(s) in range.")
+        #for sprite in sprites_in_range:
+         #   if "item" in sprite.properties:
+          #      cascos = ["dashing helmet", "fleeting helmet", "charging helmet"]
+           #     if sprite.properties['item'] == "Dashing_Helmet":
+            #        casco = cascos[0]
+             #   elif sprite.properties['item'] == "Fleeting_Helmet":
+              #      casco = cascos[1]
+               # else:
+                #    casco = cascos[2]
+                #self.message_box = MessageBox(
+                 #   self, f"You have found the {casco}!"
+                #3)
+                #sprite.remove_from_sprite_lists()
+                #lookup_item = self.item_dictionary[sprite.properties["item"]]
+                #self.player_sprite.inventory.append(lookup_item)
+                #sonido_conseguido = arcade.load_sound(":sounds:Trowelgotsomething.wav")
+                #arcade.play_sound(sonido_conseguido) # Produce un sonido cuando consigues un item.
+            #else:
+             #   print(
+              #      "The 'item' property was not set for the sprite. Can't get any items from this."
+               # )
 
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key."""
@@ -1616,7 +1631,7 @@ class GameView(arcade.View):
         threading.Timer(0.75, eliminar_humo).start()
 
     def activar_cooldown1(self):
-        """TODO:Documentation"""
+        """Activa el cooldown de la embestida"""
         self.cooldown1 = True
         threading.Timer(1, self.desactivar_cooldown1).start()
 

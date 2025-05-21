@@ -8,11 +8,11 @@ class PlayerSprite(CharacterSprite_one):
         super().__init__(sheet_name, sheet_name2, sheet_name3, sheet_name4)
         self.sound_update = 0
         self.footstep_sounds = {
-            0: arcade.load_sound(":sounds:nivel0/pasos.mp3"),
-            1: arcade.load_sound(":sounds:nivel2/pasos.mp3"),
+            0: arcade.load_sound(":sounds:nivel1/pasos.mp3"),
+            1: arcade.load_sound(":sounds:nivel0/pasos.mp3"),
             2: arcade.load_sound(":sounds:nivel1/pasos.mp3"),
             3: arcade.load_sound(":sounds:nivel0/pasos.mp3"),
-            4: arcade.load_sound(":sounds:nivel2/pasos.mp3"),
+            4: arcade.load_sound(":sounds:nivel0/pasos.mp3"),
             5: arcade.load_sound(":sounds:nivel1/pasos.mp3")
         }
 
