@@ -2,8 +2,8 @@ He puesto a mi hermano a jugar al juego (persona completamente independiente al 
 
 1- En la imagen que veis (nivel 1) ese tronco es muy difícil de pasar por el giro y perfectamente pierdes 10 segundos de tiempo pasando, recomendaría moverlo a la derecha. (Completado, Esperando Respuesta)
 
-2- En el nivel 3, coliseo y en todos los niveles posteriores no queda claro cuando dashear y cuando embestir ya que ambas mecánicas son similares visualmente, podríamos meter un pequeño indicador visual de cuando se rompe o cuando se dashea algo (una luz o lo que sea)
+2- En el nivel 3, coliseo y en todos los niveles posteriores no queda claro cuando dashear y cuando embestir ya que ambas mecánicas son similares visualmente, podríamos meter un pequeño indicador visual de cuando se rompe o cuando se dashea algo (una luz o lo que sea) (Por cambiar)
 
 3- En el nivel de laboratorio hay algunos dashes muy difíciles que necesitarían ser ajustados, principalmente los que son solo un tile de liquido azul solo, si pones dos juntos es más fácil porque no chocas con la pared de arriba. (Completado, Esperando respuesta)
 
-4- La mecánica de tiempo en los primeros dos niveles esta bien (en el primero solo si quitamos el tronco porque si no, no da tiempo) pero en el nivel 3 el tiempo sobra ya que vuelves atrás pero las gemas ya han sido recogidas, lo mismo iría en el laboratorio, me ha agradecido que no hubiera tiempo en ese nivel porque solo te echaría para atrás. En el castillo creo que el tiempo esta bien implementado.
+4- La mecánica de tiempo en los primeros dos niveles esta bien (en el primero solo si quitamos el tronco porque si no, no da tiempo) pero en el nivel 3 el tiempo sobra ya que vuelves atrás pero las gemas ya han sido recogidas, lo mismo iría en el laboratorio, me ha agradecido que no hubiera tiempo en ese nivel porque solo te echaría para atrás. En el castillo creo que el tiempo esta bien implementado. (Por cambiar)
