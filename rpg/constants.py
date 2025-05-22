@@ -61,6 +61,7 @@ KEY_SHIFT = [arcade.key.LSHIFT]
 KEY_TAB = [arcade.key.TAB]
 INVENTORY = [arcade.key.I]
 SEARCH = [arcade.key.E]
+INFO = [arcade.key.I]
 
 # Message box
 MESSAGE_BOX_FONT_SIZE = 20

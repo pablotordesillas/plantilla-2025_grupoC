@@ -22,5 +22,9 @@
    "Dashing_Helmet": {
     "short_name":"Dashing Helmet",
     "type": "Helmet"
+  },
+  "Info_Paper": {
+    "short_name": "Info Paper",
+    "type": "Informative"
   }
 }

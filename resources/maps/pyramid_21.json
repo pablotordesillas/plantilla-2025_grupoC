@@ -230,6 +230,41 @@
         }, 
         {
          "draworder":"topdown",
+         "id":7,
+         "name":"dasheable",
+         "objects":[
+                {
+                 "gid":1719,
+                 "height":32,
+                 "id":34,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1568,
+                 "y":1120
+                }, 
+                {
+                 "gid":1719,
+                 "height":32,
+                 "id":35,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1408,
+                 "y":1152
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":6,
          "name":"lights",
          "objects":[
@@ -393,6 +428,52 @@
                  "width":0,
                  "x":1136.66666666667,
                  "y":1635.33333333333
+                }, 
+                {
+                 "height":0,
+                 "id":36,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":30
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1424,
+                 "y":1138
+                }, 
+                {
+                 "height":0,
+                 "id":37,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":30
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1584,
+                 "y":1107
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -523,8 +604,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":34,
+ "nextlayerid":8,
+ "nextobjectid":38,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

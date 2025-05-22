@@ -590,16 +590,32 @@ class GameView(arcade.View):
                 # Lo que hace el if de encima es que, si la propiedad "item" se denomina "Dashing_Helmet","Fleeting_Helmet" o "Charging_Helmet" y la clave "short_name" del conjunto de items en item_dictionary.json se encuentra en la lista CASCOS_LIST en constants.py, se le indica un nombre a la variable casco de la misma lista CASCOS_LIST.
                 # En caso contrario, si la propiedad no equivale a ninguna de las 3, cambia la variable "casco" a un String vacio y crea otra variable item que tiene la clave "short_name" del item con el que hemos chocado.
                         if casco != "":
-                            self.message_box = MessageBox(self, f"You have found the {casco}!") # Imprime el mensaje si la variable casco no es un String vacio
+                            self.message_box = MessageBox(self, f"You have found the {casco}!",0) # Imprime el mensaje si la variable casco no es un String vacio
                             threading.Timer(1.5,self.close_message_box).start()
                         else:
-                            self.message_box = MessageBox(self, f"You have found the {item}!") # Imprime el mensaje del item si no es un tipo de casco
-                            threading.Timer(1.5, self.close_message_box).start()
+                            if item != "Info Paper":
+                                self.message_box = MessageBox(self, f"You have found the {item}!",0) # Imprime el mensaje del item si no es un tipo de casco
+                                threading.Timer(1.5, self.close_message_box).start()
+                            else:
+                                self.message_box = MessageBox(self, "Have some tips:\n"
+                                                                    "Blue lights indicate a dashable zone\n"
+                                                                    "Cracked objects or barrels can be broken\n"
+                                                                    "Some rooms require some collectables to proceed\n"
+                                                                    "Be sure to get in time!\n"
+                                                                    "Press I to show this again in case you need it",1)
+                                threading.Timer(8,self.close_message_box).start()
 
                         sprite.remove_from_sprite_lists() # Elimina el casco del mapa
-                        lookup_item = self.item_dictionary[sprite.properties["item"]] # No se / entiendo que hace
-                        self.player_sprite.inventory.append(lookup_item) # No se / entiendo que hace
-                        arcade.play_sound(arcade.load_sound(":sounds:Trowelgotsomething.wav"))  # Produce un sonido cuando consigues un item.
+                        lookup_item = self.item_dictionary[sprite.properties["item"]] # Guarda en la variable lookup_item el nombre que hemos puesto en la propiedad "item" que deberia erstar en item_dictionary
+                        item_short_name = self.item_dictionary[sprite.properties["item"]]["short_name"]
+                        if casco == "" or item_short_name == "Info Paper":
+                            pass
+                        else:
+                            self.player_sprite.inventory.append(lookup_item) # Agrega el item a un inventario que no se donde esta.
+                        if item_short_name == "Info Paper":
+                            arcade.play_sound(arcade.load_sound(":sounds:Page_Turn.wav"))
+                        else:
+                            arcade.play_sound(arcade.load_sound(":sounds:Trowelgotsomething.wav"))  # Produce un sonido cuando consigues un item.
                         print(f"Found item:{lookup_item}")
                     else:
                         print(
@@ -1243,6 +1259,20 @@ class GameView(arcade.View):
         sonido_casco_dash_poner = arcade.load_sound(":sounds:robloxSwooshSFX2.wav")
         sonido_casco_embestida_poner = arcade.load_sound(":sounds:robloxUnseathSwordSFX.wav")
         sonido_cambiar_casco = arcade.load_sound(":sounds:robloxOldButtonSFX.wav")
+
+        if key in constants.INFO:
+            if not self.message_box:
+                self.message_box = MessageBox(self, "Have some tips:\n"
+                                                    "Blue lights indicate a dashable zone\n"
+                                                    "Cracked objects or barrels can be broken\n"
+                                                    "Some rooms require some collectables to proceed\n"
+                                                    "Be sure to get in time!\n"
+                                                    "Press I to open / close this message", 1)
+                arcade.play_sound(arcade.load_sound(":sounds:Page_Turn.wav"))
+            elif self.message_box:
+                self.message_box = None
+            else:
+                pass
 
         #if self.message_box:
          #   self.message_box.on_key_press(key, modifiers)

@@ -2912,6 +2912,132 @@
         }, 
         {
          "draworder":"topdown",
+         "id":16,
+         "name":"lights",
+         "objects":[
+                {
+                 "height":0,
+                 "id":174,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":40
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3934.66666666667,
+                 "y":2449.33333333333
+                }, 
+                {
+                 "height":0,
+                 "id":175,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":40
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3230.66666666667,
+                 "y":2065.33333333333
+                }, 
+                {
+                 "height":0,
+                 "id":176,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":50
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2466.66666666667,
+                 "y":1890.66666666667
+                }, 
+                {
+                 "height":0,
+                 "id":177,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":80
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1793.33333333333,
+                 "y":1437.33333333333
+                }, 
+                {
+                 "height":0,
+                 "id":178,
+                 "name":"",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"color",
+                         "type":"color",
+                         "value":"#ff00ffff"
+                        }, 
+                        {
+                         "name":"radius",
+                         "type":"int",
+                         "value":50
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1793.33333333333,
+                 "y":1637.33333333333
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":10,
          "name":"doors",
          "objects":[
@@ -2984,8 +3110,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":16,
- "nextobjectid":174,
+ "nextlayerid":17,
+ "nextobjectid":179,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

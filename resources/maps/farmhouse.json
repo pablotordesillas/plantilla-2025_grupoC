@@ -153,49 +153,26 @@
         }, 
         {
          "draworder":"topdown",
-         "id":9,
-         "name":"emptied",
-         "objects":[
-                {
-                 "gid":877,
-                 "height":32,
-                 "id":5,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":314,
-                 "y":98
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
          "id":8,
          "name":"searchable",
          "objects":[
                 {
-                 "gid":878,
+                 "gid":956,
                  "height":32,
-                 "id":4,
+                 "id":15,
                  "name":"",
                  "properties":[
                         {
                          "name":"item",
                          "type":"string",
-                         "value":"Apple"
+                         "value":"Info_Paper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":314,
-                 "y":98
+                 "x":352,
+                 "y":224
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -307,7 +284,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":14,
+ "nextobjectid":16,
  "orientation":"orthogonal",
  "properties":[
         {

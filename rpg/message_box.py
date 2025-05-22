@@ -4,11 +4,18 @@ from rpg.constants import MESSAGE_BOX_FONT_SIZE, MESSAGE_BOX_MARGIN
 
 
 class MessageBox:
-    def __init__(self, view, message):
-        self.message = message
-        self.view = view
-        self.width = 500
-        self.height = 50
+    def __init__(self, view, message, value:int):
+        if value==0:
+            self.message = message
+            self.view = view
+            self.width = 500
+            self.height = 50
+        else:
+            self.message = message
+            self.view = view
+            self.width = 800
+            self.height = 300
+
 
     def on_draw(self):
         cx = self.view.window.width / 2
