@@ -9,6 +9,9 @@ from rpg.views.game_view import GameView
 from rpg.views.inventory_view import InventoryView
 from rpg.views.main_menu_view import MainMenuView
 from rpg.views.settings_view import SettingsView
+from rpg.message_box import MessageBox
+import random
+import threading
 
 
 class LoadingView(arcade.View):
@@ -20,6 +23,8 @@ class LoadingView(arcade.View):
         self.background = arcade.load_texture(":misc:loading_screen.png")
         self.loading_text_texture = arcade.load_texture(":misc:loading_text.png")
         arcade.set_background_color(arcade.color.BLACK_OLIVE)
+        self.message_box = None
+        self.messages_list = ["Press 'I' to open the tips menu!", "Watch out for traps!", "Don't forget to vibe to the songs from time to time!", "Use 1-4 to change helmets, they make funny sounds!" ]
 
     def on_draw(self):
         arcade.start_render()
@@ -42,14 +47,21 @@ class LoadingView(arcade.View):
         #Texto loading
         arcade.draw_texture_rectangle(self.window.width/2, 180, self.loading_text_texture.width, self.loading_text_texture.height, self.loading_text_texture)
 
+        if self.message_box:
+            self.message_box.on_draw()
+
     def setup(self):
         self.background = arcade.load_texture(":misc:loading_screen.png")
         self.loading_text_texture = arcade.load_texture(":misc:loading_text.png")
+    def close_message_box(self):
+        self.message_box = None
 
     def on_update(self, delta_time: float):
         # Dictionary to hold all our maps
         if self.started:
             done, self.progress, self.map_list = load_maps()
+            self.message_box = MessageBox(self, self.messages_list[random.randint(0, len(self.messages_list) - 1)], 2)
+            threading.Timer(delta_time*100, self.close_message_box).start()
             if done:
                 self.window.views["game"] = GameView(self.map_list)
                 self.window.views["game"].setup()
@@ -62,3 +74,5 @@ class LoadingView(arcade.View):
                 #self.window.views["battle"].setup()
 
                 self.window.show_view(self.window.views["game"])
+
+

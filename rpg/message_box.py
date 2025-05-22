@@ -5,21 +5,36 @@ from rpg.constants import MESSAGE_BOX_FONT_SIZE, MESSAGE_BOX_MARGIN
 
 class MessageBox:
     def __init__(self, view, message, value:int):
+        self.value = value
         if value==0:
             self.message = message
             self.view = view
             self.width = 500
             self.height = 50
-        else:
+        elif value == 1:
             self.message = message
             self.view = view
             self.width = 800
             self.height = 300
+        elif value == 2:
+            self.message = message
+            self.view = view
+            self.width = 800
+            self.height = 100
+        else:
+            self.message = message
+            self.view = view
+            self.width = 500
+            self.height = 200
 
 
     def on_draw(self):
-        cx = self.view.window.width / 2
-        cy = self.view.window.height / 2
+        if self.value == 0 or self.value == 1:
+            cx = self.view.window.width / 2
+            cy = self.view.window.height / 2
+        else:
+            cx = self.view.window.width/2
+            cy = self.view.window.height/4
 
         arcade.draw_rectangle_filled(
             cx,
