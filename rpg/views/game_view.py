@@ -570,40 +570,41 @@ class GameView(arcade.View):
 
 # Para recoger items nada mas pasar por encima de ellos
         try:
-            map_layers_searchable = self.map_list[self.cur_map_name].map_layers # Guarda las capas del mapa en el que estamos en una variable.
-            searchable_sprites = map_layers_searchable["searchable"] # De la variable anterior, digamos que es una lista, recoge  todos los "sprites" o, mejor dicho, los "tiles", en otra variable, siendo esta otra lista.
-            sprites_in_range = arcade.check_for_collision_with_list(self.player_sprite, searchable_sprites) # Verifica cada 1/60 segundos (es decir 60 veces por segundo) si estamos colsionando con algun tile de la lista anterior. Puede bajar el rendimiento, no se sabe aun.
+            if "searchable" in cur_map.map_layers:
+                map_layers_searchable = self.map_list[self.cur_map_name].map_layers # Guarda las capas del mapa en el que estamos en una variable.
+                searchable_sprites = map_layers_searchable["searchable"] # De la variable anterior, digamos que es una lista, recoge  todos los "sprites" o, mejor dicho, los "tiles", en otra variable, siendo esta otra lista.
+                sprites_in_range = arcade.check_for_collision_with_list(self.player_sprite, searchable_sprites) # Verifica cada 1/60 segundos (es decir 60 veces por segundo) si estamos colsionando con algun tile de la lista anterior. Puede bajar el rendimiento, no se sabe aun.
 
-            for sprite in sprites_in_range: # por cada "tile" en la lista de tiles con las que hemos colisionado anteriormente:
-                if "item" in sprite.properties: # si la palabra "item" se encuentra en el objeto de la capa de objetos que usamos para crear items recaudables.
-                    if sprite.properties["item"] == "Dashing_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
-                        casco = constants.CASCOS_LIST[0]
-                    elif sprite.properties["item"] == "Fleeting_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
-                        casco = constants.CASCOS_LIST[1]
-                    elif sprite.properties["item"] == "Charging_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
-                        casco = constants.CASCOS_LIST[2]
+                for sprite in sprites_in_range: # por cada "tile" en la lista de tiles con las que hemos colisionado anteriormente:
+                    if "item" in sprite.properties: # si la palabra "item" se encuentra en el objeto de la capa de objetos que usamos para crear items recaudables.
+                        if sprite.properties["item"] == "Dashing_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
+                            casco = constants.CASCOS_LIST[0]
+                        elif sprite.properties["item"] == "Fleeting_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
+                            casco = constants.CASCOS_LIST[1]
+                        elif sprite.properties["item"] == "Charging_Helmet" and self.item_dictionary[sprite.properties["item"]]["short_name"] in constants.CASCOS_LIST:
+                            casco = constants.CASCOS_LIST[2]
+                        else:
+                            casco = ""
+                            item = self.item_dictionary[sprite.properties["item"]]["short_name"]
+
+                # Lo que hace el if de encima es que, si la propiedad "item" se denomina "Dashing_Helmet","Fleeting_Helmet" o "Charging_Helmet" y la clave "short_name" del conjunto de items en item_dictionary.json se encuentra en la lista CASCOS_LIST en constants.py, se le indica un nombre a la variable casco de la misma lista CASCOS_LIST.
+                # En caso contrario, si la propiedad no equivale a ninguna de las 3, cambia la variable "casco" a un String vacio y crea otra variable item que tiene la clave "short_name" del item con el que hemos chocado.
+                        if casco != "":
+                            self.message_box = MessageBox(self, f"You have found the {casco}!") # Imprime el mensaje si la variable casco no es un String vacio
+                            threading.Timer(1.5,self.close_message_box).start()
+                        else:
+                            self.message_box = MessageBox(self, f"You have found the {item}!") # Imprime el mensaje del item si no es un tipo de casco
+                            threading.Timer(1.5, self.close_message_box).start()
+
+                        sprite.remove_from_sprite_lists() # Elimina el casco del mapa
+                        lookup_item = self.item_dictionary[sprite.properties["item"]] # No se / entiendo que hace
+                        self.player_sprite.inventory.append(lookup_item) # No se / entiendo que hace
+                        arcade.play_sound(arcade.load_sound(":sounds:Trowelgotsomething.wav"))  # Produce un sonido cuando consigues un item.
+                        print(f"Found item:{lookup_item}")
                     else:
-                        casco = ""
-                        item = self.item_dictionary[sprite.properties["item"]]["short_name"]
-
-            # Lo que hace el if de encima es que, si la propiedad "item" se denomina "Dashing_Helmet","Fleeting_Helmet" o "Charging_Helmet" y la clave "short_name" del conjunto de items en item_dictionary.json se encuentra en la lista CASCOS_LIST en constants.py, se le indica un nombre a la variable casco de la misma lista CASCOS_LIST.
-            # En caso contrario, si la propiedad no equivale a ninguna de las 3, cambia la variable "casco" a un String vacio y crea otra variable item que tiene la clave "short_name" del item con el que hemos chocado.
-                    if casco != "":
-                        self.message_box = MessageBox(self, f"You have found the {casco}!") # Imprime el mensaje si la variable casco no es un String vacio
-                        threading.Timer(1.5,self.close_message_box).start()
-                    else:
-                        self.message_box = MessageBox(self, f"You have found the {item}!") # Imprime el mensaje del item si no es un tipo de casco
-                        threading.Timer(1.5, self.close_message_box).start()
-
-                    sprite.remove_from_sprite_lists() # Elimina el casco del mapa
-                    lookup_item = self.item_dictionary[sprite.properties["item"]] # No se / entiendo que hace
-                    self.player_sprite.inventory.append(lookup_item) # No se / entiendo que hace
-                    arcade.play_sound(arcade.load_sound(":sounds:Trowelgotsomething.wav"))  # Produce un sonido cuando consigues un item.
-                    print(f"Found item:{lookup_item}")
-                else:
-                    print(
-                        "The 'item' property was not set for the sprite. Can't get any items from this." # Si el item no tiene la propiedad "item" y un nombre del diccionario item_dictionary.json, imprime que no tiene dicha propiedad.
-                    )
+                        print(
+                            "The 'item' property was not set for the sprite. Can't get any items from this." # Si el item no tiene la propiedad "item" y un nombre del diccionario item_dictionary.json, imprime que no tiene dicha propiedad.
+                        )
         except TypeError:
             print("Error de tipo TypeError ha ocurrido")
             pass
