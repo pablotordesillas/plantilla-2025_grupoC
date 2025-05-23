@@ -1361,17 +1361,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"farmhouse2"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":2
+                         "value":13
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":2
+                         "value":10
                         }],
                  "rotation":0,
                  "type":"",
@@ -1389,17 +1389,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"farmhouse2"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":2
+                         "value":13
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":2
+                         "value":10
                         }],
                  "rotation":0,
                  "type":"",
@@ -1417,17 +1417,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"Prueba"
+                         "value":"farmhouse2"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":2
+                         "value":13
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":2
+                         "value":10
                         }],
                  "rotation":0,
                  "type":"",
