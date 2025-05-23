@@ -61,7 +61,7 @@ class LoadingView(arcade.View):
         if self.started:
             done, self.progress, self.map_list = load_maps()
             self.message_box = MessageBox(self, self.messages_list[random.randint(0, len(self.messages_list) - 1)], 2)
-            threading.Timer(delta_time*100, self.close_message_box).start()
+            threading.Timer(delta_time*2, self.close_message_box).start()
             if done:
                 self.window.views["game"] = GameView(self.map_list)
                 self.window.views["game"].setup()

@@ -145,7 +145,9 @@ class GameView(arcade.View):
         constants.FLEETING_OBTAINED = False
         constants.DASHING_OBTAINED = False
         constants.CHARGING_OBTAINED = False
-        self.message_box = MessageBox(self, "Welcome to 'Insert_Game_Name'! From the dev team, we hope you enjoy our tiny game have fun!", 3)
+
+        # Mensaje de bienvenida
+        self.message_box = MessageBox(self, "Welcome to 'Insert_Game_Name'! From the dev team, we hope you enjoy our tiny game, have fun!", 3)
         threading.Timer(10, self.close_message_box).start()
 
         # Reproducir musica por defecto nada mas empezar

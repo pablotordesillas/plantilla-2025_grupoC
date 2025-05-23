@@ -24,7 +24,7 @@ class MessageBox:
         else:
             self.message = message
             self.view = view
-            self.width = 500
+            self.width = 550
             self.height = 200
 
 
