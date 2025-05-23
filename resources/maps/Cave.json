@@ -1577,17 +1577,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"pyramid_main"
+                         "value":"leisure2"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":29
+                         "value":8
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":39
+                         "value":12
                         }],
                  "rotation":0,
                  "type":"",

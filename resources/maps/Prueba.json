@@ -542,6 +542,34 @@
                  "width":32,
                  "x":2.66666666666666,
                  "y":34.6666666666667
+                }, 
+                {
+                 "gid":7050,
+                 "height":32,
+                 "id":49,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"map_name",
+                         "type":"string",
+                         "value":"leisure2"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":8
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":12
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":896,
+                 "y":352
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -775,7 +803,7 @@
          "y":0
         }],
  "nextlayerid":19,
- "nextobjectid":49,
+ "nextobjectid":50,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -820,6 +848,10 @@
         {
          "firstgid":5916,
          "source":"..\/tilesets\/[Base]BaseChip_pipo.json"
+        }, 
+        {
+         "firstgid":6980,
+         "source":"..\/tilesets\/[Base]BaseChip_pipo_roto.json"
         }],
  "tilewidth":32,
  "type":"map",

@@ -667,17 +667,17 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"coloss_main"
+                         "value":"leisure3"
                         }, 
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":2
+                         "value":8
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":32
+                         "value":12
                         }],
                  "rotation":0,
                  "type":"",
