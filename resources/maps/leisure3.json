@@ -31,6 +31,35 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":11,
+         "name":"searchable",
+         "objects":[
+                {
+                 "gid":2022,
+                 "height":32,
+                 "id":10,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"item",
+                         "type":"string",
+                         "value":"Info_Paper"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":352,
+                 "y":160
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "data":[383, 370, 370, 370, 370, 370, 370, 370, 370, 370, 370, 370, 370, 370, 370, 383,
             383, 378, 378, 378, 378, 378, 378, 378, 378, 378, 378, 378, 378, 378, 378, 383,
             383, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 383,
@@ -345,8 +374,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":10,
+ "nextlayerid":12,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

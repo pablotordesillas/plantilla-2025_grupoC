@@ -599,12 +599,29 @@ class GameView(arcade.View):
                                 self.message_box = MessageBox(self, f"You have found the {item}!",0) # Imprime el mensaje del item si no es un tipo de casco
                                 threading.Timer(1.5, self.close_message_box).start()
                             else:
-                                self.message_box = MessageBox(self, "Have some tips:\n"
+                                if self.cur_map_name not in ["leisure2","leisure3","leisure4","farmhouse2"]:
+                                    self.message_box = MessageBox(self, "Have some tips:\n"
                                                                     "Blue lights indicate a dashable zone\n"
                                                                     "Cracked objects or barrels can be broken\n"
                                                                     "Some rooms require some collectables to proceed\n"
                                                                     "Be sure to get in time!\n"
                                                                     "Press I to show this again in case you need it",1)
+                                    threading.Timer(8, self.close_message_box).start()
+                                else:
+                                    if self.cur_map_name=="leisure2":
+                                        self.message_box = MessageBox(self, "A",1)
+                                        threading.Timer(10, self.close_message_box).start()
+                                    elif self.cur_map_name=="leisure3":
+                                        self.message_box = MessageBox(self, "B", 1)
+                                        threading.Timer(10, self.close_message_box).start()
+                                    elif self.cur_map_name=="leisure4":
+                                        self.message_box = MessageBox(self, "C", 1)
+                                        threading.Timer(10, self.close_message_box).start()
+                                    elif self.cur_map_name=="farmhouse2":
+                                        self.message_box = MessageBox(self, "D", 1)
+                                        threading.Timer(10, self.close_message_box).start()
+                                    else:
+                                        pass
                                 threading.Timer(8,self.close_message_box).start()
 
                         sprite.remove_from_sprite_lists() # Elimina el casco del mapa
