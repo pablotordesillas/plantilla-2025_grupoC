@@ -203,7 +203,7 @@ class GameView(arcade.View):
         self.show_timer = False
 
         self.dash_sound = arcade.load_sound(":sounds:dash.wav")
-        self.estampida_sound = arcade.load_sound(":sounds:estampida.mp3")
+        self.estampida_sound = arcade.load_sound(":sounds:estampida.wav")
 
         # Physics engine
         self.physics_engine = None
@@ -1120,7 +1120,7 @@ class GameView(arcade.View):
 
             if len(monedo_hit) > 0:
                 monedo_sprite = monedo_hit[0]  #El sprite de la moneda con la que hemos colisionado
-                arcade.play_sound(arcade.load_sound(":sounds:coin.mp3")) #sonido moneda cuando pillas
+                arcade.play_sound(arcade.load_sound(":sounds:coin.wav")) #sonido moneda cuando pillas
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name=="Prueba":
                     constants.Contador -=1
@@ -1140,7 +1140,7 @@ class GameView(arcade.View):
 
             if len(monedo_hit2) > 0:
                 monedo_sprite = monedo_hit2[0]  #El sprite de la moneda con la que hemos colisionado
-                arcade.play_sound(arcade.load_sound(":sounds:coin.mp3")) #sonido moneda cuando pillas
+                arcade.play_sound(arcade.load_sound(":sounds:coin.wav")) #sonido moneda cuando pillas
                 monedo_sprite.remove_from_sprite_lists()
                 if self.cur_map_name == "lab":
                     constants.CONTADOR_LAB2-=1
@@ -1698,15 +1698,15 @@ class GameView(arcade.View):
 
 def reproducir_musica_fondo():
     if constants.SONIDO == 0:
-        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.wav", streaming=True)
     elif constants.SONIDO == 1:
-        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.wav", streaming=True)
     elif constants.SONIDO == 2:
-        constants.sonido = arcade.load_sound(":sounds:nivel2/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel2/theme.wav", streaming=True)
     elif constants.SONIDO == 3:
-        constants.sonido = arcade.load_sound(":sounds:nivel3/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel3/theme.wav", streaming=True)
     elif constants.SONIDO == 4:
-        constants.sonido = arcade.load_sound(":sounds:nivel4/theme.mp3", streaming=True)
+        constants.sonido = arcade.load_sound(":sounds:nivel4/theme.wav", streaming=True)
     elif constants.SONIDO==5:
         constants.sonido = arcade.load_sound(":sounds:defectAwariaOST.wav", streaming=True)
     constants.player = constants.sonido.play()
