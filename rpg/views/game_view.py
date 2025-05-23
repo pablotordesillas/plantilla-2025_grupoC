@@ -147,8 +147,7 @@ class GameView(arcade.View):
         constants.CHARGING_OBTAINED = False
 
         # Mensaje de bienvenida
-        self.message_box = MessageBox(self, "Welcome to 'Insert_Game_Name'! From the dev team, we hope you enjoy our tiny game, have fun!", 3)
-        threading.Timer(10, self.close_message_box).start()
+        self.message_box = None
 
         # Reproducir musica por defecto nada mas empezar
         constants.SONIDO=0
@@ -672,29 +671,19 @@ class GameView(arcade.View):
             if len(timer_hit) > 0 and self.show_timer== False: # Activar el temporizador
                 if(self.cur_map_name=="Cave"): # Segun el mapa hay una cantidad de tiempo distinta. Hay que decidir esto segun los obstaculos que tengamos.
                     self.total_time = 40.0
-                    pausar_musica()
-                    constants.SONIDO = 1
-                    reproducir_musica_fondo()
+
                 elif(self.cur_map_name=="pyramid_main"):
                     self.total_time = 60.0
-                    pausar_musica()
-                    constants.SONIDO = 2
-                    reproducir_musica_fondo()
+
                 elif(self.cur_map_name=="coloss_main"):
                     self.total_time = 105.0
-                    pausar_musica()
-                    constants.SONIDO = 3
-                    reproducir_musica_fondo()
+
                 elif(self.cur_map_name=="castillo_principal"):
                     self.total_time = 80.0
-                    pausar_musica()
-                    constants.SONIDO = 4
-                    reproducir_musica_fondo()
+
                 elif(self.cur_map_name=="lab"):
                     self.total_time= 120
-                    pausar_musica()
-                    constants.SONIDO=5
-                    reproducir_musica_fondo()
+
                 else:
                     self.total_time = 30.0
                 self.show_timer = True
@@ -703,12 +692,81 @@ class GameView(arcade.View):
                 self.mapa_guardado = self.cur_map_name
         except KeyError:
             pass
+
         try:
             stop_hit = arcade.check_for_collision_with_list(
                 self.player_sprite, self.my_map.scene["stop_list"]
             )
             if len(stop_hit) > 0 and self.show_timer == True: # Desactivar el temporizador
                 self.show_timer = False
+        except KeyError:
+            pass
+# Prueba Tiles de tipo _sonido
+        try:
+            sonido_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, self.my_map.scene["sonido_list"])
+
+            if len(sonido_hit) > 0:
+                if (self.cur_map_name == "ruin_map"):
+                    if constants.SONIDO == 0 and constants.player is not None:
+                        pausar_musica()
+                        constants.SONIDO = 9
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "Cave"):  # Segun el mapa hay una cancion distinta
+                    if constants.SONIDO == 9 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 1
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "leisure2"):
+                    if constants.SONIDO == 1 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 6
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "pyramid_main"):
+                    if constants.SONIDO == 6 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 2
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "leisure3"):
+                    if constants.SONIDO == 2 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 7
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "coloss_main"):
+                    if constants.SONIDO == 7 and constants.player is not None and self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 3
+                        reproducir_musica_fondo()
+                elif (self.cur_map_name == "castillo_exterior"):
+                    if constants.SONIDO == 3 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 4
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "leisure4"):
+                    if constants.SONIDO == 4 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 8
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "lab"):
+                    if constants.SONIDO == 8 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 5
+                        reproducir_musica_fondo()
+
+                elif (self.cur_map_name == "farmhouse2"):
+                    if constants.SONIDO == 5 and constants.player is not None and not self.show_timer:
+                        pausar_musica()
+                        constants.SONIDO = 0
+                        reproducir_musica_fondo()
+                else:
+                    pass
         except KeyError:
             pass
 
@@ -1716,16 +1774,34 @@ class GameView(arcade.View):
 def reproducir_musica_fondo():
     if constants.SONIDO == 0:
         constants.sonido = arcade.load_sound(":sounds:nivel0/theme.wav", streaming=True)
+
     elif constants.SONIDO == 1:
         constants.sonido = arcade.load_sound(":sounds:nivel1/theme.wav", streaming=True)
+
     elif constants.SONIDO == 2:
         constants.sonido = arcade.load_sound(":sounds:nivel2/theme.wav", streaming=True)
+
     elif constants.SONIDO == 3:
         constants.sonido = arcade.load_sound(":sounds:nivel3/theme.wav", streaming=True)
+
     elif constants.SONIDO == 4:
         constants.sonido = arcade.load_sound(":sounds:nivel4/theme.wav", streaming=True)
+
     elif constants.SONIDO==5:
         constants.sonido = arcade.load_sound(":sounds:defectAwariaOST.wav", streaming=True)
+
+    elif constants.SONIDO == 6:
+        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_ScarletForest.wav", streaming=True)
+
+    elif constants.SONIDO == 7:
+        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_HipHopShop.wav", streaming=True)
+
+    elif constants.SONIDO == 8:
+        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_GreenRoom.wav", streaming=True)
+
+    elif constants.SONIDO == 9:
+        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_theCircus.wav", streaming=True)
+
     constants.player = constants.sonido.play()
     def loop_sound():
         constants.player.push_handlers(on_eos=lambda: loop_sound())

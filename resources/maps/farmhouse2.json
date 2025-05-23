@@ -113,6 +113,20 @@
          "y":0
         }, 
         {
+         "compression":"zlib",
+         "data":"eJxjYBgFo2BoAU3GgXbB8AEAOncAKw==",
+         "encoding":"base64",
+         "height":16,
+         "id":14,
+         "name":"suelo_sonido",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
          "draworder":"topdown",
          "id":7,
          "name":"doors",
@@ -283,7 +297,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":14,
+ "nextlayerid":15,
  "nextobjectid":18,
  "orientation":"orthogonal",
  "properties":[

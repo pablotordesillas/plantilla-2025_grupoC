@@ -167,6 +167,7 @@ def load_map(map_name):
     game_map.scene.add_sprite_list("stop_list", use_spatial_hash=True)
     game_map.scene.add_sprite_list("push_list", use_spatial_hash=True)
     game_map.scene.add_sprite_list("cuesta_list", use_spatial_hash=True)
+    game_map.scene.add_sprite_list("sonido_list", use_spatial_hash=True)
     for layer, sprite_list in game_map.map_layers.items():
         if "_blocking" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
@@ -186,6 +187,7 @@ def load_map(map_name):
             game_map.scene.remove_sprite_list_by_object(sprite_list)
 
             game_map.scene["slow_list"].extend(sprite_list)
+
         elif "_timer" in layer:
             print("TIMER")
             game_map.scene.remove_sprite_list_by_object(sprite_list)
@@ -203,6 +205,10 @@ def load_map(map_name):
         elif "_cuesta" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
             game_map.scene["cuesta_list"].extend(sprite_list)
+
+        elif "_sonido" in layer:
+            game_map.scene.remove_sprite_list_by_object(sprite_list)
+            game_map.scene["sonido_list"].extend(sprite_list)
 
     return game_map
 
