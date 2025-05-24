@@ -1770,40 +1770,39 @@ class GameView(arcade.View):
 
 
 def reproducir_musica_fondo():
-    if constants.SONIDO == 0:
-        constants.sonido = arcade.load_sound(":sounds:nivel0/theme.wav", streaming=True)
+    if constants.player is not None:
+        constants.player.pause()
+        constants.player.delete()
 
-    elif constants.SONIDO == 1:
-        constants.sonido = arcade.load_sound(":sounds:nivel1/theme.wav", streaming=True)
-
-    elif constants.SONIDO == 2:
-        constants.sonido = arcade.load_sound(":sounds:nivel2/theme.wav", streaming=True)
-
-    elif constants.SONIDO == 3:
-        constants.sonido = arcade.load_sound(":sounds:nivel3/theme.wav", streaming=True)
-
-    elif constants.SONIDO == 4:
-        constants.sonido = arcade.load_sound(":sounds:nivel4/theme.wav", streaming=True)
-
-    elif constants.SONIDO==5:
-        constants.sonido = arcade.load_sound(":sounds:defectAwariaOST.wav", streaming=True)
-
-    elif constants.SONIDO == 6:
-        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_ScarletForest.wav", streaming=True)
-
-    elif constants.SONIDO == 7:
-        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_HipHopShop.wav", streaming=True)
-
-    elif constants.SONIDO == 8:
-        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_GreenRoom.wav", streaming=True)
-
-    elif constants.SONIDO == 9:
-        constants.sonido = arcade.load_sound(":sounds:deltaruneOST_theCircus.wav", streaming=True)
-
+    def cargar_sonido():
+        if constants.SONIDO == 0:
+            return arcade.load_sound(":sounds:nivel0/theme.wav", streaming=True)
+        elif constants.SONIDO == 1:
+            return arcade.load_sound(":sounds:nivel1/theme.wav", streaming=True)
+        elif constants.SONIDO == 2:
+            return arcade.load_sound(":sounds:nivel2/theme.wav", streaming=True)
+        elif constants.SONIDO == 3:
+            return arcade.load_sound(":sounds:nivel3/theme.wav", streaming=True)
+        elif constants.SONIDO == 4:
+            return arcade.load_sound(":sounds:nivel4/theme.wav", streaming=True)
+        elif constants.SONIDO == 5:
+            return arcade.load_sound(":sounds:defectAwariaOST.wav", streaming=True)
+        elif constants.SONIDO == 6:
+            return arcade.load_sound(":sounds:deltaruneOST_ScarletForest.wav", streaming=True)
+        elif constants.SONIDO == 7:
+            return arcade.load_sound(":sounds:deltaruneOST_HipHopShop.wav", streaming=True)
+        elif constants.SONIDO == 8:
+            return arcade.load_sound(":sounds:deltaruneOST_GreenRoom.wav", streaming=True)
+        elif constants.SONIDO == 9:
+            return arcade.load_sound(":sounds:deltaruneOST_theCircus.wav", streaming=True)
+    constants.sonido = cargar_sonido()
     constants.player = constants.sonido.play()
-    def loop_sound():
-        constants.player.push_handlers(on_eos=lambda: loop_sound())
-    loop_sound()
+    def on_music_end():
+        constants.sonido = cargar_sonido()
+        constants.player = constants.sonido.play()
+        constants.player.push_handlers(on_eos=on_music_end)
+    constants.player.push_handlers(on_eos=on_music_end)
+
 
 def pausar_musica():
     if constants.player is not None:
