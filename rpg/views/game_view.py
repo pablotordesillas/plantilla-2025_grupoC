@@ -1339,11 +1339,9 @@ class GameView(arcade.View):
 
         if key in constants.INFO:
             if not self.message_box:
-                self.message_box = MessageBox(self, "Have some tips:\n"
+                self.message_box = MessageBox(self, "Welcome to the tips menu!:\n"
                                                     "Blue lights indicate a dashable zone\n"
-                                                    "Cracked objects or barrels can be broken\n"
-                                                    "Some rooms require some collectables to proceed\n"
-                                                    "Be sure to get in time!\n"
+                                                    "Cracked objects, barrels and boxes can be broken\n"
                                                     "Press I to open / close this message", 1)
                 arcade.play_sound(arcade.load_sound(":sounds:Page_Turn.wav"))
             elif self.message_box:
