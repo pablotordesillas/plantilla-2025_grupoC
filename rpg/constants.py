@@ -38,6 +38,14 @@ Contador_colossmain=6
 CONTADOR_LAB1 = 7
 CONTADOR_LAB2 = 9
 
+Contador_aux = 5
+Contador_castilloext_aux = 6
+Contador_castilloprinc_aux = 2
+Contador_castillosal_aux = 6
+Contador_colossmain_aux = 6
+CONTADOR_LAB1_aux = 7
+CONTADOR_LAB2_aux = 9
+
 # Lista de los cascos
 CASCOS_LIST = ["Dashing Helmet", "Fleeting Helmet", "Charging Helmet"]
 
