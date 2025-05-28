@@ -21,6 +21,8 @@ RUN_MOVEMENT_SPEED = 7
 SLOW_SPEED = 1
 SPEED_AUX = 4
 
+ContadorIni = 0
+
 #Contador de monedas de prueba para el mapa de prueba
 Contador = 5
 Puerta = True

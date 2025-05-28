@@ -10,9 +10,9 @@ from rpg.views.inventory_view import InventoryView
 from rpg.views.main_menu_view import MainMenuView
 from rpg.views.settings_view import SettingsView
 from rpg.message_box import MessageBox
+from rpg.constants import ContadorIni
 import random
 import threading
-
 
 class LoadingView(arcade.View):
     def __init__(self):
@@ -58,9 +58,14 @@ class LoadingView(arcade.View):
 
     def on_update(self, delta_time: float):
         # Dictionary to hold all our maps
+        global ContadorIni
         if self.started:
             done, self.progress, self.map_list = load_maps()
-            self.message_box = MessageBox(self, self.messages_list[random.randint(0, len(self.messages_list) - 1)], 2)
+            if ContadorIni//7 > 3:
+                ContadorIni = 0
+            print(ContadorIni)
+            self.message_box = MessageBox(self, self.messages_list[ContadorIni//7], 2)
+            ContadorIni +=1
             threading.Timer(delta_time*2, self.close_message_box).start()
             if done:
                 self.window.views["game"] = GameView(self.map_list)
