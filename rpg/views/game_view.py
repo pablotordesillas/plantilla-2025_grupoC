@@ -25,6 +25,7 @@ import threading
 
 from rpg.views.main_menu_view import MainMenuView
 from rpg.views.settings_view import SettingsView
+lista_aux=[]
 
 class DebugMenu(arcade.gui.UIBorder, arcade.gui.UIWindowLikeMixin):
     def __init__(
@@ -554,6 +555,11 @@ class GameView(arcade.View):
                 self.player_sprite.center_x = self.x_guardado
                 self.player_sprite.center_y = self.y_guardado
             self.show_timer = False
+            for nombre_capa, sprite in lista_aux:
+                self.my_map.scene[nombre_capa].append(sprite)
+            lista_aux.clear()
+
+            #AAAAAAAAAAAAAAAAAAAAAAAA probar restablecer items
 
         if(self.show_timer==True): # Si el temporizador esta activo:
             self.total_time -= delta_time
@@ -654,7 +660,7 @@ class GameView(arcade.View):
             elif cuesta_tiles_hit:
                 if self.shift_pressed :
                     if self.correr:
-                        print("Sube la cuesta corriendo, maybe disminuir un poco la velocidad") #Deberia pasar el obstaculo
+                        print("Sube la cuesta corriendo") #Deberia pasar el obstaculo
                     else:
                         print("Falta casqueto")
                 else:
@@ -1186,17 +1192,21 @@ class GameView(arcade.View):
                 if (self.space_pressed or self.cooldown1) and self.casco_vikingo ==True:
                     #print("BOOOOOOOOOOM")
                     #UN RESPLANDOR Y HACE PUUUUUM
-                    rompible_sprite.remove_from_sprite_lists()
+                    # Capa es rompible
+                    self.my_map.scene["rompible"].remove(rompible_sprite)
+                    lista_aux.append(('rompible', rompible_sprite))
                 else:
                     self.my_map.scene["wall_list"].append(rompible_sprite)
 
         if "un_monedo" in map_layers:
             monedo_hit = arcade.check_for_collision_with_list(self.player_sprite, map_layers["un_monedo"])
-
             if len(monedo_hit) > 0:
                 monedo_sprite = monedo_hit[0]  #El sprite de la moneda con la que hemos colisionado
                 arcade.play_sound(arcade.load_sound(":sounds:coin.wav")) #sonido moneda cuando pillas
-                monedo_sprite.remove_from_sprite_lists()
+                #Capa es un_monedo
+                self.my_map.scene["un_monedo"].remove(monedo_sprite)
+                lista_aux.append(('un_monedo',monedo_sprite))
+
                 if self.cur_map_name=="Prueba":
                     constants.Contador -=1
                 elif self.cur_map_name=="castillo_exterior":
@@ -1216,7 +1226,9 @@ class GameView(arcade.View):
             if len(monedo_hit2) > 0:
                 monedo_sprite = monedo_hit2[0]  #El sprite de la moneda con la que hemos colisionado
                 arcade.play_sound(arcade.load_sound(":sounds:coin.wav")) #sonido moneda cuando pillas
-                monedo_sprite.remove_from_sprite_lists()
+                #Capa es un_monedo2
+                self.my_map.scene["un_monedo2"].remove(monedo_sprite)
+                lista_aux.append(('un_monedo2',monedo_sprite))
                 if self.cur_map_name == "lab":
                     constants.CONTADOR_LAB2-=1
 
@@ -1324,7 +1336,6 @@ class GameView(arcade.View):
                         threading.Timer(5, reactivar_puerta).start()
                         puertaM_sprite.remove_from_sprite_lists() #Aqui desapareceria la puerta, sin esto solamanente lo atraviesas
                 else:
-                    print("Dale zelda dale")
                     self.my_map.scene["wall_list"].append(puertaM_sprite)
 
 
@@ -1341,7 +1352,11 @@ class GameView(arcade.View):
             if not self.message_box:
                 self.message_box = MessageBox(self, "Welcome to the tips menu!:\n"
                                                     "Blue lights indicate a dashable zone\n"
-                                                    "Cracked objects, barrels and boxes can be broken\n"
+                                                    "Objects like barrels can be broken\n"
+                                                    "You need to find some cool Helmets\n"
+                                                    "Change helmet with number 1,2,3,4\n"
+                                                    "Dash/Charge is active with space bar\n"
+                                                    "Run with sift, but need the Helmets \n"
                                                     "Press I to open / close this message", 1)
                 arcade.play_sound(arcade.load_sound(":sounds:Page_Turn.wav"))
             elif self.message_box:

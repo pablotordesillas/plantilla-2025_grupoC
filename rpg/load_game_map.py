@@ -168,6 +168,8 @@ def load_map(map_name):
     game_map.scene.add_sprite_list("push_list", use_spatial_hash=True)
     game_map.scene.add_sprite_list("cuesta_list", use_spatial_hash=True)
     game_map.scene.add_sprite_list("sonido_list", use_spatial_hash=True)
+    game_map.scene.add_sprite_list("aux_list", use_spatial_hash=True)
+
     for layer, sprite_list in game_map.map_layers.items():
         if "_blocking" in layer:
             game_map.scene.remove_sprite_list_by_object(sprite_list)
