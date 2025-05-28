@@ -16,6 +16,7 @@ import rpg.constants as constants
 from arcade.experimental.lights import Light
 from pyglet.math import Vec2
 
+from rpg.constants import SPEED_AUX, Contador_aux
 from rpg.message_box import MessageBox
 from rpg.sprites.chacter_sprite1 import CharacterSprite_one
 from rpg.sprites.character_sprite import CharacterSprite
@@ -1151,6 +1152,7 @@ class GameView(arcade.View):
                     )
 
                 # Swap to the new map
+                lista_aux.clear()
                 self.switch_map(map_name, start_x, start_y)
             else:
                 # We didn't hit a door, scroll normally
