@@ -16,7 +16,6 @@ import rpg.constants as constants
 from arcade.experimental.lights import Light
 from pyglet.math import Vec2
 
-from rpg.constants import SPEED_AUX
 from rpg.message_box import MessageBox
 from rpg.sprites.chacter_sprite1 import CharacterSprite_one
 from rpg.sprites.character_sprite import CharacterSprite
@@ -558,6 +557,14 @@ class GameView(arcade.View):
             for nombre_capa, sprite in lista_aux:
                 self.my_map.scene[nombre_capa].append(sprite)
             lista_aux.clear()
+            #Restaurar los contadores
+            constants.Contador = constants.Contador_aux
+            constants.Contador_castilloext = constants.Contador_castilloext_aux
+            constants.Contador_castilloprinc = constants.Contador_castilloprinc_aux
+            constants.Contador_castillosal = constants.Contador_castillosal_aux
+            constants.Contador_colossmain = constants.Contador_colossmain_aux
+            constants.CONTADOR_LAB1 = constants.CONTADOR_LAB1_aux
+            constants.CONTADOR_LAB2 = constants.CONTADOR_LAB2_aux
 
             #AAAAAAAAAAAAAAAAAAAAAAAA probar restablecer items
 
