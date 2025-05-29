@@ -612,7 +612,7 @@ class GameView(arcade.View):
                                 self.message_box = MessageBox(self, f"You have found the {item}!",0) # Imprime el mensaje del item si no es un tipo de casco
                                 threading.Timer(1.5, self.close_message_box).start()
                             else:
-                                if self.cur_map_name not in ["leisure2","leisure3","leisure4","farmhouse2"]:
+                                if self.cur_map_name not in ["leisure2","leisure3","leisure4","farmhouse2", "main_map_final"]:
                                     self.message_box = MessageBox(self, "Have some tips:\n"
                                                                     "Blue lights indicate a dashable zone\n"
                                                                     "Cracked objects or barrels can be broken\n"
@@ -632,6 +632,9 @@ class GameView(arcade.View):
                                         threading.Timer(10, self.close_message_box).start()
                                     elif self.cur_map_name=="farmhouse2":
                                         self.message_box = MessageBox(self, "D", 1)
+                                        threading.Timer(10, self.close_message_box).start()
+                                    elif self.cur_map_name=="main_map_final":
+                                        self.message_box = MessageBox(self, "FIN", 1)
                                         threading.Timer(10, self.close_message_box).start()
                                     else:
                                         pass
