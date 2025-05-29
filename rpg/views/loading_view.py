@@ -63,7 +63,6 @@ class LoadingView(arcade.View):
             done, self.progress, self.map_list = load_maps()
             if ContadorIni//7 > 3:
                 ContadorIni = 0
-            print(ContadorIni)
             self.message_box = MessageBox(self, self.messages_list[ContadorIni//7], 2)
             ContadorIni +=1
             threading.Timer(delta_time*2, self.close_message_box).start()
