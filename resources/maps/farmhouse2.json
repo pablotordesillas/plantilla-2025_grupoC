@@ -140,7 +140,7 @@
                         {
                          "name":"map_name",
                          "type":"string",
-                         "value":"main_map"
+                         "value":"main_map_final"
                         }, 
                         {
                          "name":"start_x",

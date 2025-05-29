@@ -633,6 +633,9 @@ class GameView(arcade.View):
                                     elif self.cur_map_name=="farmhouse2":
                                         self.message_box = MessageBox(self, "D", 1)
                                         threading.Timer(10, self.close_message_box).start()
+                                    elif self.cur_map_name=="main_map_final":
+                                        self.message_box = MessageBox(self, "FIN", 1)
+                                        threading.Timer(10, self.close_message_box).start()
                                     else:
                                         pass
                                 threading.Timer(8,self.close_message_box).start()
