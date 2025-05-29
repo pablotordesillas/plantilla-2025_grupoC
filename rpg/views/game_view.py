@@ -652,7 +652,12 @@ class GameView(arcade.View):
                                                                       "mom. \n"
                                                                       "(Press SPACEBAR to close)", 1)
                                     elif self.cur_map_name=="main_map_final":
-                                        self.message_box = MessageBox(self, "FIN", 1)
+                                        self.message_box = MessageBox(self,
+                                                                      "THE END\n"
+                                                                      "Game created by \n"
+                                                                      "Emanuel Baciu, Isaac Quintian,\n"
+                                                                      "Alejandro de la Mata, Pablo Tordesillas,\n"
+                                                                      "Pablo Straus and Casia María Gabriela\n", 1)
                                     else:
                                         pass
 
