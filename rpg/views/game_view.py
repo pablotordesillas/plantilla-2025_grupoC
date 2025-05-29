@@ -555,6 +555,7 @@ class GameView(arcade.View):
                 self.player_sprite.center_x = self.x_guardado
                 self.player_sprite.center_y = self.y_guardado
             self.show_timer = False
+            # Restablecer items
             for nombre_capa, sprite in lista_aux:
                 self.my_map.scene[nombre_capa].append(sprite)
             lista_aux.clear()
@@ -567,7 +568,6 @@ class GameView(arcade.View):
             constants.CONTADOR_LAB1 = constants.CONTADOR_LAB1_aux
             constants.CONTADOR_LAB2 = constants.CONTADOR_LAB2_aux
 
-            #AAAAAAAAAAAAAAAAAAAAAAAA probar restablecer items
 
         if(self.show_timer==True): # Si el temporizador esta activo:
             self.total_time -= delta_time
@@ -1265,7 +1265,9 @@ class GameView(arcade.View):
                 for puertaD in map_layers["puertaD"]:
                     if puertaD in self.my_map.scene["wall_list"]:
                         self.my_map.scene["wall_list"].remove(puertaD)
-                        puertaD.remove_from_sprite_lists()
+                        #puertaD.remove_from_sprite_lists()
+                        self.my_map.scene["puertaD"].remove(puertaD)
+                        lista_aux.append(('puertaD', puertaD))
                         arcade.play_sound(arcade.load_sound(":sounds:puerta.wav"))
 
         if "puertaD2" in map_layers:
@@ -1282,7 +1284,8 @@ class GameView(arcade.View):
                 for puertaD2 in map_layers["puertaD2"]:
                     if puertaD2 in self.my_map.scene["wall_list"]:
                         self.my_map.scene["wall_list"].remove(puertaD2)
-                        puertaD2.remove_from_sprite_lists()
+                        self.my_map.scene["puertaD2"].remove(puertaD2)
+                        lista_aux.append(('puertaD2', puertaD2))
                         arcade.play_sound(arcade.load_sound(":sounds:puerta.wav"))
 
         if "puertaB" in map_layers:
