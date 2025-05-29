@@ -37,21 +37,29 @@
 
 > 4- <u>**Castillo**</u>:<br>
 > Tiene varias habitaciones en donde hay que recoger items para abrir puertas, una de ellas llena de trampas.
+
+> 5- <u>**Laboratorio</u>:<br>
+> Debes recoger una serie frascos para poder abrir las puertas. lleno de paredes dasheables.<br>
+
 ## <u>Personajes</u>:
 > - <u>Protagonista</u>: Explorador nato que no parara ante nada hasta conseguir escapar vivo.<br>
 > - <u>Posibles NPCs enemigos</u>: tienen una ruta especifica que siguen a lo largo de una sala el cual el jugador tiene que evitar o derrotar con un disparo.<br>
-> - <u>Voz misteriosa</u>: No se sabe quien es ni cual es su fuente de diversion perversa, solo sabemos que tiene el poder de teletransportarte entre diferente dimensiones, sitios e incluso épocas.
+> - <u>Voz misteriosa</u>: No se sabe quien es ni cual es su fuente de diversion perversa, solo sabemos que tiene el poder de teletransportarte entre diferente dimensiones, sitios e incluso épocas.<br>
+
 ## <u>Físicas</u>:
 >- Colision con obstáculos.<br>
 >- Destrucción de objetos "frágiles" por medio de una embestida para liberar el camino.<br>
+
 ## <u>Arte conceptual</u>:
 > No disponible al momento.<br>
+
 ## <u>Estética del videojuego</u>:
-> El videojuego se utiliza varios tipos de esteticas basadas en épocas, partiendo de la prehistoria, seguido de la época de los [Faraones](https://es.wikipedia.org/wiki/Fara%C3%B3n), la época Romana, Medieval y Posmoderna (ongoing).<br>
+> El videojuego se utiliza varios tipos de esteticas basadas en épocas, partiendo de la prehistoria, seguido de la época de los [Faraones](https://es.wikipedia.org/wiki/Fara%C3%B3n), la época Romana, Medieval y Posmoderna<br>
+
 ## <u>Ideas / mecánicas adicionales</u>:
 > Distinta movilidad dependiendo el terreno.☑️<br>
 > Dash que sirva para romper muros/estructuras.☑️<br>
 > Disparo para matar enemigos.<br>
-> Secciones a contrareloj (Mirar como hacer un contador).☑️<br>
+> Secciones a contrareloj.☑️<br>
 > Distintos cascos con una habilidad unica para cada uno.☑️<br>
-> Crear hud principal.<br> 
+> Crear hud principal.☑️<br> 
