@@ -1,0 +1,33 @@
+-Caracter_sprite:
+Es donde se indica el tamaño del sprite, exportando una variable de constants, el numero de sprites que se alternan, para generar el movimiento, y valores para que se actualice la imagen del sprite
+-Pathfollowingsprite:
+Cambia el valor del sprite, he indica a que velocidad alterna entre los "movimientos" al andar de ellos
+-PlayerSprite:
+Mete el sonido de los pasos infernal, y tiene un contador de cada cuanto se debe ejecutar este sonido
+-RandomWalkingSprite:
+Creo que con valores random, hace que los personajes que no son el juador, se muevan de una forma aleatoria
+-BattleView:
+Como esto dijo que no estaba implementado no lo he mirado
+-Game_view:
+Con f = open("../resources/data/item_dictionary.json") y f = open("../resources/data/characters_dictionary.json"), se seleccionan los spirtes de los animales/items y se meten en diccionarios
+En setup->Se puede elegir el sprite del jugador
+Donde empieza el jugador
+Teclas acciones del juegow
+Acciones con raton, que estan vacias y no se usan
+-InventoryView:
+Por ahora solo pinta la pantalla de un color y te pone inventario
+-LoadingView:
+Muestra por pantalla el mensaje de cargando, para que se carge una zona, o por lo menos se inicien las cosas del juegto
+-MainMenuView:
+Muestra por pantalla el menu que sale cuando clickas en el boton esc
+-SettingsView:
+Proconfiguracion para que se muestre la pantalla y similares
+-Main:
+Pues un main, se cargan los elementos y se inicializa el programa
+-Constants:
+Lugar donde se guardan varias constantes, como dice su nombre de archivo
+-draw_bar:
+CREO que es el que en la pantalla de loading, actualiza la barra que se va rellenando abajo, pero tampoco lo tengo muy claro
+-GameMap:
+-MessageBox:
+

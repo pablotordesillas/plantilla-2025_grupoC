@@ -11,7 +11,7 @@ _screen = _display.get_screens()[0] #El monitor principal
 SCREEN_WIDTH = _screen.width
 SCREEN_HEIGHT = _screen.height
 
-SCREEN_TITLE = "SILKSON'T"
+SCREEN_TITLE = "Hatrush"
 TILE_SCALING = 1.0
 SPRITE_SIZE = 32
 

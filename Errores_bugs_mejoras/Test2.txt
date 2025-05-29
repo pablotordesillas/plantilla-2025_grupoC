@@ -1,9 +1,0 @@
-1 - Se debería aumentar bastante el tiempo del primer nivel, con los obstáculos nuevos en el primer intento no se llega (donde empiezas sin el casco verde)
-2- En el segundo nivel el gran aumento de obstáculos hace que aun sabiendo la ruta optima llegues justo (darle 10 segundos mas a lo mucho)
-3- En el nivel 2 molaría que se pudieran dashear todos los agujeros, pese a que no todos te bloqueen puertas puede servir para ganr tiempo
-4- Solo si sobra tiempo, podemos poner más objetos coleccionables como el libro inicial que te cuenten la historia del juego (por ejemplo en las inscripciones de las estatuas del nvl 2)
-5- En el mapa del coliseo 100% se necesita un reset para pasárselo, no da tiempo con el contador actual
-6- En el mapa del castillo no se escucha la música del castillo.
-7- En la segunda parta del interior del castillo no da tiempo de coger todos los cristales en el tiempo proporcionado, ni con el casco verde llegas
-8- En la parte de los agujeros del castillo solo esta iluminada una pequeña parte de los agujeros, dando a entender que solo estos son dasheables cuando son todos
-9- En el laboratorio se llega super justo a por el último frasco, pero no da tiempo a llegar a la puerta (probado en múltiples rutas)
