@@ -613,32 +613,48 @@ class GameView(arcade.View):
                                 threading.Timer(1.5, self.close_message_box).start()
                             else:
                                 if self.cur_map_name not in ["leisure2","leisure3","leisure4","farmhouse2", "main_map_final"]:
-                                    self.message_box = MessageBox(self, "Have some tips:\n"
-                                                                    "Blue lights indicate a dashable zone\n"
-                                                                    "Cracked objects or barrels can be broken\n"
-                                                                    "Some rooms require some collectables to proceed\n"
-                                                                    "Be sure to get in time!\n"
-                                                                    "Press I to show this again in case you need it",1)
+                                    self.message_box = MessageBox(self,
+                                                                  "Blue lights indicate a dashable zone\n"
+                                                                  "Cracked objects or barrels can be broken\n"
+                                                                  "Some rooms require some collectables to proceed\n"
+                                                                  "Be sure to get in time!\n"
+                                                                "Press I to show this again in case you need it", 3)
                                     threading.Timer(8, self.close_message_box).start()
                                 else:
                                     if self.cur_map_name=="leisure2":
-                                        self.message_box = MessageBox(self, "A",1)
-                                        threading.Timer(10, self.close_message_box).start()
+                                        self.message_box = MessageBox(self,
+                                                                      "Congratulations on passing the first level. \n"
+                                                                      "I made it easier on purpose so you wouldn't just die, that would've been boring. \n"
+                                                                      "I'll put you on some relaxing rooms from time to time to contact you, feel free to stay as much as you want, \n"
+                                                                      "you cannot escape my realm either way hehe."
+                                                                      "You should've picked up a green helmet on the way, you may use it wisely from now on. \n"
+                                                                      "Have fun, cause I certainly am! HA HA HA \n"
+                                                                      "(Press SPACEBAR to close)", 1)
                                     elif self.cur_map_name=="leisure3":
-                                        self.message_box = MessageBox(self, "B", 1)
-                                        threading.Timer(10, self.close_message_box).start()
+                                        self.message_box = MessageBox(self,
+                                                                      "Good job  on jumping those gaps, you almost FELL for it. \n"
+                                                                      "Anyways, be sure to survive the next round, you will need to find some gems I scattered \n"
+                                                                      "around to break the magical bind of that poor looking wheat lump. \n"
+                                                                      "Oh yeah, I've also put some dummies around, just for fun, good luck trying to break them! \n"
+                                                                      "(Press SPACEBAR to close)", 1)
                                     elif self.cur_map_name=="leisure4":
-                                        self.message_box = MessageBox(self, "C", 1)
-                                        threading.Timer(10, self.close_message_box).start()
+                                        self.message_box = MessageBox(self,
+                                                                      "Well well well, seems my test subject has surpassed the rest!\n"
+                                                                      "Wonderful, truly wonderful, human intellect is indeed surprising if put under immense stress. \n"
+                                                                      "How about you get me some flasks I left around my laboratory? Just be careful about the leaking acid \n"
+                                                                      "I broke them by mistake while I was stealing this lab, it would be truly disappointing if you die now, heh. \n"
+                                                                      "(Press SPACEBAR to close)", 1)
                                     elif self.cur_map_name=="farmhouse2":
-                                        self.message_box = MessageBox(self, "D", 1)
-                                        threading.Timer(10, self.close_message_box).start()
+                                        self.message_box = MessageBox(self,
+                                                                      "Hello sweetheart, you've been sleeping for a while now and I had to go collect \n"
+                                                                      "some sutff at the nearby city, I left you food for whenever you wake up. \n"
+                                                                      "Love, \n"
+                                                                      "mom. \n"
+                                                                      "(Press SPACEBAR to close)", 1)
                                     elif self.cur_map_name=="main_map_final":
                                         self.message_box = MessageBox(self, "FIN", 1)
-                                        threading.Timer(10, self.close_message_box).start()
                                     else:
                                         pass
-                                threading.Timer(8,self.close_message_box).start()
 
                         sprite.remove_from_sprite_lists() # Elimina el casco del mapa
                         lookup_item = self.item_dictionary[sprite.properties["item"]] # Guarda en la variable lookup_item el nombre que hemos puesto en la propiedad "item" que deberia erstar en item_dictionary
@@ -1367,18 +1383,23 @@ class GameView(arcade.View):
             if not self.message_box:
                 self.message_box = MessageBox(self, "Welcome to the tips menu!:\n"
                                                     "Blue lights indicate a dashable zone\n"
-                                                    "Objects like barrels can be broken\n"
-                                                    "You need to find some cool Helmets\n"
-                                                    "Change helmet with number 1,2,3,4\n"
-                                                    "Dash/Charge is active with space bar\n"
-                                                    "Run with sift, but need the Helmets \n"
-                                                    "Press I to open / close this message", 1)
+                                                    " Some objects, such as cracked objects or barrels, can be broken\n"
+                                                    "You need to find some cool helmets around the maps.\n"
+                                                    "Change helmets with the 1,2,3,4 keys.\n"
+                                                    "Dash/Charge are activated by using space bar\n"
+                                                    "To run you must have the green helmet and hold SHIFT. \n"
+                                                    "Press I to open / close this message", 3)
                 arcade.play_sound(arcade.load_sound(":sounds:Page_Turn.wav"))
             elif self.message_box:
-                self.message_box = None
+                self.close_message_box()
             else:
-                pass
+                     pass
 
+        if key in constants.CLOSE_MB and (self.cur_map_name in ["leisure2", "leisure3", "leisure4", "farmhouse2, main_map_final"]):
+            if self.message_box:
+                self.close_message_box()
+        else:
+            pass
         #if self.message_box:
          #   self.message_box.on_key_press(key, modifiers)
           #  return
