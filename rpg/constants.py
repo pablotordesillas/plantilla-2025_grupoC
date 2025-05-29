@@ -72,6 +72,7 @@ KEY_TAB = [arcade.key.TAB]
 INVENTORY = [arcade.key.I]
 SEARCH = [arcade.key.E]
 INFO = [arcade.key.I]
+CLOSE_MB = [arcade.key.SPACE]
 
 # Message box
 MESSAGE_BOX_FONT_SIZE = 20

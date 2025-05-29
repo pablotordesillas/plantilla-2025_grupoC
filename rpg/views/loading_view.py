@@ -4,9 +4,7 @@ Loading screen
 import arcade
 from rpg.draw_bar import draw_bar
 from rpg.load_game_map import load_maps
-from rpg.views.battle_view import BattleView
 from rpg.views.game_view import GameView
-from rpg.views.inventory_view import InventoryView
 from rpg.views.main_menu_view import MainMenuView
 from rpg.views.settings_view import SettingsView
 from rpg.message_box import MessageBox
@@ -63,7 +61,6 @@ class LoadingView(arcade.View):
             done, self.progress, self.map_list = load_maps()
             if ContadorIni//7 > 3:
                 ContadorIni = 0
-            print(ContadorIni)
             self.message_box = MessageBox(self, self.messages_list[ContadorIni//7], 2)
             ContadorIni +=1
             threading.Timer(delta_time*2, self.close_message_box).start()
