@@ -23,7 +23,7 @@ class MyWindow(arcade.Window):
 
 
 def main():
-    """Main me1thod"""
+    """Main method"""
     window = MyWindow()
     window.center_window()
     window.maximize()   #Ejecuta el juego en modo ventana maximizado

@@ -15,12 +15,17 @@ class MessageBox:
             self.message = message
             self.view = view
             self.width = 800
-            self.height = 300
+            self.height = 500
         elif value == 2:
             self.message = message
             self.view = view
             self.width = 800
             self.height = 100
+        elif value == 3:
+            self.message = message
+            self.view = view
+            self.width = 600
+            self.height = 550
         else:
             self.message = message
             self.view = view
@@ -29,7 +34,7 @@ class MessageBox:
 
 
     def on_draw(self):
-        if self.value == 0 or self.value == 1:
+        if self.value == 0 or self.value == 1 or self.value==3:
             cx = self.view.window.width / 2
             cy = self.view.window.height / 2
         else:
@@ -64,5 +69,3 @@ class MessageBox:
             width=500,
         )
 
-    def on_key_press(self, _key, _modifiers):
-        self.view.close_message_box()
