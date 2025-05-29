@@ -1,6 +1,8 @@
-pyinstaller --onefile --name "Persona6" --icon=icono.ico -noconsole __main__.py
-
+instalar pyinstaller con 
+pip install pyinstaller   #No se como sera en linux
 accediendo por terminal a la carpeta rpg
-siendo el main el main del prgroama
-icono.ico una imagen creada en gimp
-y lo del nombre  no se, pq no funciona
+siendo el main el main del programa
+icono.ico una imagen creada en gimp para que sea .iso
+y lo del nombre no se, pq no funciona
+
+pyinstaller --onefile --name "Persona6" --icon=icono.ico -noconsole __main__.py
