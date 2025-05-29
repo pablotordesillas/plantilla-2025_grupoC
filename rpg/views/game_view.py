@@ -1395,7 +1395,7 @@ class GameView(arcade.View):
             else:
                      pass
 
-        if key in constants.CLOSE_MB and (self.cur_map_name in ["leisure2", "leisure3", "leisure4", "farmhouse2, main_map_final"]):
+        if key in constants.CLOSE_MB and (self.cur_map_name in ["leisure2", "leisure3", "leisure4", "farmhouse2", "main_map_final"]):
             if self.message_box:
                 self.close_message_box()
         else:
