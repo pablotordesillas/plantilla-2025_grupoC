@@ -1,0 +1,6 @@
+pyinstaller --onefile --name "Persona6" --icon=icono.ico -noconsole __main__.py
+
+accediendo por terminal a la carpeta rpg
+siendo el main el main del prgroama
+icono.ico una imagen creada en gimp
+y lo del nombre  no se, pq no funciona
