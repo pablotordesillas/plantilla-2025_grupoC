@@ -377,12 +377,12 @@
                          "value":"pyramid_01"
                         }, 
                         {
-                         "name":"start_Y",
+                         "name":"start_x",
                          "type":"int",
                          "value":49
                         }, 
                         {
-                         "name":"start_x",
+                         "name":"start_y",
                          "type":"int",
                          "value":39
                         }],
