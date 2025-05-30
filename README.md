@@ -1,6 +1,6 @@
 # HatRush
 
-## 2PRO4ESP
+## 2RO4ESP
 - Pablo Tordesillas [[4th Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Dev Leader, Senior Programmer, Graphic Design, Level Design & Playtesting |
 - Emanuel Baciu [[1st Grade in Computer Sciences](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Computer-Science-Engineering/)] -> | Junior Programmer & Level Design |
 - Isaac Quintian [[1st Grade Information Systems Engineering](https://www.uah.es/en/estudios/estudios-oficiales/Degree-in-Engineering-in-Information-Systems/)] -> | Junior Programmer, SFX, Level Design & Playtesting |
